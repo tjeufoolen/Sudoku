@@ -8,7 +8,7 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
 {
     public interface IBoardBuilder
     {
-        public abstract IBoard Board { get; protected set; }
+        IBoard Board { get; }
 
         public abstract void Reset();
         public abstract void BuildCells(IList<string> lines);

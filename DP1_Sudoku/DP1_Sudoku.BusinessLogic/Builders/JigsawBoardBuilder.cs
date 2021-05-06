@@ -9,7 +9,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public class JigsawBoardBuilder : IBoardBuilder
     {
-        IBoard IBoardBuilder.Board { get; set; }
+        public IBoard Board { get; private set; }
 
         public void Reset()
         {

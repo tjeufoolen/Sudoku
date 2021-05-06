@@ -1,4 +1,5 @@
-﻿using DP1_Sudoku.BusinessLogic.Enumerators;
+﻿using DP1_Sudoku.BusinessLogic.Builders;
+using DP1_Sudoku.BusinessLogic.Enumerators;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
