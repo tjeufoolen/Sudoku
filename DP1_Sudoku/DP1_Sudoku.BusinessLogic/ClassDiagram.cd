@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Main">
-    <Position X="4.5" Y="1.75" Width="1.5" />
+    <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Main.cs</FileName>
@@ -10,12 +10,188 @@
       <Property Name="Game" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Game" Collapsed="true">
-    <Position X="7.75" Y="2" Width="1.5" />
+  <Class Name="DP1_Sudoku.BusinessLogic.Game">
+    <Position X="4.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClearVisitor" />
+    </ShowAsAssociation>
   </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.Board">
+    <Position X="4.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAEAQAACAAAAAAAIAAAAIAAAAAIQAAAACAAAAAAA=</HashCode>
+      <FileName>Board.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SolveStrategy" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Groups" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.JigsawBoard">
+    <Position X="1.5" Y="4.75" Width="2" />
+    <InheritanceLine Type="DP1_Sudoku.BusinessLogic.Board" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="6.139" />
+        <Point X="4.375" Y="6.139" />
+        <Point X="4.375" Y="5.188" />
+        <Point X="3.5" Y="5.188" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JigsawBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.SamuraiBoard">
+    <Position X="1.5" Y="6" Width="2" />
+    <InheritanceLine Type="DP1_Sudoku.BusinessLogic.Board" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="6.649" />
+        <Point X="4.375" Y="6.649" />
+        <Point X="4.375" Y="6.803" />
+        <Point X="3.5" Y="6.803" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>SamuraiBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.Group">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Group.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.Cell">
+    <Position X="8" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>UIAQAAAAAACAAgQAAAAQIAAAAAAIAAAACACAAAAAAAA=</HashCode>
+      <FileName>Cell.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.Visitors.ClearVisitor" Collapsed="true">
+    <Position X="1.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Visitors\ClearVisitor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.Strategies.BackTrackSolveStrategy">
+    <Position X="3.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Strategies\BackTrackSolveStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.CellVisibilityState">
+    <Position X="8" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellVisibilityStates\CellVisibilityState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cell" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.HelpNumbers">
+    <Position X="6.75" Y="14" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellVisibilityStates\HelpNumbers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.Normal">
+    <Position X="9.25" Y="14" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellVisibilityStates\Normal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.BlockedCell">
+    <Position X="10.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellStates\BlockedCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.CellState">
+    <Position X="14.75" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellStates\CellState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.DefinitiveCell">
+    <Position X="17.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellStates\DefinitiveCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.EmptyCell">
+    <Position X="12.75" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellStates\EmptyCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.FilledCell">
+    <Position X="15" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellStates\FilledCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.InvalidCell">
+    <Position X="19.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CellStates\InvalidCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IBoard">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAAAAAAAAAAIAAAAAAAAAAIQAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBoard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Groups" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IGridComponent">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IGridComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.ISolveStrategy">
+    <Position X="3.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISolveStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IVisitor" Collapsed="true">
+    <Position X="1.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
