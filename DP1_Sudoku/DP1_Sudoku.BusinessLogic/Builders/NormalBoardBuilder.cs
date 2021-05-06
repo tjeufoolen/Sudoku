@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Builders
 {
-    class NormalBoardBuilder : IBoardBuilder
+    public class NormalBoardBuilder : IBoardBuilder
     {
         IBoard IBoardBuilder.Board { get; set; }
 

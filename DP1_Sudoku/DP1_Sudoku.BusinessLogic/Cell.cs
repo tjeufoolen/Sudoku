@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DP1_Sudoku.BusinessLogic.Interfaces
+namespace DP1_Sudoku.BusinessLogic
 {
-    public interface IBoard
+    public class Cell
     {
     }
 }

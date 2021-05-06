@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic
 {
-    class Board : IBoard
+    public class Board : IBoard
     {
     }
 }

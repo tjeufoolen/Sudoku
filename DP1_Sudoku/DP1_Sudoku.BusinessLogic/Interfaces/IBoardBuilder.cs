@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Interfaces
 {
-    interface IBoardBuilder
+    public interface IBoardBuilder
     {
         public abstract IBoard Board { get; protected set; }
 

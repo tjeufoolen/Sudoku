@@ -1,4 +1,5 @@
-﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+﻿using DP1_Sudoku.BusinessLogic.Enumerators;
+using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
  */
 namespace DP1_Sudoku.BusinessLogic.Factories
 {
-    class BoardFactory
+    public class BoardFactory
     {
         #region Singleton
         private BoardFactory() { }
@@ -36,26 +37,28 @@ namespace DP1_Sudoku.BusinessLogic.Factories
         }
         #endregion Singleton
 
-        private Dictionary<string, Type> _types;
+        private Dictionary<BoardTypes, Type> _builders;
 
-        public void AddBoardType(string name, Type type)
+        public void AddBoardType(BoardTypes type, Type builder)
         {
-            _types[name] = type;
+            if (builder is not IBoardBuilder) throw new ArgumentException();
+
+            _builders[type] = builder;
         }
 
-        public void RemoveBoardType(string name)
+        public void RemoveBoardType(BoardTypes type)
         {
-            if (_types.ContainsKey(name))
+            if (_builders.ContainsKey(type))
             {
-                _types.Remove(name);
+                _builders.Remove(type);
             }
         }
 
-        public IBoard CreateBoard(string name, IList<string> lines)
+        public IBoard CreateBoard(BoardTypes type, IList<string> lines)
         {
-            if (!_types.ContainsKey(name)) return null;
+            if (!_builders.ContainsKey(type)) return null;
 
-            IBoardBuilder builder = (IBoardBuilder) Activator.CreateInstance(_types[name]);
+            IBoardBuilder builder = (IBoardBuilder) Activator.CreateInstance(_builders[type]);
             builder.Reset();
             builder.BuildCells(lines);
             builder.BuildGroups(lines);

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DP1_Sudoku.BusinessLogic.Interfaces
+namespace DP1_Sudoku.BusinessLogic.Enumerators
 {
-    public interface IBoard
+    public enum FileReaderTypes
     {
+        OFFLINE,
+        ONLINE,
     }
 }
