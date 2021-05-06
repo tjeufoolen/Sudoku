@@ -5,21 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DP1_Sudoku.BusinessLogic.Visitors
+namespace DP1_Sudoku.BusinessLogic.Builders
 {
-    public class ClearVisitor : IVisitor
+    public class SamuraiBoardBuilder : IBoardBuilder
     {
-        public void Visit(Board board)
+        public IBoard Board { get; private set; }
+
+        public void Reset()
         {
             throw new NotImplementedException();
         }
 
-        public void Visit(Group group)
+        public void BuildCells(IList<string> lines)
         {
             throw new NotImplementedException();
         }
 
-        public void Visit(Cell cell)
+        public void BuildGroups(IList<string> lines)
         {
             throw new NotImplementedException();
         }
