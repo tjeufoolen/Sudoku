@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Utils
 {
-    public class FilePathUtil
+    public static class FilePathUtil
     {
         public static string GetFileName(string path)
         {
