@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
-    public class EmptyCell : CellState
+    public class DefinitiveCellState : CellState
     {
-        public EmptyCell(Cell cell) : base(cell)
+        public DefinitiveCellState(Cell cell) : base(cell)
         {
 
         }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
-    public class BlockedCell : CellState
+    public class InvalidCellState : CellState
     {
-        public BlockedCell(Cell cell) : base(cell)
+        public InvalidCellState(Cell cell) : base(cell)
         {
         }
 
