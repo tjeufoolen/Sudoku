@@ -8,9 +8,7 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
     public interface IBoard : IGridComponent
     {
         IList<IList<Cell>> Cells { get; set; }
-        IList<Group> Groups { get; set; }
-        public bool ValidateHorizontal();
-        public bool ValidateVertical();
+        IList<GroupComposite> Groups { get; set; }
         public bool ValidateGroups();
     }
 }

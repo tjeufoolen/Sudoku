@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DP1_Sudoku.BusinessLogic
 {
-    public class Group : IGridComponent
+    public class GroupComposite : IGridComponent
     {
         public IList<IGridComponent> Children { get; set; }
 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.States.CellVisibilityStates
 {
-    public class Normal : CellVisibilityState
+    public class NormalVisibilityState : CellVisibilityState
     {
-        public Normal(Cell cell) : base(cell)
+        public NormalVisibilityState(Cell cell) : base(cell)
         {
         }
     }

@@ -14,7 +14,7 @@ namespace DP1_Sudoku.BusinessLogic.Visitors
             throw new NotImplementedException();
         }
 
-        public void Visit(Group group)
+        public void Visit(GroupComposite group)
         {
             throw new NotImplementedException();
         }

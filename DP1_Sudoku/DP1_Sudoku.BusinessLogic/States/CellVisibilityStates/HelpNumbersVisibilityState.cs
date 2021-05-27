@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.States.CellVisibilityStates
 {
-    public class HelpNumbers : CellVisibilityState
+    public class HelpNumbersVisibilityState : CellVisibilityState
     {
-        public HelpNumbers(Cell cell) : base(cell)
+        public HelpNumbersVisibilityState(Cell cell) : base(cell)
         {
         }
     }
