@@ -13,10 +13,16 @@
         }
     </div>
 
-    <button class="btn btn-primary">Toevoegen</button>
+    <button class="btn btn-primary" @onclick="showAddGameModal">Toevoegen</button>
 </div>
 
 @code {
     // TODO: Replace with actual gametype viewmodels which contain all gamefiles per type.
     private List<string> gameTypes = new List<string>() { "4x4", "6x6", "9x9", "samurai", "jigsaw" };
+
+    private void showAddGameModal()
+    {
+        // Todo: Implement Add Game Modal
+        throw new NotImplementedException();
+    }
 }
