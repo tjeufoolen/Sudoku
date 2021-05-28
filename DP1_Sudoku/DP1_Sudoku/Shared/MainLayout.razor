@@ -1,17 +1,35 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-		<NavMenu />
+<nav class="navbar navbar-light bg-light">
+    <button class="toggle-sidebar" @onclick="ToggleSidebar"><i class="fas fa-bars"></i></button>
+
+    <div class="container-fluid justify-content-center">
+        <a class="navbar-brand lobster" href="#">Sudoku</a>
+    </div>
+</nav>
+
+<div class="d-flex">
+    <div class="d-flex">
+        @if (sidebarVisible)
+        {
+            <Sidebar />
+        }
     </div>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
 
-        <div class="content px-4">
-			@Body
+    <main class="d-flex">
+        <div class="p-3">
+            @Body
         </div>
-    </div>
+    </main>
 </div>
+
+@code {
+    private bool sidebarVisible = true;
+
+    void ToggleSidebar()
+    {
+        sidebarVisible = !sidebarVisible;
+    }
+}
+

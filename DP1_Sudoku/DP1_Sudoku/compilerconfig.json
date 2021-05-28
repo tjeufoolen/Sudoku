@@ -8,7 +8,7 @@
     "inputFile": "Shared/MainLayout.razor.scss"
   },
   {
-    "outputFile": "Shared/NavMenu.razor.css",
-    "inputFile": "Shared/NavMenu.razor.scss"
+    "outputFile": "Shared/Sidebar.razor.css",
+    "inputFile": "Shared/Sidebar.razor.scss"
   }
 ]

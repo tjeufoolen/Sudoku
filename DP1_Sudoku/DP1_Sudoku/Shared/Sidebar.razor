@@ -1,0 +1,22 @@
+﻿<div class="sidebar">
+    <div class="row games p-3">
+        <h2>Games</h2>
+        @foreach (var type in gameTypes)
+        {
+            <div class="game-type">
+                <h3>@type</h3>
+                <ul>
+                    <li><a href="#">example-game</a></li>
+                    <li><a href="#">example-game</a></li>
+                </ul>
+            </div>
+        }
+    </div>
+
+    <button class="btn btn-primary">Toevoegen</button>
+</div>
+
+@code {
+    // TODO: Replace with actual gametype viewmodels which contain all gamefiles per type.
+    private List<string> gameTypes = new List<string>() { "4x4", "6x6", "9x9", "samurai", "jigsaw" };
+}
