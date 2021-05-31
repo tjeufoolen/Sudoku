@@ -6,17 +6,3 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
-
-
-@code {
-
-
-    protected override async Task OnInitializedAsync()
-    {
-        Main main = new Main();
-
-        await main.LoadGame(new string[2]);
-        await base.OnInitializedAsync();
-    }
-}
-

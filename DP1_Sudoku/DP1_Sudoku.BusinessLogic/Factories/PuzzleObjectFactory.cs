@@ -1,5 +1,4 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
-using DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,8 +10,6 @@ namespace DP1_Sudoku.BusinessLogic
         public PuzzleObjectFactory()
         {
             _loadingStrategies = new List<IPuzzleLoadingStrategy>();
-            // TODO: REMOVE THIS LINE
-            _loadingStrategies.Add(new LocalPuzzleStrategy());
         }
 
         public async Task<List<PuzzleObject>> LoadAll()
