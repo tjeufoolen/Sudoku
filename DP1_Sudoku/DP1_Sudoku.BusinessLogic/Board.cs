@@ -11,7 +11,7 @@ namespace DP1_Sudoku.BusinessLogic
         public ISolveStrategy SolveStrategy { private get; set; }
 
         public IList<IList<Cell>> Cells { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IList<Group> Groups { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IList<GroupComposite> Groups { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Solve()
         {
@@ -29,16 +29,6 @@ namespace DP1_Sudoku.BusinessLogic
         }
 
         public virtual bool ValidateGroups()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual bool ValidateHorizontal()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual bool ValidateVertical()
         {
             throw new NotImplementedException();
         }

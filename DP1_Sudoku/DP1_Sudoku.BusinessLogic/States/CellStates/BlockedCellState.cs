@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
-    public class DefinitiveCell : CellState
+    public class BlockedCellState : CellState
     {
-        public DefinitiveCell(Cell cell) : base(cell)
+        public BlockedCellState(Cell cell) : base(cell)
         {
-
         }
 
         public override bool SetValue(int value)
