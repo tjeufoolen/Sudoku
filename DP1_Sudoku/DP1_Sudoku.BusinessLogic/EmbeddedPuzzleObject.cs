@@ -16,7 +16,7 @@ namespace DP1_Sudoku.BusinessLogic
             Assembly assembly = GetType().Assembly;
             Stream? fileStream = assembly.GetManifestResourceStream(FilePath);
 
-            if (fileStream == null) throw new InvalidOperationException($"{GetType()} cannot load it's puzzleString. No file found to read from. Tried to read from: {FilePath}. ");
+            if (fileStream == null) throw new InvalidOperationException($"{typeof(EmbeddedPuzzleObject)} cannot load it's puzzleString. No file found to read from. Tried to read from: {FilePath}. ");
 
             StreamReader reader = new(fileStream);
             string fileContent = await reader.ReadToEndAsync();
