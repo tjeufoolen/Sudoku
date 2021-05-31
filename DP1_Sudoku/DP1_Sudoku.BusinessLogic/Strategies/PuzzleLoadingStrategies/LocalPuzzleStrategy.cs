@@ -26,9 +26,9 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies
 
         private static List<PuzzleObject> ConvertToPuzzleObject(List<string> fileOptions)
         {
-            return fileOptions
-                .Select(puzzle => new PuzzleObject("", ""))
-                .ToList();
+            List<PuzzleObject> puzzles = new();
+            puzzles.AddRange(fileOptions.Select(puzzle => new EmbeddedPuzzleObject(puzzle)));
+            return puzzles;
         }
     }
 }
