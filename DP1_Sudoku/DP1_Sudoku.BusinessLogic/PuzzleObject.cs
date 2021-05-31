@@ -2,11 +2,6 @@
 using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using DP1_Sudoku.BusinessLogic.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic
 {
@@ -29,9 +24,9 @@ namespace DP1_Sudoku.BusinessLogic
         {
             string fileName = FilePathUtil.GetFileName(filePath).ToLower();
 
-            if (fileName.Contains("samurai")) 
+            if (fileName.Contains("samurai"))
                 return BoardTypes.SAMURAI;
-            if (fileName.Contains("jigsaw")) 
+            if (fileName.Contains("jigsaw"))
                 return BoardTypes.JIGSAW;
 
             return BoardTypes.NORMAL;

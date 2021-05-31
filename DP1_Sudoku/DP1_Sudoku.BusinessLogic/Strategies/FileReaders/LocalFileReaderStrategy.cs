@@ -11,7 +11,7 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.FileReaders
     {
         public IList<string> Parse(string filePath)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

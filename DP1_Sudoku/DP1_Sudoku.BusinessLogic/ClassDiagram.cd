@@ -6,16 +6,6 @@
   <Comment CommentText="Singleton">
     <Position X="16.986" Y="6.335" Height="0.311" Width="0.765" />
   </Comment>
-  <Class Name="Main">
-    <Position X="7" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAE=</HashCode>
-      <FileName>Main.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Game" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Game">
     <Position X="13.5" Y="7.25" Width="1.5" />
     <AssociationLine Name="_clearVisitor" Type="DP1_Sudoku.BusinessLogic.Interfaces.IVisitor" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
@@ -26,7 +16,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgCAQAAAAAAAAAAAAAAAAAAAAAAQACBBAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAQAAAAAAAAAAgAAAAAAAAAAAQACBBAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

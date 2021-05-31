@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DP1_Sudoku.BusinessLogic\DP1_Sudoku.BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>

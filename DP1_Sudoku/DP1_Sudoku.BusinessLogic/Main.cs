@@ -1,12 +1,14 @@
-﻿using DP1_Sudoku.BusinessLogic;
-using System;
+﻿using System.Threading.Tasks;
 
-public class Main
+namespace DP1_Sudoku.BusinessLogic
 {
-    public Game Game { get; private set; }
-
-    public void LoadGame()
+    public class Main
     {
-        throw new NotImplementedException();
+        //public Game Game { get; private set; }
+        public async Task LoadGame(string[] args)
+        {
+            Game game = new Game();
+            await game.LoadPuzzleOptions();
+        }
     }
 }

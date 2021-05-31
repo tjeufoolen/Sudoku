@@ -2,8 +2,7 @@
 using DP1_Sudoku.BusinessLogic.Visitors;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic
 {
@@ -11,6 +10,7 @@ namespace DP1_Sudoku.BusinessLogic
     {
         public IList<PuzzleObject> Puzzles { get; private set; }
         public IBoard Board { get; private set; }
+        public PuzzleFactory PuzzleFactory { get; private set; } = new PuzzleFactory();
 
         private IVisitor _clearVisitor;
 
@@ -19,10 +19,12 @@ namespace DP1_Sudoku.BusinessLogic
             this._clearVisitor = new ClearVisitor();
         }
 
-        public void LoadPuzzles()
+        public async Task LoadPuzzleOptions()
         {
-            throw new NotImplementedException();
+            Puzzles = await PuzzleFactory.LoadAll();
         }
+
+
 
         public void LoadBoard(PuzzleObject puzzle)
         {
