@@ -10,7 +10,7 @@ namespace DP1_Sudoku.BusinessLogic
     {
         public IList<PuzzleObject> Puzzles { get; private set; }
         public IBoard Board { get; private set; }
-        public PuzzleFactory PuzzleFactory { get; private set; } = new PuzzleFactory();
+        public PuzzleObjectFactory PuzzleFactory { get; private set; } = new PuzzleObjectFactory();
 
         private IVisitor _clearVisitor;
 

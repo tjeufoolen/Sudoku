@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic
 {
-    public class PuzzleFactory : IPuzzleFactory
+    public class PuzzleObjectFactory : IPuzzleObjectFactory
     {
         private readonly List<IPuzzleLoadingStrategy> _loadingStrategies;
-        public PuzzleFactory()
+        public PuzzleObjectFactory()
         {
             _loadingStrategies = new List<IPuzzleLoadingStrategy>();
             _loadingStrategies.Add(new LocalPuzzleStrategy());
