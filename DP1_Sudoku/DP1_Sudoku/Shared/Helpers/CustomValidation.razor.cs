@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using System;
 using System.Linq.Expressions;
 
-namespace DP1_Sudoku.Shared
+namespace DP1_Sudoku.Shared.Helpers
 {
     public partial class CustomValidation<TValue> : ComponentBase
     {

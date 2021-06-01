@@ -4,8 +4,8 @@
     "inputFile": "wwwroot/scss/site.scss"
   },
   {
-    "outputFile": "Shared/MainLayout.razor.css",
-    "inputFile": "Shared/MainLayout.razor.scss"
+    "outputFile": "Shared/Layouts/MainLayout.razor.css",
+    "inputFile": "Shared/Layouts/MainLayout.razor.scss"
   },
   {
     "outputFile": "Shared/Sidebar.razor.css",

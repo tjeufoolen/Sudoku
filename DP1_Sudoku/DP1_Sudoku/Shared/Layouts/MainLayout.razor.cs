@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace DP1_Sudoku.Shared
+namespace DP1_Sudoku.Shared.Layouts
 {
     public partial class MainLayout
     {
