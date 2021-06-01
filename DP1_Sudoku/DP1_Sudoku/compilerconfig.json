@@ -12,7 +12,7 @@
     "inputFile": "Shared/Sidebar.razor.scss"
   },
   {
-    "outputFile": "Shared/Modal.razor.css",
-    "inputFile": "Shared/Modal.razor.scss"
+    "outputFile": "Shared/Modals/Modal.razor.css",
+    "inputFile": "Shared/Modals/Modal.razor.scss"
   }
 ]
