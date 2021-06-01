@@ -28,11 +28,17 @@
 .spacing-left {
   padding-left: 20px; }
 
+.lobster {
+  font-family: 'Lobster', cursive; }
+
 .border-radius {
   border-radius: 10px; }
 
-.lobster {
-  font-family: 'Lobster', cursive; }
+.thin-border {
+  border: 1px solid black; }
+
+.thick-border {
+  border: 2px solid black; }
 
 html, body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

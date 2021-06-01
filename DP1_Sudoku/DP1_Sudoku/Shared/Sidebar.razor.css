@@ -7,26 +7,39 @@
   justify-content: space-between;
   background: white;
   position: absolute;
-  display: none; }
+  display: none;
+  z-index: 100; }
   .sidebar.visible {
     display: flex; }
   .sidebar .games .game-type h3 {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0; }
-  .sidebar .games .game-type a {
-    display: block;
-    position: relative;
-    color: black;
-    text-decoration: none; }
-    .sidebar .games .game-type a:after {
-      font-family: "Font Awesome 5 Free";
-      content: "\f054";
-      position: absolute;
-      right: 0;
-      padding: 0 5px;
-      font-weight: 900; }
-  @media (min-width: 768px) {
+  .sidebar .games .game-type li {
+    border-bottom: 1px solid black; }
+    .sidebar .games .game-type li:last-child {
+      border: none; }
+    .sidebar .games .game-type li a {
+      display: block;
+      position: relative;
+      color: black;
+      text-decoration: none; }
+      .sidebar .games .game-type li a:after {
+        font-family: "Font Awesome 5 Free";
+        content: "\f054";
+        position: absolute;
+        right: 0;
+        padding: 0 5px;
+        font-weight: 900; }
+      .sidebar .games .game-type li a:hover {
+        cursor: pointer; }
+        .sidebar .games .game-type li a:hover:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.2); }
+  @media (min-width: 992px) {
     .sidebar {
       position: static; } }
   .sidebar button {

@@ -6,10 +6,3 @@ $default-spacing: 20px;
 .spacing-right { padding-right: $default-spacing; }
 .spacing-bottom { padding-bottom: $default-spacing; }
 .spacing-left { padding-left: $default-spacing; }
-
-// Borders
-$default-border-radius: 10px;
-
-.border-radius {
-    border-radius: 10px;
-}

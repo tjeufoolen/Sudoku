@@ -1,5 +1,55 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<div class="container">
+    <h2>9x9</h2>
+    <h1>example-game</h1>
 
-Welcome to your new app.
+    <div class="row">
+        <div class="col-12 col-lg-8 col-xl-6">
+            <div class="d-flex justify-content-center">
+                <Puzzle></Puzzle>
+            </div>
+        </div>
+        <div class="col-12  col-lg-4 col-xl-6 mt-3 mt-lg-0">
+            <div class="thin-border mb-3 p-3">
+                <h3>Editor mode</h3>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="" id="auxiliary-numbers-edit-mode" checked>
+                    <label class="form-check-label" for="auxiliary-numbers-edit-mode">
+                        Entering/deleting auxiliary numbers
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="" id="final-numbers-edit-mode">
+                    <label class="form-check-label" for="final-numbers-edit-mode">
+                        Entering/deleting final numbers
+                    </label>
+                </div>
+            </div>
+
+            <div class="thin-border mb-3 p-3">
+                <EditForm Model="@DisplayFormModule">
+                    <h3>Display options</h3>
+
+                    <div class="form-check">
+                        <InputCheckbox class="form-check-input" id="auxiliary-numbers-display-option" @bind-Value="DisplayFormModule.ShowAuxiliaryNumbers"></InputCheckbox>
+                        <label class="form-check-label" for="auxiliary-numbers-display-option">
+                            Auxiliary numbers
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <InputCheckbox class="form-check-input" id="invalid-number-color-display-option" @bind-Value="DisplayFormModule.ColorInvalidNumbers"></InputCheckbox>
+                        <label class="form-check-label" for="invalid-number-color-display-option">
+                            Invalid number color
+                        </label>
+                    </div>
+                </EditForm>
+            </div>
+
+            <button class="btn btn-primary w-100 mb-3">Solve</button>
+            <button class="btn btn-primary w-100">Check</button>
+        </div>
+    </div>
+
+</div>
