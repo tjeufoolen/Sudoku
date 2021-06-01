@@ -8,15 +8,11 @@ namespace DP1_Sudoku.Shared.Modals
     public partial class AddGameModal
     {
         [Parameter] public EventCallback<int> OnAddGameCompleted { get; set; }
-
-        public string ModalIdentifier = "addGameModal";
         public Modal Modal;
+        public string ModalIdentifier = "addGameModal";
         public AddGameFormModel FormModel = new();
 
-        public void OnInputFileChange(InputFileChangeEventArgs e)
-        {
-            this.FormModel.File = e.File;
-        }
+        public void OnInputFileChange(InputFileChangeEventArgs e) => this.FormModel.File = e.File;
 
         public async void AddGame()
         {
@@ -31,11 +27,11 @@ namespace DP1_Sudoku.Shared.Modals
 
     public class AddGameFormModel
     {
-        [StringLength(25, ErrorMessage = "Name is too long.")]
+        [StringLength(25, ErrorMessage = "Name is too long.")] //TODO: what the game name limit should be.
         public string Name { get; set; }
 
         [Required]
-        [RegularExpression("4x4|6x6|9x9|samurai|jigsaw", ErrorMessage = "Incorrect type.")]
+        [RegularExpression("4x4|6x6|9x9|samurai|jigsaw", ErrorMessage = "Incorrect type.")] //TODO: Load the options from somewhere instead of writing them hard
         public string Type { get; set; } = "";
 
         [Required]
@@ -49,7 +45,7 @@ namespace DP1_Sudoku.Shared.Modals
         {
             AddGameFormModel _model = validationContext.ObjectInstance as AddGameFormModel;
 
-            if (_model.File.Size > 1000000) //TODO: Termine what the limit should be.
+            if (_model.File.Size > 1000000) //TODO: Determine what the file size upload limit should be.
             {
                 return new ValidationResult("This file is too powerfull, the max filesize is 1MB.", new[] { validationContext.MemberName });
             }

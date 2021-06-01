@@ -1,6 +1,7 @@
 ﻿<div class="sidebar @VisibilityClassList">
     <div class="row games p-3">
         <h2>Games</h2>
+        <!-- TODO: Replace with actual gametypes and its according games -->
         @foreach (var type in _gameTypes)
         {
             <div class="game-type">
@@ -15,7 +16,7 @@
 
     <!-- data-bs-target is linked to AddGameModal identifier -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addGameModal">
-        Toevoegen
+        Add new game
     </button>
 </div>
 

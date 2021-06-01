@@ -2,7 +2,7 @@
     <DataAnnotationsValidator />
 
     <Modal @ref="Modal" @bind-Identifier="ModalIdentifier">
-        <Title>Nieuwe game toevoegen</Title>
+        <Title>Add new game</Title>
         <Body>
             <div class="form-floating mb-3">
                 <InputText class="form-control" id="name" @bind-Value="FormModel.Name" />
@@ -10,6 +10,7 @@
                 <CustomValidation For="() => FormModel.Name" />
             </div>
 
+            <!-- TODO: Load the options from somewhere instead of writing them hard -->
             <div class="form-floating mb-3">
                 <InputSelect @bind-Value="FormModel.Type" class="form-select" aria-label="Select sudoku type" id="type">
                     <option value=""></option>
@@ -32,7 +33,7 @@
 
         </Body>
         <Footer>
-            <button type="submit" class="btn btn-primary w-100">Toevoegen</button>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
         </Footer>
     </Modal>
 </EditForm>
