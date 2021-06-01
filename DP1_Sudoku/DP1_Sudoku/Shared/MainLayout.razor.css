@@ -3,6 +3,8 @@
   position: relative; }
   .navbar .navbar-brand {
     font-size: 1.5rem; }
+    .navbar .navbar-brand:hover {
+      cursor: pointer; }
   .navbar .toggle-sidebar {
     position: absolute;
     top: 0;

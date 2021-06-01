@@ -3,11 +3,13 @@
   border: 2px solid black;
   border-top: none;
   min-height: calc(100vh - 73px);
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: white;
-  position: absolute; }
+  position: absolute;
+  display: none; }
+  .sidebar.visible {
+    display: flex; }
   .sidebar .games .game-type h3 {
     font-size: 1rem;
     font-weight: bold;
