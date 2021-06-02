@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
+    <ProjectReference Include="..\DP1_Sudoku.BusinessLogic\DP1_Sudoku.BusinessLogic.csproj" />
   </ItemGroup>
+  
+ <Target Name="CompileStaticAssets" AfterTargets="AfterBuild">
+    <Exec Command="webcompiler -r wwwroot Shared" StandardOutputImportance="high" />
+  </Target>
 
 </Project>

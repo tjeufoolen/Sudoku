@@ -1,9 +1,0 @@
-﻿.puzzle-container {
-  display: flex;
-  overflow-x: auto; }
-  .puzzle-container .puzzle {
-    display: flex;
-    border: 2px solid black; }
-    .puzzle-container .puzzle .puzzle-row {
-      flex-direction: column;
-      display: flex; }
