@@ -12,18 +12,19 @@
         </div>
         <div class="col-12  col-lg-4 col-xl-6 mt-3 mt-lg-0">
             <div class="thin-border mb-3 p-3">
-                <h3>Editor mode</h3>
+                <h3 class="mb-0">Editor mode</h3>
+                <span class="fst-italic small d-block mb-3">Specify which type of number you would like to modify.</span>
 
                 <div class="form-check">
                     <input class="form-check-input" name="edit-mode" type="radio" id="auxiliary-numbers-edit-mode" @onchange="SwitchEditMode">
                     <label class="form-check-label" for="auxiliary-numbers-edit-mode">
-                        Entering/deleting auxiliary numbers
+                        Auxiliary numbers
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="edit-mode" type="radio" id="final-numbers-edit-mode" @onchange="SwitchEditMode" checked>
                     <label class="form-check-label" for="final-numbers-edit-mode">
-                        Entering/deleting final numbers
+                        Final numbers
                     </label>
                 </div>
             </div>
@@ -45,8 +46,14 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary w-100 mb-3">Solve</button>
-            <button class="btn btn-primary w-100">Check</button>
+            <div class="row">
+                <div class="col-6">
+                    <button class="btn btn-secondary w-100 mb-3">Automatically solve</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-primary w-100">Check</button>
+                </div>
+            </div>
         </div>
     </div>
 
