@@ -1,9 +1,12 @@
-﻿using System;
+﻿using DP1_Sudoku.Shared;
+using System;
 
 namespace DP1_Sudoku.Pages
 {
     public partial class Index
     {
+        public Puzzle Puzzle;
+
         public EditMode CurrentEditMode = EditMode.Final;
         public bool ShowAuxiliaryNumbers { get; private set; } = false;
         public bool ColorInvalidNumbers { get; private set; } = false;
