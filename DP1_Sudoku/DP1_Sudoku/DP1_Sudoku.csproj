@@ -9,7 +9,7 @@
   </ItemGroup>
   
  <Target Name="CompileStaticAssets" AfterTargets="AfterBuild">
-    <Exec Command="webcompiler -r wwwroot Shared" StandardOutputImportance="high" />
+    <Exec Command="webcompiler -r wwwroot Shared -c webcompilerconfiguration.json" StandardOutputImportance="high" />
   </Target>
 
 </Project>
