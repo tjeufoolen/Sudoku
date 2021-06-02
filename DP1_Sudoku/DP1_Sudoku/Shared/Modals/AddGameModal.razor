@@ -1,0 +1,39 @@
+﻿<EditForm Model="@FormModel" OnValidSubmit="AddGame">
+    <DataAnnotationsValidator />
+
+    <Modal @ref="Modal" @bind-Identifier="ModalIdentifier">
+        <Title>Add new game</Title>
+        <Body>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" id="name" @bind-Value="FormModel.Name" />
+                <label for="name">Name (optional)</label>
+                <CustomValidation For="() => FormModel.Name" />
+            </div>
+
+            <!-- TODO: Load the options from somewhere instead of writing them hard -->
+            <div class="form-floating mb-3">
+                <InputSelect @bind-Value="FormModel.Type" class="form-select" aria-label="Select sudoku type" id="type">
+                    <option value=""></option>
+                    <option value="4x4">4x4</option>
+                    <option value="6x6">6x6</option>
+                    <option value="9x9">9x9</option>
+                    <option value="jigsaw">Jigsaw</option>
+                    <option value="samurai">Samurai</option>
+                </InputSelect>
+                <label for="type">Type</label>
+                <CustomValidation For="() => FormModel.Type" />
+            </div>
+
+
+            <span>Please upload a file containing map data</span>
+            <div class="input-group">
+                <InputFile OnChange="@OnInputFileChange" class="form-control" id="localFile"></InputFile>
+            </div>
+            <CustomValidation For="() => FormModel.File" />
+
+        </Body>
+        <Footer>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </Footer>
+    </Modal>
+</EditForm>
