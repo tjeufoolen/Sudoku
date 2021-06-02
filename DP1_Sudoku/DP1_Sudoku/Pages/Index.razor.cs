@@ -1,19 +1,43 @@
-﻿namespace DP1_Sudoku.Pages
+﻿using System;
+
+namespace DP1_Sudoku.Pages
 {
     public partial class Index
     {
-        public DisplayOptionsFormModel DisplayFormModule = new();
+        public EditMode CurrentEditMode = EditMode.Final;
+        public bool ShowAuxiliaryNumbers { get; private set; } = false;
+        public bool ColorInvalidNumbers { get; private set; } = false;
+
+        public void SwitchEditMode()
+        {
+            if (CurrentEditMode == EditMode.Final)
+            {
+                CurrentEditMode = EditMode.Auxiliary;
+            }
+            else
+            {
+                CurrentEditMode = EditMode.Final;
+            }
+            Console.WriteLine($"Current Edit Mode: {CurrentEditMode}");
+        }
+
+        public void ToggleShowAuxiliaryNumbers()
+        {
+            ShowAuxiliaryNumbers = !ShowAuxiliaryNumbers;
+            Console.WriteLine($"{(ShowAuxiliaryNumbers ? "Showing" : "Hiding")} Auxiliary Numbers");
+        }
+
+        public void ToggleColorInvalidNumbers()
+        {
+            ColorInvalidNumbers = !ColorInvalidNumbers;
+            Console.WriteLine($"{(ColorInvalidNumbers ? "Showing" : "Hiding")} Invalid Number Colors");
+        }
     }
 
-    public class EditorModeFormModel
+    public enum EditMode
     {
-
-    }
-
-    public class DisplayOptionsFormModel
-    {
-        public bool ShowAuxiliaryNumbers { get; set; } = true;
-        public bool ColorInvalidNumbers { get; set; } = true;
+        Auxiliary,
+        Final
     }
 
 }
