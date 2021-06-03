@@ -4,13 +4,21 @@ namespace DP1_Sudoku.Shared.Layouts
 {
     public partial class MainLayout
     {
-        [Inject] public NavigationManager NavManager { get; set; }
+        [Inject] public NavigationManager? NavManager { get; set; }
 
-        public Sidebar Sidebar;
+        public Sidebar? Sidebar;
 
         public void GoToHome()
         {
-            NavManager.NavigateTo("/");
+            NavManager?.NavigateTo("/");
+        }
+
+        public void ToggleVisibility()
+        {
+            if (Sidebar != null)
+            {
+                Sidebar.Visible = !Sidebar.Visible;
+            }
         }
     }
 }

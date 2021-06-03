@@ -4,7 +4,6 @@ namespace DP1_Sudoku.BusinessLogic
 {
     public abstract class PuzzleObject
     {
-
         public string Name { get; set; }
         public string FileExtension { get; set; }
         protected string FilePath { get; set; }

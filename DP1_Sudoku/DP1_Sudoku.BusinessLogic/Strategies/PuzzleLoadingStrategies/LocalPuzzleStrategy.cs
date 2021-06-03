@@ -15,6 +15,17 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies
             return Task.FromResult(puzzles);
         }
 
+        public Task<PuzzleObject?> GetPuzzle(string name, string extension)
+        {
+            var puzzles = LoadAvailableFiles();
+            var targetPuzzle = puzzles.FirstOrDefault(puzzle => puzzle.EndsWith($"{name}.{extension}"));
+
+            if (targetPuzzle == null)
+                return Task.FromResult<PuzzleObject?>(null);
+
+            return Task.FromResult<PuzzleObject?>(new EmbeddedPuzzleObject(targetPuzzle));
+        }
+
         private static List<string> LoadAvailableFiles()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -30,5 +41,6 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies
             puzzles.AddRange(fileOptions.Select(puzzle => new EmbeddedPuzzleObject(puzzle)));
             return puzzles;
         }
+
     }
 }

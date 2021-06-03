@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 <nav class="navbar navbar-light bg-light">
-    <button class="toggle-sidebar" @onclick="() => Sidebar.Visible = !Sidebar.Visible"><i class="fas fa-bars"></i></button>
+    <button class="toggle-sidebar" @onclick="ToggleVisibility"><i class="fas fa-bars"></i></button>
 
     <div class="container-fluid justify-content-center">
         <a class="navbar-brand lobster" @onclick="GoToHome">Sudoku</a>

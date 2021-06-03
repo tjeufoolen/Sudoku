@@ -2,9 +2,9 @@
 {
     public partial class Puzzle
     {
-        private PuzzleCell _selectedCell;
+        private PuzzleCell? _selectedCell = null;
 
-        public PuzzleCell SelectedCell
+        public PuzzleCell? SelectedCell
         {
             get { return _selectedCell; }
             set
