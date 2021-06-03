@@ -15,4 +15,8 @@
     font-size: 1.5rem; }
 
 main {
-  flex-grow: 1; }
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+/*# sourceMappingURL=Shared\Layouts\MainLayout.razor.css.map */

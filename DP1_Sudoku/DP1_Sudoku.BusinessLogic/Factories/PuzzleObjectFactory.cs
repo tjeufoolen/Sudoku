@@ -7,9 +7,11 @@ namespace DP1_Sudoku.BusinessLogic
     public class PuzzleObjectFactory : IPuzzleObjectFactory
     {
         private readonly List<IPuzzleLoadingStrategy> _loadingStrategies;
-        public PuzzleObjectFactory()
+        public PuzzleObjectFactory(IEnumerable<IPuzzleLoadingStrategy>? loadingStrategies = null)
         {
             _loadingStrategies = new List<IPuzzleLoadingStrategy>();
+            if (loadingStrategies != null)
+                _loadingStrategies.AddRange(loadingStrategies);
         }
 
         public async Task<List<PuzzleObject>> LoadAll()

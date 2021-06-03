@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using DP1_Sudoku.BusinessLogic;
+using DP1_Sudoku.BusinessLogic.Interfaces;
+using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.Shared
 {
     public partial class Sidebar
     {
+        [Inject] public IPuzzleObjectFactory PuzzleFactory { get; set; }
+
         #region Visibility
         private bool _visible = true;
         public bool Visible
@@ -19,7 +25,12 @@ namespace DP1_Sudoku.Shared
         public string VisibilityClassList => Visible ? "visible" : "";
         #endregion Visibility
 
-        // TODO: Replace with actual gametype viewmodels which contain all gamefiles per type.
-        private readonly List<string> _gameTypes = new() { "4x4", "6x6", "9x9", "samurai", "jigsaw" };
+        private List<PuzzleObject> _puzzles = new();
+
+
+        protected override async Task OnInitializedAsync()
+        {
+            _puzzles = await PuzzleFactory.LoadAll();
+        }
     }
 }
