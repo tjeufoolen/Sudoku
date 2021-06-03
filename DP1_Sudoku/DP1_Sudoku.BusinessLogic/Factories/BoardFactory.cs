@@ -1,11 +1,7 @@
-﻿using DP1_Sudoku.BusinessLogic.Builders;
-using DP1_Sudoku.BusinessLogic.Enumerators;
+﻿using DP1_Sudoku.BusinessLogic.Enumerators;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /**
  * References
@@ -18,9 +14,9 @@ namespace DP1_Sudoku.BusinessLogic.Factories
         #region Singleton
         private BoardFactory() { }
 
-        private static BoardFactory _instance;
+        private static BoardFactory? _instance;
 
-        private static readonly object _lock = new object();
+        private static readonly object _lock = new();
 
         public static BoardFactory GetInstance()
         {
@@ -38,11 +34,11 @@ namespace DP1_Sudoku.BusinessLogic.Factories
         }
         #endregion Singleton
 
-        private Dictionary<BoardTypes, Type> _builders;
+        private readonly Dictionary<BoardTypes, Type> _builders = new();
 
         public void AddBoardType(BoardTypes type, Type builder)
         {
-            if (builder is not IBoardBuilder) throw new ArgumentException();
+            if (builder is not IBoardBuilder) throw new ArgumentException($"{nameof(builder)} is not of type {typeof(IBoardBuilder)}");
 
             _builders[type] = builder;
         }
@@ -55,11 +51,12 @@ namespace DP1_Sudoku.BusinessLogic.Factories
             }
         }
 
-        public IBoard CreateBoard(BoardTypes type, IList<string> lines)
+        public IBoard? CreateBoard(BoardTypes type, IList<string> lines)
         {
             if (!_builders.ContainsKey(type)) return null;
 
-            IBoardBuilder builder = (IBoardBuilder) Activator.CreateInstance(_builders[type]);
+            if (Activator.CreateInstance(_builders[type]) is not IBoardBuilder builder) return null;
+
             builder.Reset();
             builder.BuildCells(lines);
             builder.BuildGroups(lines);

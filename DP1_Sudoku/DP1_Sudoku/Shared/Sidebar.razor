@@ -9,7 +9,7 @@
                     <ul>
                         @foreach (var puzzle in types)
                         {
-                            <li><a href="#">@puzzle.Name</a></li>
+                            <li><a @onclick="(() => NavigateToGame(puzzle.Name, puzzle.FileExtension))">@puzzle.Name</a></li>
                         }
                     </ul>
                 </div>

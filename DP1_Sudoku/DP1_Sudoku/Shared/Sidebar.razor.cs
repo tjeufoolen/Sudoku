@@ -8,7 +8,8 @@ namespace DP1_Sudoku.Shared
 {
     public partial class Sidebar
     {
-        [Inject] public IPuzzleObjectFactory PuzzleFactory { get; set; }
+        [Inject] public IPuzzleObjectFactory? PuzzleFactory { get; set; }
+        [Inject] public NavigationManager? NavManager { get; set; }
 
         #region Visibility
         private bool _visible = true;
@@ -30,7 +31,16 @@ namespace DP1_Sudoku.Shared
 
         protected override async Task OnInitializedAsync()
         {
-            _puzzles = await PuzzleFactory.LoadAll();
+            if (PuzzleFactory != null)
+            {
+                _puzzles = await PuzzleFactory.LoadAll();
+            }
+
+        }
+
+        public void NavigateToGame(string name, string extension)
+        {
+            NavManager?.NavigateTo($"/game/{extension}/{name}");
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DP1_Sudoku.Shared.Modals
     public partial class AddGameModal
     {
         [Parameter] public EventCallback<int> OnAddGameCompleted { get; set; }
-        public Modal Modal;
+        public Modal? Modal;
         public string ModalIdentifier = "addGameModal";
         public AddGameFormModel FormModel = new();
 
@@ -28,7 +28,7 @@ namespace DP1_Sudoku.Shared.Modals
     public class AddGameFormModel
     {
         [StringLength(25, ErrorMessage = "Name is too long.")] //TODO: what the game name limit should be.
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required]
         [RegularExpression("4x4|6x6|9x9|samurai|jigsaw", ErrorMessage = "Incorrect type.")] //TODO: Load the options from somewhere instead of writing them hard
@@ -36,21 +36,24 @@ namespace DP1_Sudoku.Shared.Modals
 
         [Required]
         [FileValidation]
-        public IBrowserFile File { get; set; }
+        public IBrowserFile? File { get; set; }
     }
 
     public class FileValidationAttribute : ValidationAttribute
     {
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
-            AddGameFormModel _model = validationContext.ObjectInstance as AddGameFormModel;
+            AddGameFormModel? _model = validationContext.ObjectInstance as AddGameFormModel;
 
-            if (_model.File.Size > 1000000) //TODO: Determine what the file size upload limit should be.
+            if (_model?.File?.Size > 1000000) //TODO: Determine what the file size upload limit should be.
             {
-                return new ValidationResult("This file is too powerfull, the max filesize is 1MB.", new[] { validationContext.MemberName });
+                if (validationContext.MemberName != null)
+                {
+                    return new ValidationResult("This file is too powerfull, the max filesize is 1MB.", new[] { validationContext.MemberName });
+                }
             }
 
-            return ValidationResult.Success;
+            return ValidationResult.Success!;
         }
     }
 }

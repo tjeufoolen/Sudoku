@@ -43,5 +43,18 @@ namespace DP1_Sudoku.BusinessLogic
         {
             _loadingStrategies.Remove(loadingStrategy);
         }
+
+        public async Task<PuzzleObject?> LoadPuzzle(string name, string extension)
+        {
+            PuzzleObject? puzzle = null;
+
+            foreach (var strategy in _loadingStrategies)
+            {
+                puzzle = await strategy.GetPuzzle(name, extension);
+                if (puzzle != null) break;
+            }
+
+            return puzzle;
+        }
     }
 }
