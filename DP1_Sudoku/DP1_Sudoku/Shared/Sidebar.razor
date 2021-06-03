@@ -1,16 +1,19 @@
 ﻿<div class="sidebar @VisibilityClassList">
     <div class="row games p-3">
         <h2>Games</h2>
-        <!-- TODO: Replace with actual gametypes and its according games -->
-        @foreach (var type in _gameTypes)
-        {
-            <div class="game-type">
-                <h3>@type</h3>
-                <ul>
-                    <li><a href="#">example-game</a></li>
-                    <li><a href="#">example-game</a></li>
-                </ul>
-            </div>
+        @if(_puzzles.Count != 0)
+        {            
+            @foreach (var types in _puzzles.GroupBy(x => x.FileExtension)){
+                <div class="game-type">
+                    <h3>@types.Key</h3>
+                    <ul>
+                        @foreach (var puzzle in types)
+                        {
+                            <li><a href="#">@puzzle.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            }
         }
     </div>
 
