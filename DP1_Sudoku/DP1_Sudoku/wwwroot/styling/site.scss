@@ -1,0 +1,32 @@
+/******************************************************
+ * This code has been written for
+ *                                           
+ *   ,---.                                  
+ *  /  O  \,--.  ,--.,--,--.,--,--,  ,---.  
+ * |  .-.  |\  `'  /' ,-.  ||      \(  .-'  
+ * |  | |  | \    / \ '-'  ||  ||  |.-'  `) 
+ * `--' `--'  `--'   `--`--'`--''--'`----'                                           
+ *
+ * Copyright (C) 2021
+ *
+ * This project can not be copied and/or distributed
+ * without the express permission of the owner.
+ ******************************************************/
+
+// Helpers
+@import 'helpers/_spacings';
+@import 'helpers/_typography';
+@import 'helpers/_variables';
+@import 'helpers/_borders';
+
+// Global styling
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+a, button {
+    &:hover {
+        cursor: pointer;
+    }
+}

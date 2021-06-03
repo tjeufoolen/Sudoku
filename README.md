@@ -5,8 +5,9 @@ Project build for the Design Patterns 1 module using a variety of design pattern
 1. Clone this project.
 2. Open the solution using visual studio.
 3. Open a terminal and navigate to the `DP1_Sudoku` project directory.
-4. Execute `dotnet watch -p . run`.
-5. Enjoy! :tada:
+4. [Optional if not present] Execute `dotnet tool install Excubo.WebCompiler --global`.
+5. Execute `dotnet watch -p . run`.
+6. Enjoy! :tada:
 
 ## Authors
 - [Tjeu Foolen](https://github.com/tjeufoolen)

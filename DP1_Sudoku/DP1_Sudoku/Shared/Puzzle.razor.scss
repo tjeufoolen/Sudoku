@@ -1,0 +1,14 @@
+.puzzle-container {
+    display: flex;
+    overflow-x: auto;
+
+    .puzzle {
+        display: flex;
+        border: 2px solid black;
+
+        .puzzle-row {
+            flex-direction: column;
+            display: flex;
+        }
+    }
+}
