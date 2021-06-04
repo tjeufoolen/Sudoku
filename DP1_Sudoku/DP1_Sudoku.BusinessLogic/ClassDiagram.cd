@@ -1,27 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="DP1_Sudoku.BusinessLogic.Main">
-    <Position X="11.5" Y="8.75" Width="1.5" />
+    <Position X="9" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Main.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Game">
-    <Position X="13.25" Y="8.25" Width="1.75" />
+    <Position X="11" Y="9.25" Width="1.75" />
     <AssociationLine Name="Board" Type="DP1_Sudoku.BusinessLogic.Interfaces.IBoard" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="14.125" Y="10.123" />
-        <Point X="14.125" Y="10.72" />
-        <Point X="13.25" Y="10.72" />
-        <Point X="13.25" Y="13.5" />
+        <Point X="11.875" Y="11.123" />
+        <Point X="11.875" Y="12.158" />
+        <Point X="11.875" Y="12.158" />
+        <Point X="11.875" Y="12.5" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="PuzzleFactory" Type="DP1_Sudoku.BusinessLogic.PuzzleObjectFactory" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="PuzzleFactory" Type="DP1_Sudoku.BusinessLogic.PuzzleObjectFactory" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="13.875" Y="8.25" />
-        <Point X="13.875" Y="6.702" />
-        <Point X="12.75" Y="6.702" />
+        <Point X="11.219" Y="9.25" />
+        <Point X="11.219" Y="7.894" />
+        <Point X="9.75" Y="7.894" />
+        <Point X="9.75" Y="7.517" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -37,7 +38,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Board">
-    <Position X="12.75" Y="16" Width="2" />
+    <Position X="13.25" Y="17.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AIAAAEAAAACAAAAAAAIAAAAIAAAAAIAAAAACAAAAAAA=</HashCode>
       <FileName>Board.cs</FileName>
@@ -45,16 +46,20 @@
     <ShowAsAssociation>
       <Property Name="SolveStrategy" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Cells" />
+      <Property Name="Groups" />
+    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.JigsawBoard" Collapsed="true">
-    <Position X="9.75" Y="16.5" Width="2" />
+    <Position X="10.25" Y="17.25" Width="2" />
     <InheritanceLine Type="DP1_Sudoku.BusinessLogic.Board" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="12.75" Y="17.125" />
-        <Point X="12.375" Y="17.125" />
-        <Point X="12.375" Y="16.804" />
-        <Point X="11.75" Y="16.804" />
+        <Point X="13.25" Y="18.063" />
+        <Point X="12.875" Y="18.063" />
+        <Point X="12.875" Y="17.554" />
+        <Point X="12.25" Y="17.554" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -63,13 +68,13 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.SamuraiBoard" Collapsed="true">
-    <Position X="9.75" Y="17.5" Width="2" />
+    <Position X="10.25" Y="18.25" Width="2" />
     <InheritanceLine Type="DP1_Sudoku.BusinessLogic.Board" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="12.75" Y="17.5" />
-        <Point X="12.375" Y="17.5" />
-        <Point X="12.375" Y="17.889" />
-        <Point X="11.75" Y="17.889" />
+        <Point X="13.25" Y="18.334" />
+        <Point X="12.875" Y="18.334" />
+        <Point X="12.875" Y="18.639" />
+        <Point X="12.25" Y="18.639" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -78,7 +83,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.GroupComposite">
-    <Position X="10.25" Y="13.5" Width="1.5" />
+    <Position X="13.5" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GroupComposite.cs</FileName>
@@ -86,7 +91,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Cell">
-    <Position X="15.25" Y="14.5" Width="2" />
+    <Position X="16" Y="16" Width="2" />
     <TypeIdentifier>
       <HashCode>UIQAAAAAAACAAgAAAAAQKAAAAEAIAAAACACAAAAAAAA=</HashCode>
       <FileName>Cell.cs</FileName>
@@ -94,7 +99,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Visitors.ClearVisitor" Collapsed="true">
-    <Position X="15.5" Y="12.25" Width="2" />
+    <Position X="15.25" Y="14.25" Width="2" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -105,7 +110,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Strategies.BackTrackSolveStrategy" Collapsed="true">
-    <Position X="12.75" Y="20.75" Width="2" />
+    <Position X="13.25" Y="21.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Strategies\BackTrackSolveStrategy.cs</FileName>
@@ -113,7 +118,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.CellVisibilityState">
-    <Position X="18.25" Y="17.5" Width="2.5" />
+    <Position X="19" Y="19" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\CellVisibilityStates\CellVisibilityState.cs</FileName>
@@ -123,12 +128,12 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.BlockedCellState" Collapsed="true">
-    <Position X="21.25" Y="16.25" Width="2" />
+    <Position X="22" Y="17.75" Width="2" />
     <InheritanceLine Type="DP1_Sudoku.BusinessLogic.States.CellStates.CellState" FixedToPoint="true">
       <Path>
-        <Point X="19.5" Y="15.738" />
-        <Point X="19.5" Y="16.597" />
-        <Point X="21.25" Y="16.597" />
+        <Point X="20.25" Y="17.238" />
+        <Point X="20.25" Y="18.097" />
+        <Point X="22" Y="18.097" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -137,11 +142,11 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.CellState">
-    <Position X="18.25" Y="14.25" Width="2.5" />
+    <Position X="19" Y="15.75" Width="2.5" />
     <AssociationLine Name="Cell" Type="DP1_Sudoku.BusinessLogic.Cell" FixedToPoint="true">
       <Path>
-        <Point X="18.25" Y="15" />
-        <Point X="17.25" Y="15" />
+        <Point X="19" Y="16.5" />
+        <Point X="18" Y="16.5" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.467" Y="0.094" />
@@ -156,11 +161,11 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.DefinitiveCellState" Collapsed="true">
-    <Position X="21.25" Y="14" Width="2" />
+    <Position X="22" Y="15.5" Width="2" />
     <InheritanceLine Type="DP1_Sudoku.BusinessLogic.States.CellStates.CellState" FixedToPoint="true">
       <Path>
-        <Point X="20.75" Y="14.32" />
-        <Point X="21.25" Y="14.32" />
+        <Point X="21.5" Y="15.82" />
+        <Point X="22" Y="15.82" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -169,11 +174,11 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.FilledCellState" Collapsed="true">
-    <Position X="21.25" Y="15.5" Width="2" />
+    <Position X="22" Y="17" Width="2" />
     <InheritanceLine Type="DP1_Sudoku.BusinessLogic.States.CellStates.CellState" FixedFromPoint="true">
       <Path>
-        <Point X="20.75" Y="15.688" />
-        <Point X="21.25" Y="15.688" />
+        <Point X="21.5" Y="17.188" />
+        <Point X="22" Y="17.188" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -182,19 +187,19 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.InvalidCellState" Collapsed="true">
-    <Position X="21.25" Y="14.75" Width="2" />
+    <Position X="22" Y="16.25" Width="2" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\CellStates\InvalidCellState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellStates.EmptyCellState" Collapsed="true">
-    <Position X="21.25" Y="13.25" Width="2" />
+    <Position X="22" Y="14.75" Width="2" />
     <InheritanceLine Type="DP1_Sudoku.BusinessLogic.States.CellStates.CellState" FixedToPoint="true">
       <Path>
-        <Point X="19.5" Y="14.25" />
-        <Point X="19.5" Y="13.544" />
-        <Point X="21.25" Y="13.544" />
+        <Point X="20.25" Y="15.75" />
+        <Point X="20.25" Y="15.044" />
+        <Point X="22" Y="15.044" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -203,21 +208,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.PuzzleObject">
-    <Position X="13.5" Y="3.5" Width="1.5" />
+    <Position X="11.5" Y="5.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAFAAAIAAAA=</HashCode>
       <FileName>PuzzleObject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Utils.FilePathUtil">
-    <Position X="8.25" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Utils\FilePathUtil.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Factories.BoardFactory">
-    <Position X="17.5" Y="7" Width="2" />
+    <Position X="15.75" Y="6.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAIgAAAAAAAABAAAAAAAAgAEAAAACAA=</HashCode>
       <FileName>Factories\BoardFactory.cs</FileName>
@@ -225,63 +223,63 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.JigsawBoardBuilder" BaseTypeListCollapsed="true">
-    <Position X="19.25" Y="10.75" Width="1.5" />
+    <Position X="17.5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAAA=</HashCode>
       <FileName>Builders\JigsawBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.NormalBoardBuilder" BaseTypeListCollapsed="true">
-    <Position X="22.5" Y="6.75" Width="1.5" />
+    <Position X="20.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAZAAAAAAAEAAAAAAAACAAAAAAAAAAAKACAAAABKA=</HashCode>
       <FileName>Builders\NormalBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.SamuraiBoardBuilder" BaseTypeListCollapsed="true">
-    <Position X="21" Y="10.75" Width="1.5" />
+    <Position X="19.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAAA=</HashCode>
       <FileName>Builders\SamuraiBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.HelpNumbersVisibilityState" Collapsed="true">
-    <Position X="21.25" Y="18" Width="2.25" />
+    <Position X="22" Y="19.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\CellVisibilityStates\HelpNumbersVisibilityState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.NormalVisibilityState" Collapsed="true">
-    <Position X="21.25" Y="17.25" Width="2.25" />
+    <Position X="22" Y="18.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\CellVisibilityStates\NormalVisibilityState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.FourByFourBoardBuilder" Collapsed="true">
-    <Position X="24.75" Y="7.25" Width="1.5" />
+    <Position X="23" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builders\FourByFourBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.NineByNineBoardBuilder" Collapsed="true">
-    <Position X="24.75" Y="9.25" Width="1.5" />
+    <Position X="23" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builders\NineByNineBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.SixBySixBoardBuilder" Collapsed="true">
-    <Position X="24.75" Y="8.25" Width="1.5" />
+    <Position X="23" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builders\SixBySixBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Builders.BaseBoardBuilder">
-    <Position X="20" Y="7.5" Width="1.75" />
+    <Position X="18.25" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAIACACAIAQA=</HashCode>
       <FileName>Builders\BaseBoardBuilder.cs</FileName>
@@ -289,7 +287,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies.LocalPuzzleStrategy" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="4.25" Width="2" />
+    <Position X="6.25" Y="5.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAA=</HashCode>
       <FileName>Strategies\PuzzleLoadingStrategies\LocalPuzzleStrategy.cs</FileName>
@@ -297,7 +295,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.PuzzleObjectFactory">
-    <Position X="10.75" Y="5" Width="2" />
+    <Position X="8.75" Y="5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAABAAAEEAAgAAAAAAAAAE=</HashCode>
       <FileName>Factories\PuzzleObjectFactory.cs</FileName>
@@ -305,79 +303,83 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Extensions.StringExtensions">
-    <Position X="8.25" Y="9.75" Width="1.5" />
+    <Position X="6.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Extensions\StringExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Extensions.IListExtension">
-    <Position X="8.25" Y="11" Width="1.5" />
+    <Position X="6.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Extensions\IListExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DP1_Sudoku.BusinessLogic.EmbeddedPuzzleObject">
+    <Position X="11.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>EmbeddedPuzzleObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IBoard">
-    <Position X="12.75" Y="13.5" Width="2" />
-    <InheritanceLine Type="DP1_Sudoku.BusinessLogic.Interfaces.IGridComponent" FixedFromPoint="true">
+    <Position X="11" Y="12.5" Width="2" />
+    <InheritanceLine Type="DP1_Sudoku.BusinessLogic.Interfaces.IGridComponent" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
-        <Point X="13.75" Y="12.546" />
-        <Point X="13.75" Y="13.5" />
+        <Point X="13.5" Y="13.438" />
+        <Point X="13" Y="13.438" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IBoard.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Groups" />
-    </ShowAsCollectionAssociation>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IGridComponent">
-    <Position X="13.5" Y="11.25" Width="1.5" />
+    <Position X="13.5" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IGridComponent.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.ISolveStrategy">
-    <Position X="12.75" Y="19.25" Width="2" />
+    <Position X="13.25" Y="19.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ISolveStrategy.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IVisitor">
-    <Position X="15.5" Y="10.75" Width="2" />
+    <Position X="15.25" Y="12.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IVisitor.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IBoardBuilder">
-    <Position X="20" Y="5" Width="1.75" />
+    <Position X="18.25" Y="4.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAACACAIAAA=</HashCode>
       <FileName>Interfaces\IBoardBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IPuzzleLoadingStrategy">
-    <Position X="8.25" Y="2.5" Width="2" />
+    <Position X="6.25" Y="4" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Interfaces\IPuzzleLoadingStrategy.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IPuzzleObjectFactory">
-    <Position X="10.75" Y="2.5" Width="1.75" />
+    <Position X="8.75" Y="2.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAABAAAAEAAgAAAAAAAAAE=</HashCode>
       <FileName>Interfaces\IPuzzleObjectFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IBoardFactory">
-    <Position X="17.5" Y="5" Width="2" />
+    <Position X="15.75" Y="4.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAgAEAAAAAAA=</HashCode>
       <FileName>Interfaces\IBoardFactory.cs</FileName>

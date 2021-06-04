@@ -11,14 +11,14 @@ namespace DP1_Sudoku.BusinessLogic.Builders
         protected int SubgroupHeight { get; set; }
         protected int SubgroupWidth { get; set; }
 
-        public override void BuildGroups(IList<string> lines)
+        public override void BuildGroups(IList<string> _)
         {
-            BuildRowGroups(lines);
-            BuildColumnGroups(lines);
-            BuildSubgroups(lines);
+            BuildRowGroups();
+            BuildColumnGroups();
+            BuildSubgroups();
         }
 
-        protected void BuildRowGroups(IList<string> lines)
+        protected void BuildRowGroups()
         {
             for (int row = 0; row < Board.Cells?.GetLength(0); row++)
             {
@@ -31,7 +31,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             }
         }
 
-        protected void BuildColumnGroups(IList<string> lines)
+        protected void BuildColumnGroups()
         {
             for (int column = 0; column < Board.Cells?.GetLength(1); column++)
             {
@@ -44,7 +44,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             }
         }
 
-        protected void BuildSubgroups(IList<string> lines)
+        protected void BuildSubgroups()
         {
             if (Board.Cells == null) return;
 
