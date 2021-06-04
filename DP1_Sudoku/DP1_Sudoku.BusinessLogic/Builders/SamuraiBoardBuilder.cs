@@ -9,5 +9,10 @@ namespace DP1_Sudoku.BusinessLogic.Builders
         {
             throw new NotImplementedException();
         }
+
+        protected override Cell[,] CreateCells(IList<string> lines)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

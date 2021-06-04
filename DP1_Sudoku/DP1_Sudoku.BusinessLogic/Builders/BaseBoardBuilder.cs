@@ -6,7 +6,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public abstract class BaseBoardBuilder : IBoardBuilder
     {
-        public IBoard Board { get; private set; } = new Board();
+        public IBoard Board { get; protected set; } = new Board();
 
         public void Reset()
         {
@@ -23,26 +23,16 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
         public abstract void BuildGroups(IList<string> lines);
 
-        protected virtual Cell[,] CreateCells(IList<string> lines)
-        {
-            Cell[,] cellRows = new Cell[lines.Count, lines.Max(x => x.Length)];
-
-            for (int rowIdx = 0; rowIdx < lines.Count; rowIdx++)
-            {
-                for (int charIdx = 0; charIdx < lines[rowIdx].Length; charIdx++)
-                {
-                    cellRows[rowIdx, charIdx] = new Cell(lines[rowIdx][charIdx]);
-                }
-            }
-
-            return cellRows;
-        }
+        protected abstract Cell[,] CreateCells(IList<string> lines);
 
         protected virtual void SetCellNeighbours(Cell[,] cellRows)
         {
-            for (int rowIdx = 0; rowIdx < cellRows.Rank; rowIdx++)
+            int amountOfRows = cellRows.GetLength(0);
+            int maxRowLength = cellRows.GetLength(1);
+
+            for (int rowIdx = 0; rowIdx < amountOfRows; rowIdx++)
             {
-                for (int charIdx = 0; charIdx < cellRows.GetLength(rowIdx); charIdx++)
+                for (int charIdx = 0; charIdx < maxRowLength; charIdx++)
                 {
                     Cell current = cellRows[rowIdx, charIdx];
 

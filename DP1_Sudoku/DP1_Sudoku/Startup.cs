@@ -71,9 +71,9 @@ namespace DP1_Sudoku
 
         private static void RegisterBoardBuilders()
         {
-            BoardFactory.GetInstance().AddBoardType("4x4", typeof(BaseBoardBuilder));
-            BoardFactory.GetInstance().AddBoardType("6x6", typeof(BaseBoardBuilder));
-            BoardFactory.GetInstance().AddBoardType("9x9", typeof(BaseBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("4x4", typeof(FourByFourBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("6x6", typeof(SixBySixBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("9x9", typeof(NineByNineBoardBuilder));
             BoardFactory.GetInstance().AddBoardType("samurai", typeof(SamuraiBoardBuilder));
             BoardFactory.GetInstance().AddBoardType("jigsaw", typeof(JigsawBoardBuilder));
         }
