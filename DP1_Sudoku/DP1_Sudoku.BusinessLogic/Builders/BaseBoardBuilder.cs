@@ -1,6 +1,5 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DP1_Sudoku.BusinessLogic.Builders
 {
@@ -36,15 +35,21 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 {
                     Cell current = cellRows[rowIdx, charIdx];
 
-                    Cell? above = cellRows[rowIdx - 1, charIdx] ?? null;
-                    Cell? beneath = cellRows[rowIdx + 1, charIdx] ?? null;
-                    Cell? left = cellRows[rowIdx, charIdx - 1] ?? null;
-                    Cell? right = cellRows[rowIdx, charIdx + 1] ?? null;
+                    // Check for cell above current cell
+                    if (rowIdx - 1 >= 0)
+                        current.Top = cellRows[rowIdx - 1, charIdx];
 
-                    current.Top = above;
-                    current.Bottom = beneath;
-                    current.Left = left;
-                    current.Right = right;
+                    // Check for cell below current cell
+                    if (rowIdx + 1 <= amountOfRows)
+                        current.Bottom = cellRows[rowIdx + 1, charIdx];
+
+                    // Check for cell left of current cell
+                    if (charIdx - 1 >= 0)
+                        current.Left = cellRows[rowIdx, charIdx - 1];
+
+                    // Check for cell right of current cell
+                    if (charIdx + 1 <= maxRowLength)
+                        current.Right = cellRows[rowIdx, charIdx + 1];
                 }
             }
         }
