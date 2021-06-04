@@ -40,7 +40,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                         current.Top = cellRows[rowIdx - 1, charIdx];
 
                     // Check for cell below current cell
-                    if (rowIdx + 1 <= amountOfRows)
+                    if (rowIdx + 1 <= amountOfRows - 1)
                         current.Bottom = cellRows[rowIdx + 1, charIdx];
 
                     // Check for cell left of current cell
@@ -48,7 +48,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                         current.Left = cellRows[rowIdx, charIdx - 1];
 
                     // Check for cell right of current cell
-                    if (charIdx + 1 <= maxRowLength)
+                    if (charIdx + 1 <= maxRowLength - 1)
                         current.Right = cellRows[rowIdx, charIdx + 1];
                 }
             }
