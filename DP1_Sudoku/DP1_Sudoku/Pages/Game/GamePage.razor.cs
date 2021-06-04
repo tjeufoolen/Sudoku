@@ -1,4 +1,5 @@
 using DP1_Sudoku.BusinessLogic;
+using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -44,10 +45,10 @@ namespace DP1_Sudoku.Pages.Game
 
         private async Task InitPuzzle(PuzzleObject puzzleObject)
         {
-            //TODO: implement board loading
-            Console.WriteLine($"Initializing {puzzleObject.Name}.{puzzleObject.FileExtension}...");
-            _board = new Board();
-            await Task.Delay(1);
+            string extension = puzzleObject.FileExtension;
+            string[] lines = await puzzleObject.GetPuzzleString();
+
+            _board = BoardFactory.GetInstance().CreateBoard(extension, lines);
         }
 
         public EditMode CurrentEditMode = EditMode.Final;

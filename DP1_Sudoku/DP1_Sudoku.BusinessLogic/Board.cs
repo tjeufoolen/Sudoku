@@ -1,8 +1,6 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace DP1_Sudoku.BusinessLogic
 {
@@ -10,7 +8,7 @@ namespace DP1_Sudoku.BusinessLogic
     {
         public ISolveStrategy SolveStrategy { private get; set; }
 
-        public IList<IList<Cell>> Cells { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Cell[,]? Cells { get; set; }
         public IList<GroupComposite> Groups { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Solve()

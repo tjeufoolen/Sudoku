@@ -1,39 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Singleton">
-    <Position X="9.085" Y="1.137" Height="0.311" Width="0.765" />
-  </Comment>
-  <Comment CommentText="Singleton">
     <Position X="16.986" Y="6.335" Height="0.311" Width="0.765" />
   </Comment>
   <Comment CommentText="Leaf">
     <Position X="17.007" Y="17.09" Height="0.291" Width="0.7" />
   </Comment>
-  <Class Name="Main">
+  <Class Name="DP1_Sudoku.BusinessLogic.Main">
     <Position X="7" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Main.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Game" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Game">
-    <Position X="13.5" Y="7.25" Width="1.5" />
-    <AssociationLine Name="_clearVisitor" Type="DP1_Sudoku.BusinessLogic.Interfaces.IVisitor" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="13.688" Y="9.123" />
-        <Point X="13.688" Y="10.552" />
-        <Point X="11.5" Y="10.552" />
-      </Path>
-    </AssociationLine>
+    <Position X="13.25" Y="7.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAQAAAAAAAAAAgAAAAAAAAAAAQACBBAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAQAAABAAAAAAAAAAAAAIAAAAAACBBAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_clearVisitor" />
       <Property Name="Board" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
@@ -227,12 +213,9 @@
   <Class Name="DP1_Sudoku.BusinessLogic.PuzzleObject">
     <Position X="13.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQCCAAAAAEAAQBAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAFAAAIAAAA=</HashCode>
       <FileName>PuzzleObject.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="FileReader" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Utils.FilePathUtil">
     <Position X="26.75" Y="1" Width="1.5" />
@@ -241,51 +224,37 @@
       <FileName>Utils\FilePathUtil.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Strategies.FileReaders.LocalFileReaderStrategy">
-    <Position X="13" Y="1.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Strategies\FileReaders\LocalFileReaderStrategy.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.Factories.BoardFactory">
-    <Position X="16.75" Y="6.75" Width="1.5" />
+    <Position X="16.25" Y="6.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAIgAAAAAAAABAAAAAAAAgAEAAAACAA=</HashCode>
       <FileName>Factories\BoardFactory.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Factories.FileReaderFactory">
-    <Position X="8.5" Y="1.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAIEAAAAAAAAAAAgAAAAAAAADAAAAAAAAAAAAAAMAAA=</HashCode>
-      <FileName>Factories\FileReaderFactory.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Builders.JigsawBoardBuilder" BaseTypeListCollapsed="true">
-    <Position X="25.25" Y="6.25" Width="1.5" />
+  <Class Name="DP1_Sudoku.BusinessLogic.Builders.JigsawBoardBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAACACAIAAA=</HashCode>
       <FileName>Builders\JigsawBoardBuilder.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Builders.NormalBoardBuilder" BaseTypeListCollapsed="true">
-    <Position X="27" Y="6.25" Width="1.5" />
+  <Class Name="DP1_Sudoku.BusinessLogic.Builders.NormalBoardBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAACACAIAAA=</HashCode>
       <FileName>Builders\NormalBoardBuilder.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Builders.SamuraiBoardBuilder" BaseTypeListCollapsed="true">
+  <Class Name="DP1_Sudoku.BusinessLogic.Builders.SamuraiBoardBuilder" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="23.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAACACAIAAA=</HashCode>
       <FileName>Builders\SamuraiBoardBuilder.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="DP1_Sudoku.BusinessLogic.States.CellVisibilityStates.HelpNumbersVisibilityState">
     <Position X="15" Y="23.5" Width="2.25" />
@@ -340,13 +309,6 @@
       <FileName>Interfaces\IVisitor.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IFileReaderStrategy">
-    <Position X="11.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IFileReaderStrategy.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="DP1_Sudoku.BusinessLogic.Interfaces.IBoardBuilder">
     <Position X="21.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
@@ -362,13 +324,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Enumerators\BoardTypes.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="DP1_Sudoku.BusinessLogic.Enumerators.FileReaderTypes">
-    <Position X="6.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Enumerators\FileReaderTypes.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

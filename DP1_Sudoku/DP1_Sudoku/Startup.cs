@@ -1,4 +1,6 @@
 using DP1_Sudoku.BusinessLogic;
+using DP1_Sudoku.BusinessLogic.Builders;
+using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +29,7 @@ namespace DP1_Sudoku
             services.AddServerSideBlazor();
 
             RegisterPuzzleFetchingStrategies(services);
+            RegisterBoardBuilders();
         }
 
 
@@ -64,6 +67,15 @@ namespace DP1_Sudoku
                     new LocalPuzzleStrategy()
                 }
             ));
+        }
+
+        private static void RegisterBoardBuilders()
+        {
+            BoardFactory.GetInstance().AddBoardType("4x4", typeof(BaseBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("6x6", typeof(BaseBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("9x9", typeof(BaseBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("samurai", typeof(SamuraiBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("jigsaw", typeof(JigsawBoardBuilder));
         }
     }
 }
