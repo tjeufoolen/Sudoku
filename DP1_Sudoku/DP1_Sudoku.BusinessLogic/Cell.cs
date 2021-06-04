@@ -1,36 +1,52 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+using DP1_Sudoku.BusinessLogic.States.CellStates;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DP1_Sudoku.BusinessLogic.States.CellStates;
-using DP1_Sudoku.BusinessLogic.States.CellVisibilityStates;
 
 namespace DP1_Sudoku.BusinessLogic
 {
     public class Cell : IGridComponent
     {
-        public CellState CellState { private get; set; }
-        public CellVisibilityState CellVisibilityState { private get; set; }
-        
-        public Cell Left { get; set; }
-        public Cell Right { get; set; }
-        public Cell Top { get; set; }
-        public Cell Bottom { get; set; }
-        
-        public int CurrentValue { get; set; }
+        private CellState _state;
+        //TODO: uncomment if still needed. if not, remove at the end.
+        //public CellVisibilityState CellVisibilityState { private get; set; }
+
+        public Cell? Left { get; set; }
+        public Cell? Right { get; set; }
+        public Cell? Top { get; set; }
+        public Cell? Bottom { get; set; }
+
+        private int? _currentValue;
+        public int? CurrentValue
+        {
+            get => _currentValue;
+            set
+            {
+                if (value == 0) _currentValue = null;
+                else _currentValue = value;
+            }
+        }
 
         public List<int> HelpNumbers { get; private set; } = new();
 
-        public bool SetValue(int newValue)
+        public Cell(int value)
         {
-            throw new NotImplementedException();
+            CurrentValue = value;
+
+            _state = GetStateByValue(value);
         }
 
-        public void ToggleHelpNumber(int value)
+        private CellState GetStateByValue(int? value)
         {
-            throw new NotImplementedException();
+            if (value == null || value == 0)
+                return new EmptyCellState(this);
+
+            return new DefinitiveCellState(this);
         }
+
+        public bool SetValue(int newValue) => _state.SetValue(newValue);
+
+        public void ToggleHelpNumber(int value) => _state.ToggleHelpNumber(value);
 
         public void Accept(IVisitor visitor)
         {

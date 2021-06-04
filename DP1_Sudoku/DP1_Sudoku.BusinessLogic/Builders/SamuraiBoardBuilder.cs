@@ -1,27 +1,16 @@
-﻿using DP1_Sudoku.BusinessLogic.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Builders
 {
-    public class SamuraiBoardBuilder : IBoardBuilder
+    public class SamuraiBoardBuilder : BaseBoardBuilder
     {
-        public IBoard Board { get; private set; }
-
-        public void Reset()
+        public override void BuildGroups(IList<string> lines)
         {
             throw new NotImplementedException();
         }
 
-        public void BuildCells(IList<string> lines)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BuildGroups(IList<string> lines)
+        protected override Cell[,] CreateCells(IList<string> lines)
         {
             throw new NotImplementedException();
         }

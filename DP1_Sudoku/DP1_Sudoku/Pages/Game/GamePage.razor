@@ -1,84 +1,89 @@
 ﻿@page "/game/{extension}/{name}"
 
+
 <div class="container">
-    <h2 class="mb-0 text-secondary small">@Extension</h2>
-    <h1 class="mt-0 mb-3">@Name</h1>
+    @if (_board != null)
+    {
+        <h2 class="mb-0 text-secondary small">@Extension</h2>
+        <h1 class="mt-0 mb-3">@Name</h1>
 
-    <div class="row">
-        <div class="col-12 col-xl-6">
-            <div class="d-flex">
-            @if(_board != null)
-            {     
-                <Puzzle></Puzzle>
-            }    
+        <div class="row">
+            <div class="col-12 col-xl-6">
+                <div class="d-flex">
+                    <Puzzle></Puzzle>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6 mt-3 mt-xl-0">
+
+                <div class="thin-border mb-3 p-3">
+                    <h3>Selected Cell</h3>
+                    @switch (CurrentEditMode)
+                    {
+                        case EditMode.Auxiliary:
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="name" />
+                                <label for="name">Specify auxiliary numbers</label>
+                            </div>
+                            break;
+                        case EditMode.Final:
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="name" />
+                                <label for="name">Specify final number</label>
+                            </div>
+                            break;
+                    }
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </div>
+
+                <div class="thin-border mb-3 p-3">
+                    <h4 class="mb-0">Editor mode</h4>
+                    <span class="fst-italic small d-block mb-3">Specify which type of number you would like to modify.</span>
+
+                    <div class="form-check">
+                        <input class="form-check-input" name="edit-mode" type="radio" id="auxiliary-numbers-edit-mode" @onchange="SwitchEditMode">
+                        <label class="form-check-label" for="auxiliary-numbers-edit-mode">
+                            Auxiliary numbers
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="edit-mode" type="radio" id="final-numbers-edit-mode" @onchange="SwitchEditMode" checked>
+                        <label class="form-check-label" for="final-numbers-edit-mode">
+                            Final numbers
+                        </label>
+                    </div>
+
+                    <hr />
+
+                    <h4 class="mt-3">Display</h4>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="auxiliary-numbers-display-option" @onchange="ToggleShowAuxiliaryNumbers" />
+                        <label class="form-check-label" for="auxiliary-numbers-display-option">
+                            Auxiliary numbers
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="invalid-number-color-display-option" @onchange="ToggleColorInvalidNumbers" />
+                        <label class="form-check-label" for="invalid-number-color-display-option">
+                            Invalid number color
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-secondary w-100 mb-3">Automatically solve</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-primary w-100">Check</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-12 col-xl-6 mt-3 mt-xl-0">
-
-            <div class="thin-border mb-3 p-3">
-                <h3>Selected Cell</h3>
-                @switch (CurrentEditMode)
-                {
-                    case EditMode.Auxiliary:
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="name" />
-                            <label for="name">Specify auxiliary numbers</label>
-                        </div>
-                        break;
-                    case EditMode.Final:
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="name" />
-                            <label for="name">Specify final number</label>
-                        </div>
-                        break;
-                }
-                <button type="submit" class="btn btn-primary w-100">Submit</button>
-            </div>
-
-            <div class="thin-border mb-3 p-3">
-                <h4 class="mb-0">Editor mode</h4>
-                <span class="fst-italic small d-block mb-3">Specify which type of number you would like to modify.</span>
-
-                <div class="form-check">
-                    <input class="form-check-input" name="edit-mode" type="radio" id="auxiliary-numbers-edit-mode" @onchange="SwitchEditMode">
-                    <label class="form-check-label" for="auxiliary-numbers-edit-mode">
-                        Auxiliary numbers
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="edit-mode" type="radio" id="final-numbers-edit-mode" @onchange="SwitchEditMode" checked>
-                    <label class="form-check-label" for="final-numbers-edit-mode">
-                        Final numbers
-                    </label>
-                </div>
-
-                <hr />
-
-                <h4 class="mt-3">Display</h4>
-
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="auxiliary-numbers-display-option" @onchange="ToggleShowAuxiliaryNumbers" />
-                    <label class="form-check-label" for="auxiliary-numbers-display-option">
-                        Auxiliary numbers
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="invalid-number-color-display-option" @onchange="ToggleColorInvalidNumbers" />
-                    <label class="form-check-label" for="invalid-number-color-display-option">
-                        Invalid number color
-                    </label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-6">
-                    <button class="btn btn-secondary w-100 mb-3">Automatically solve</button>
-                </div>
-                <div class="col-6">
-                    <button class="btn btn-primary w-100">Check</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    }
+    else
+    {
+        <span>Woops! It looks like something went wrong while loading the board.</span>
+    }
 </div>
+

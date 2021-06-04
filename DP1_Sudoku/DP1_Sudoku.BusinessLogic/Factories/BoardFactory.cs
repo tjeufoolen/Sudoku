@@ -1,5 +1,4 @@
-﻿using DP1_Sudoku.BusinessLogic.Enumerators;
-using DP1_Sudoku.BusinessLogic.Interfaces;
+﻿using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +8,7 @@ using System.Collections.Generic;
  */
 namespace DP1_Sudoku.BusinessLogic.Factories
 {
-    public class BoardFactory
+    public class BoardFactory : IBoardFactory
     {
         #region Singleton
         private BoardFactory() { }
@@ -34,28 +33,28 @@ namespace DP1_Sudoku.BusinessLogic.Factories
         }
         #endregion Singleton
 
-        private readonly Dictionary<BoardTypes, Type> _builders = new();
+        private readonly Dictionary<string, Type> _builders = new();
 
-        public void AddBoardType(BoardTypes type, Type builder)
+        public void AddBoardType(string extension, Type builder)
         {
-            if (builder is not IBoardBuilder) throw new ArgumentException($"{nameof(builder)} is not of type {typeof(IBoardBuilder)}");
+            if (!typeof(IBoardBuilder).IsAssignableFrom(builder)) throw new ArgumentException($"{nameof(builder)} is not of type {typeof(IBoardBuilder)}");
 
-            _builders[type] = builder;
+            _builders[extension] = builder;
         }
 
-        public void RemoveBoardType(BoardTypes type)
+        public void RemoveBoardType(string extension)
         {
-            if (_builders.ContainsKey(type))
+            if (_builders.ContainsKey(extension))
             {
-                _builders.Remove(type);
+                _builders.Remove(extension);
             }
         }
 
-        public IBoard? CreateBoard(BoardTypes type, IList<string> lines)
+        public IBoard? CreateBoard(string extension, IList<string> lines)
         {
-            if (!_builders.ContainsKey(type)) return null;
+            if (!_builders.ContainsKey(extension)) return null;
 
-            if (Activator.CreateInstance(_builders[type]) is not IBoardBuilder builder) return null;
+            if (Activator.CreateInstance(_builders[extension]) is not IBoardBuilder builder) return null;
 
             builder.Reset();
             builder.BuildCells(lines);
