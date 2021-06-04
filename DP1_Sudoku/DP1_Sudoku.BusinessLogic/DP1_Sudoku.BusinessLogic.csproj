@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Builders\NewFile1.txt" />
     <None Remove="Resources\Puzzles\puzzle.4x4" />
     <None Remove="Resources\Puzzles\puzzle.6x6" />
     <None Remove="Resources\Puzzles\puzzle.9x9" />

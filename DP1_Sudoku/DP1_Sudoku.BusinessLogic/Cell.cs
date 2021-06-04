@@ -8,6 +8,7 @@ namespace DP1_Sudoku.BusinessLogic
     public class Cell : IGridComponent
     {
         private CellState _state;
+        //TODO: uncomment if still needed. if not, remove at the end.
         //public CellVisibilityState CellVisibilityState { private get; set; }
 
         public Cell? Left { get; set; }
