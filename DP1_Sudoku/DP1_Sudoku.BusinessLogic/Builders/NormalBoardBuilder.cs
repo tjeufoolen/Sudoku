@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DP1_Sudoku.BusinessLogic.Extensions;
+using System.Collections.Generic;
 using System.Linq;
-using DP1_Sudoku.BusinessLogic.Extensions;
 
 namespace DP1_Sudoku.BusinessLogic.Builders
 {
@@ -55,7 +55,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             for (int horizontalGroup = 0; horizontalGroup < horizontalSubGroupCount; horizontalGroup++)
             {
                 // Determine the amount of vertical groups
-                for(int verticalGroup = 0; verticalGroup < verticalSubGroupCount; verticalGroup++)
+                for (int verticalGroup = 0; verticalGroup < verticalSubGroupCount; verticalGroup++)
                 {
                     var group = new GroupComposite();
 
@@ -90,7 +90,9 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             {
                 for (int charIdx = 0; charIdx < rows[rowIdx].Length; charIdx++)
                 {
-                    cellRows[rowIdx, charIdx] = new Cell(rows[rowIdx][charIdx]);
+                    // Reference: https://stackoverflow.com/questions/45030/how-to-parse-a-string-into-a-nullable-int
+                    int result = int.TryParse(rows[rowIdx][charIdx].ToString(), out var value) ? value : 0;
+                    cellRows[rowIdx, charIdx] = new Cell(result);
                 }
             }
 

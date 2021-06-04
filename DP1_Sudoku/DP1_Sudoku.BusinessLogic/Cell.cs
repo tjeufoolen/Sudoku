@@ -15,8 +15,8 @@ namespace DP1_Sudoku.BusinessLogic
         public Cell? Top { get; set; }
         public Cell? Bottom { get; set; }
 
-        private uint? _currentValue;
-        public uint? CurrentValue
+        private int? _currentValue;
+        public int? CurrentValue
         {
             get => _currentValue;
             set
@@ -28,14 +28,14 @@ namespace DP1_Sudoku.BusinessLogic
 
         public List<int> HelpNumbers { get; private set; } = new();
 
-        public Cell(uint value)
+        public Cell(int value)
         {
             CurrentValue = value;
 
             _state = GetStateByValue(value);
         }
 
-        private CellState GetStateByValue(uint? value)
+        private CellState GetStateByValue(int? value)
         {
             if (value == null || value == 0)
                 return new EmptyCellState(this);
