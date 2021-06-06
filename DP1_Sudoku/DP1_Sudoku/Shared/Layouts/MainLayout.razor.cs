@@ -6,7 +6,7 @@ namespace DP1_Sudoku.Shared.Layouts
     {
         [Inject] public NavigationManager? NavManager { get; set; }
 
-        public Sidebar? Sidebar;
+        public SidebarComponent? Sidebar;
 
         public void GoToHome()
         {

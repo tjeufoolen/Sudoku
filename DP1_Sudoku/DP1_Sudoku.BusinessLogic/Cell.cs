@@ -29,6 +29,8 @@ namespace DP1_Sudoku.BusinessLogic
 
         public List<int> HelpNumbers { get; private set; } = new();
 
+        public bool IsSelectable { get => _state.IsSelectable; }
+
         public Cell(int value)
         {
             CurrentValue = value;
@@ -44,7 +46,12 @@ namespace DP1_Sudoku.BusinessLogic
             return new DefinitiveCellState(this);
         }
 
-        public bool SetValue(int newValue) => _state.SetValue(newValue);
+        public void SetState(CellState state)
+        {
+            this._state = state;
+        }
+
+        public bool SetValue(int value) => _state.SetValue(value);
 
         public void ToggleHelpNumber(int value) => _state.ToggleHelpNumber(value);
 

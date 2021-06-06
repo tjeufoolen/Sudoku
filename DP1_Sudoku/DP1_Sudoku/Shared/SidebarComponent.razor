@@ -1,9 +1,10 @@
 ﻿<div class="sidebar @VisibilityClassList">
     <div class="row games p-3">
         <h2>Games</h2>
-        @if(_puzzles.Count != 0)
-        {            
-            @foreach (var types in _puzzles.GroupBy(x => x.FileExtension)){
+        @if (_puzzles.Count != 0)
+        {
+            @foreach (var types in _puzzles.GroupBy(x => x.FileExtension))
+            {
                 <div class="game-type">
                     <h3>@types.Key</h3>
                     <ul>
@@ -23,4 +24,4 @@
     </button>
 </div>
 
-<AddGameModal></AddGameModal>
+<AddGameModalComponent></AddGameModalComponent>

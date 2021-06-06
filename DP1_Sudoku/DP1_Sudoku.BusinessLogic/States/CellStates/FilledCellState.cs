@@ -1,26 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DP1_Sudoku.BusinessLogic.States.CellStates
+﻿namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
     public class FilledCellState : CellState
     {
+        public override bool IsSelectable { get; protected set; } = true;
+
         public FilledCellState(Cell cell) : base(cell)
         {
-
         }
 
         public override bool SetValue(int value)
         {
-            throw new NotImplementedException();
-        }
+            if (IsValidValue(value))
+            {
+                if (Cell.CurrentValue == null || Cell.CurrentValue == value || value == 0)
+                {
+                    Cell.CurrentValue = null;
+                    Cell.SetState(new EmptyCellState(Cell));
+                    return true;
+                }
 
-        public override bool ToggleHelpNumber(int value)
-        {
-            throw new NotImplementedException();
+                Cell.CurrentValue = value;
+                return true;
+            }
+            return false;
         }
     }
 }

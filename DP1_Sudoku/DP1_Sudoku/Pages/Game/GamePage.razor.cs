@@ -1,8 +1,9 @@
 using DP1_Sudoku.BusinessLogic;
 using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
+using DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies;
+using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
-using System;
 using System.Threading.Tasks;
 
 namespace DP1_Sudoku.Pages.Game
@@ -11,23 +12,31 @@ namespace DP1_Sudoku.Pages.Game
     {
         [Parameter] public string? Name { get; set; }
         [Parameter] public string? Extension { get; set; }
-        [Inject] NavigationManager? NavManager { get; set; }
-        [Inject] IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
+        [Inject] public NavigationManager? NavManager { get; set; }
+        [Inject] public IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
 
         private IBoard? _board;
+        private PuzzleComponent? _puzzle;
+        private PuzzleDisplaySettings _puzzleDisplaySettings = new();
 
-        protected override async Task OnInitializedAsync()
+        private ICellValueStrategy _valueStrategy = new CellValueStrategy();
+
+        protected override async Task OnParametersSetAsync()
         {
             // Check if parameters have been set
             if (Name == null || Extension == null)
             {
                 NavManager?.NavigateTo("/gameNotFound");
+                await base.OnParametersSetAsync();
                 return;
             }
 
             // Check if dependency injection found all needed objects
             if (PuzzleObjectFactory == null)
+            {
+                await base.OnParametersSetAsync();
                 return;
+            }
 
             // Fetch puzzle from parameters
             PuzzleObject? _puzzle = await PuzzleObjectFactory.LoadPuzzle(Name, Extension);
@@ -36,11 +45,15 @@ namespace DP1_Sudoku.Pages.Game
             if (_puzzle == null)
             {
                 NavManager?.NavigateTo("/gameNotFound");
+                await base.OnParametersSetAsync();
                 return;
             }
 
             // Init puzzle
             await InitPuzzle(_puzzle);
+
+            // Call base
+            await base.OnParametersSetAsync();
         }
 
         private async Task InitPuzzle(PuzzleObject puzzleObject)
@@ -51,39 +64,26 @@ namespace DP1_Sudoku.Pages.Game
             _board = BoardFactory.GetInstance().CreateBoard(extension, lines);
         }
 
-        public EditMode CurrentEditMode = EditMode.Final;
-        public bool ShowAuxiliaryNumbers { get; private set; } = false;
-        public bool ColorInvalidNumbers { get; private set; } = false;
-
-        public void SwitchEditMode()
+        private void ToggleShowAuxiliaryNumbers()
         {
-            if (CurrentEditMode == EditMode.Final)
-            {
-                CurrentEditMode = EditMode.Auxiliary;
-            }
-            else
-            {
-                CurrentEditMode = EditMode.Final;
-            }
-            Console.WriteLine($"Current Edit Mode: {CurrentEditMode}");
+            _puzzleDisplaySettings.ShowAuxiliaryNumbers = !_puzzleDisplaySettings.ShowAuxiliaryNumbers;
         }
 
-        public void ToggleShowAuxiliaryNumbers()
+        private void ToggleColorInvalidNumbers()
         {
-            ShowAuxiliaryNumbers = !ShowAuxiliaryNumbers;
-            Console.WriteLine($"{(ShowAuxiliaryNumbers ? "Showing" : "Hiding")} Auxiliary Numbers");
+            _puzzleDisplaySettings.ColorInvalidNumbers = !_puzzleDisplaySettings.ColorInvalidNumbers;
         }
 
-        public void ToggleColorInvalidNumbers()
+        private void SetCellValue(int value)
         {
-            ColorInvalidNumbers = !ColorInvalidNumbers;
-            Console.WriteLine($"{(ColorInvalidNumbers ? "Showing" : "Hiding")} Invalid Number Colors");
+            Cell? selectedCell = _puzzle?.SelectedCellComponent?.Cell;
+            if (selectedCell != null) _valueStrategy?.SetValue(selectedCell, value);
         }
     }
 
-    public enum EditMode
+    public class PuzzleDisplaySettings
     {
-        Auxiliary,
-        Final
+        public bool ShowAuxiliaryNumbers { get; set; } = false;
+        public bool ColorInvalidNumbers { get; set; } = false;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.Shared
 {
-    public partial class Sidebar
+    public partial class SidebarComponent
     {
         [Inject] public IPuzzleObjectFactory? PuzzleFactory { get; set; }
         [Inject] public NavigationManager? NavManager { get; set; }
@@ -35,7 +35,6 @@ namespace DP1_Sudoku.Shared
             {
                 _puzzles = await PuzzleFactory.LoadAll();
             }
-
         }
 
         public void NavigateToGame(string name, string extension)

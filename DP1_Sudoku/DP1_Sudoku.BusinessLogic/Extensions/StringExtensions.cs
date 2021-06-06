@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DP1_Sudoku.BusinessLogic.Extensions
 {
-    static class StringExtensions
+    public static class StringExtensions
     {
         public static IEnumerable<String> SplitInParts(this String s, Int32 partLength)
         {
