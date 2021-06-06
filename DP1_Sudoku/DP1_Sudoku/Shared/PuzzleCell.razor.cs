@@ -1,4 +1,5 @@
 ﻿using DP1_Sudoku.BusinessLogic;
+using DP1_Sudoku.BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Components;
 
 namespace DP1_Sudoku.Shared

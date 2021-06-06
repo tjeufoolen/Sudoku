@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DP1_Sudoku.BusinessLogic.States.CellStates
+﻿namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
     public class DefinitiveCellState : CellState
     {
@@ -8,17 +6,10 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
 
         public DefinitiveCellState(Cell cell) : base(cell)
         {
-
         }
 
-        public override bool SetValue(int value)
-        {
-            throw new NotImplementedException();
-        }
+        public override bool SetValue(int _) => false;
 
-        public override bool ToggleHelpNumber(int value)
-        {
-            throw new NotImplementedException();
-        }
+        public override bool ToggleHelpNumber(int _) => false;
     }
 }

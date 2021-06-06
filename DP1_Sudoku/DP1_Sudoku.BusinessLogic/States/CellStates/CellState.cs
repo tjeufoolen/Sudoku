@@ -16,9 +16,21 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
         {
             throw new NotImplementedException();
         }
+
         public virtual bool ToggleHelpNumber(int value)
         {
-            throw new NotImplementedException();
+            if (IsValidValue(value))
+            {
+                if (Cell.HelpNumbers.Contains(value))
+                    Cell.HelpNumbers.Remove(value);
+                else
+                    Cell.HelpNumbers.Add(value);
+
+                return true;
+            }
+            return false;
         }
+
+        protected bool IsValidValue(int value) => value >= 1 && value <= 9;
     }
 }

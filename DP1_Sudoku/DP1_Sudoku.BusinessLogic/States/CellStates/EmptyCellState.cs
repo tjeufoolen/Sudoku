@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DP1_Sudoku.BusinessLogic.States.CellStates
+﻿namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
     public class EmptyCellState : CellState
     {
@@ -8,17 +6,17 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
 
         public EmptyCellState(Cell cell) : base(cell)
         {
-
         }
 
         public override bool SetValue(int value)
         {
-            throw new NotImplementedException();
-        }
-
-        public override bool ToggleHelpNumber(int value)
-        {
-            throw new NotImplementedException();
+            if (IsValidValue(value))
+            {
+                Cell.CurrentValue = value;
+                Cell.SetState(new FilledCellState(Cell));
+                return true;
+            }
+            return false;
         }
     }
 }

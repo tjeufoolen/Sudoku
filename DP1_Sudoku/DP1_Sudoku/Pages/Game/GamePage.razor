@@ -10,6 +10,7 @@
         <div class="row">
             <div class="col-12 c ol-xl-6">
                 <div class="d-flex">
+                    <CascadingValue Value="_setCellValueStrategy" />
                     <Puzzle @ref="_puzzle" Board="@_board"></Puzzle>
                 </div>
             </div>
@@ -17,22 +18,13 @@
 
                 <div class="thin-border mb-3 p-3">
                     <h3>Selected Cell</h3>
-                    @switch (CurrentEditMode)
-                    {
-                        case EditMode.Auxiliary:
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="name" />
-                                <label for="name">Specify auxiliary numbers</label>
-                            </div>
-                            break;
-                        case EditMode.Final:
-                            <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="name" />
-                                <label for="name">Specify final number</label>
-                            </div>
-                            break;
-                    }
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    <form onsubmit="return false">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="cell-value" min="1" max="9" @bind-value="_numberInput" />
+                            <label for="cell-value">Please specify a number between 0 and 10</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" @onclick="() => SetCellValue(_numberInput)">Submit</button>
+                    </form>
                 </div>
 
                 <div class="thin-border mb-3 p-3">

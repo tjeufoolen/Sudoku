@@ -1,6 +1,7 @@
 using DP1_Sudoku.BusinessLogic;
 using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
+using DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies;
 using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -15,6 +16,7 @@ namespace DP1_Sudoku.Pages.Game
         [Inject] NavigationManager? NavManager { get; set; }
         [Inject] IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
 
+        private ICellValueStrategy _setCellValueStrategy = new DefinitiveCellValueStrategy();
         private IBoard? _board;
         private Puzzle? _puzzle;
 
@@ -64,16 +66,25 @@ namespace DP1_Sudoku.Pages.Game
         public EditMode CurrentEditMode = EditMode.Final;
         public bool ShowAuxiliaryNumbers { get; private set; } = false;
         public bool ColorInvalidNumbers { get; private set; } = false;
+        private int _numberInput;
+
+        public void SetCellValue(int value)
+        {
+            Cell? selectedCell = _puzzle?.SelectedCell?.Cell;
+            if (selectedCell != null) _setCellValueStrategy.SetValue(selectedCell, value);
+        }
 
         public void SwitchEditMode()
         {
             if (CurrentEditMode == EditMode.Final)
             {
                 CurrentEditMode = EditMode.Auxiliary;
+                _setCellValueStrategy = new AuxiliaryCellValueStrategy();
             }
             else
             {
                 CurrentEditMode = EditMode.Final;
+                _setCellValueStrategy = new DefinitiveCellValueStrategy();
             }
             Console.WriteLine($"Current Edit Mode: {CurrentEditMode}");
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DP1_Sudoku.BusinessLogic.States.CellStates
+﻿namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
     public class BlockedCellState : CellState
     {
@@ -10,14 +8,8 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
         {
         }
 
-        public override bool SetValue(int value)
-        {
-            throw new NotImplementedException();
-        }
+        public override bool SetValue(int _) => false;
 
-        public override bool ToggleHelpNumber(int value)
-        {
-            throw new NotImplementedException();
-        }
+        public override bool ToggleHelpNumber(int _) => false;
     }
 }
