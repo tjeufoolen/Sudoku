@@ -1,6 +1,6 @@
 ﻿@if (Cell != null)
 {
-    <div class="puzzle-cell @(IsSelected ? "active" : "")" @onclick="Select">
+    <div class="puzzle-cell @(IsSelected ? "active" : "") @(Cell.IsSelectable ? "selectable" : "")" @onclick="Select">
         <span class="help-numbers">@String.Join("", Cell.HelpNumbers)</span>
         <span class="final-number">@Cell.CurrentValue</span>
     </div>

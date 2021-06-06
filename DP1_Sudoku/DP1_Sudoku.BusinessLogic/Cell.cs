@@ -29,6 +29,8 @@ namespace DP1_Sudoku.BusinessLogic
 
         public List<int> HelpNumbers { get; private set; } = new();
 
+        public bool IsSelectable { get => _state.IsSelectable; }
+
         public Cell(int value)
         {
             CurrentValue = value;

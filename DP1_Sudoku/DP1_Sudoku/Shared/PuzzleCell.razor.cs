@@ -13,7 +13,8 @@ namespace DP1_Sudoku.Shared
 
         public void Select()
         {
-            if (Parent != null) Parent.SelectedCell = this;
+            if (Parent != null && Cell != null && Cell.IsSelectable)
+                Parent.SelectedCell = this;
         }
     }
 }

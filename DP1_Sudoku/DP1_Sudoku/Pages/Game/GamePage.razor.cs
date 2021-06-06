@@ -1,6 +1,7 @@
 using DP1_Sudoku.BusinessLogic;
 using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
+using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace DP1_Sudoku.Pages.Game
         [Inject] IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
 
         private IBoard? _board;
+        private Puzzle? _puzzle;
 
         protected override async Task OnParametersSetAsync()
         {

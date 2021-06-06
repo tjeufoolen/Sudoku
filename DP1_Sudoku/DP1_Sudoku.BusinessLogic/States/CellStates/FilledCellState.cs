@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
     public class FilledCellState : CellState
     {
+        public override bool IsSelectable { get; protected set; } = true;
+
         public FilledCellState(Cell cell) : base(cell)
         {
 
