@@ -17,8 +17,7 @@ namespace DP1_Sudoku.Pages.Game
 
         private IBoard? _board;
         private PuzzleComponent? _puzzle;
-        private bool _showAuxiliaryNumbers = false;
-        private bool _colorInvalidNumbers = false;
+        private PuzzleDisplaySettings _puzzleDisplaySettings = new();
 
         private ICellValueStrategy _valueStrategy = new CellValueStrategy();
 
@@ -65,14 +64,26 @@ namespace DP1_Sudoku.Pages.Game
             _board = BoardFactory.GetInstance().CreateBoard(extension, lines);
         }
 
-        private void ToggleShowAuxiliaryNumbers() => _showAuxiliaryNumbers = !_showAuxiliaryNumbers;
+        private void ToggleShowAuxiliaryNumbers()
+        {
+            _puzzleDisplaySettings.ShowAuxiliaryNumbers = !_puzzleDisplaySettings.ShowAuxiliaryNumbers;
+        }
 
-        private void ToggleColorInvalidNumbers() => _colorInvalidNumbers = !_colorInvalidNumbers;
+        private void ToggleColorInvalidNumbers()
+        {
+            _puzzleDisplaySettings.ColorInvalidNumbers = !_puzzleDisplaySettings.ColorInvalidNumbers;
+        }
 
         private void SetCellValue(int value)
         {
             Cell? selectedCell = _puzzle?.SelectedCellComponent?.Cell;
             if (selectedCell != null) _valueStrategy?.SetValue(selectedCell, value);
         }
+    }
+
+    public class PuzzleDisplaySettings
+    {
+        public bool ShowAuxiliaryNumbers { get; set; } = false;
+        public bool ColorInvalidNumbers { get; set; } = false;
     }
 }
