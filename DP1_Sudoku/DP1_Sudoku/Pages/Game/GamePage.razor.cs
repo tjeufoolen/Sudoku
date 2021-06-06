@@ -4,7 +4,6 @@ using DP1_Sudoku.BusinessLogic.Interfaces;
 using DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies;
 using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
-using System;
 using System.Threading.Tasks;
 
 namespace DP1_Sudoku.Pages.Game
@@ -13,12 +12,13 @@ namespace DP1_Sudoku.Pages.Game
     {
         [Parameter] public string? Name { get; set; }
         [Parameter] public string? Extension { get; set; }
-        [Inject] NavigationManager? NavManager { get; set; }
-        [Inject] IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
+        [Inject] public NavigationManager? NavManager { get; set; }
+        [Inject] public IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
 
-        private ICellValueStrategy _setCellValueStrategy = new DefinitiveCellValueStrategy();
         private IBoard? _board;
         private Puzzle? _puzzle;
+        private bool _showAuxiliaryNumbers = false;
+        private bool _colorInvalidNumbers = false;
 
         protected override async Task OnParametersSetAsync()
         {
@@ -63,48 +63,35 @@ namespace DP1_Sudoku.Pages.Game
             _board = BoardFactory.GetInstance().CreateBoard(extension, lines);
         }
 
-        public EditMode CurrentEditMode = EditMode.Final;
-        public bool ShowAuxiliaryNumbers { get; private set; } = false;
-        public bool ColorInvalidNumbers { get; private set; } = false;
+        private void ToggleShowAuxiliaryNumbers() => _showAuxiliaryNumbers = !_showAuxiliaryNumbers;
+
+        private void ToggleColorInvalidNumbers() => _colorInvalidNumbers = !_colorInvalidNumbers;
+
+        #region Set Selected Cell Value
+        public enum EditMode { Auxiliary, Final }
+        private ICellValueStrategy _setCellValueStrategy = new CellValueStrategy();
+        private EditMode _currentEditMode = EditMode.Final;
         private int _numberInput;
 
-        public void SetCellValue(int value)
+        private void SetCellValue(int value)
         {
             Cell? selectedCell = _puzzle?.SelectedCell?.Cell;
             if (selectedCell != null) _setCellValueStrategy.SetValue(selectedCell, value);
         }
 
-        public void SwitchEditMode()
+        private void SwitchEditMode()
         {
-            if (CurrentEditMode == EditMode.Final)
+            if (_currentEditMode == EditMode.Final)
             {
-                CurrentEditMode = EditMode.Auxiliary;
+                _currentEditMode = EditMode.Auxiliary;
                 _setCellValueStrategy = new AuxiliaryCellValueStrategy();
             }
             else
             {
-                CurrentEditMode = EditMode.Final;
-                _setCellValueStrategy = new DefinitiveCellValueStrategy();
+                _currentEditMode = EditMode.Final;
+                _setCellValueStrategy = new CellValueStrategy();
             }
-            Console.WriteLine($"Current Edit Mode: {CurrentEditMode}");
         }
-
-        public void ToggleShowAuxiliaryNumbers()
-        {
-            ShowAuxiliaryNumbers = !ShowAuxiliaryNumbers;
-            Console.WriteLine($"{(ShowAuxiliaryNumbers ? "Showing" : "Hiding")} Auxiliary Numbers");
-        }
-
-        public void ToggleColorInvalidNumbers()
-        {
-            ColorInvalidNumbers = !ColorInvalidNumbers;
-            Console.WriteLine($"{(ColorInvalidNumbers ? "Showing" : "Hiding")} Invalid Number Colors");
-        }
-    }
-
-    public enum EditMode
-    {
-        Auxiliary,
-        Final
+        #endregion Set Selected Cell Value
     }
 }

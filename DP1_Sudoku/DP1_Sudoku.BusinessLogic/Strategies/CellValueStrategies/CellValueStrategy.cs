@@ -2,7 +2,7 @@
 
 namespace DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies
 {
-    public class DefinitiveCellValueStrategy : ICellValueStrategy
+    public class CellValueStrategy : ICellValueStrategy
     {
         public void SetValue(Cell cell, int value)
         {
