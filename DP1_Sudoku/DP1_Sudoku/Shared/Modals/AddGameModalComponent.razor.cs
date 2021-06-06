@@ -5,10 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DP1_Sudoku.Shared.Modals
 {
-    public partial class AddGameModal
+    public partial class AddGameModalComponent
     {
         [Parameter] public EventCallback<int> OnAddGameCompleted { get; set; }
-        public Modal? Modal;
+        public ModalComponent? Modal;
         public string ModalIdentifier = "addGameModal";
         public AddGameFormModel FormModel = new();
 

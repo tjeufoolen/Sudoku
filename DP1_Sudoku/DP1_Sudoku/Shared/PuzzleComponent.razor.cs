@@ -3,20 +3,20 @@ using Microsoft.AspNetCore.Components;
 
 namespace DP1_Sudoku.Shared
 {
-    public partial class Puzzle
+    public partial class PuzzleComponent
     {
         [Parameter] public IBoard? Board { get; set; }
 
-        private PuzzleCell? _selectedCell = null;
+        private PuzzleCellComponent? _selectedCellComponent = null;
 
-        public PuzzleCell? SelectedCell
+        public PuzzleCellComponent? SelectedCellComponent
         {
-            get { return _selectedCell; }
+            get { return _selectedCellComponent; }
             set
             {
-                if (value != _selectedCell)
+                if (value != _selectedCellComponent)
                 {
-                    _selectedCell = value;
+                    _selectedCellComponent = value;
                     InvokeAsync(StateHasChanged);
                 }
 

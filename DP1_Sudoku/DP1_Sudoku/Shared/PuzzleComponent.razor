@@ -9,7 +9,7 @@
                     <div class="puzzle-row">
                         @for (var cellIdx = 0; cellIdx < Board.Cells.GetLength(1); cellIdx++)
                         {
-                            <PuzzleCell @bind-Cell="Board.Cells[rowIdx, cellIdx]" />
+                            <PuzzleCellComponent @bind-Cell="Board.Cells[rowIdx, cellIdx]" />
                         }
                     </div>
                 }

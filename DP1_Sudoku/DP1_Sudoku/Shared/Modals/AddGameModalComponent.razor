@@ -1,7 +1,7 @@
 ﻿<EditForm Model="@FormModel" OnValidSubmit="AddGame">
     <DataAnnotationsValidator />
 
-    <Modal @ref="Modal" @bind-Identifier="ModalIdentifier">
+    <ModalComponent @ref="Modal" @bind-Identifier="ModalIdentifier">
         <Title>Add new game</Title>
         <Body>
             <div class="form-floating mb-3">
@@ -35,5 +35,5 @@
         <Footer>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </Footer>
-    </Modal>
+    </ModalComponent>
 </EditForm>

@@ -2,7 +2,7 @@
 
 namespace DP1_Sudoku.Shared.Modals
 {
-    public partial class Modal
+    public partial class ModalComponent
     {
         [Parameter] public string? Identifier { get; set; }
         [Parameter] public EventCallback<string> IdentifierChanged { get; set; }

@@ -16,7 +16,7 @@ namespace DP1_Sudoku.Pages.Game
         [Inject] public IPuzzleObjectFactory? PuzzleObjectFactory { get; set; }
 
         private IBoard? _board;
-        private Puzzle? _puzzle;
+        private PuzzleComponent? _puzzle;
         private bool _showAuxiliaryNumbers = false;
         private bool _colorInvalidNumbers = false;
 
@@ -75,7 +75,7 @@ namespace DP1_Sudoku.Pages.Game
 
         private void SetCellValue(int value)
         {
-            Cell? selectedCell = _puzzle?.SelectedCell?.Cell;
+            Cell? selectedCell = _puzzle?.SelectedCellComponent?.Cell;
             if (selectedCell != null) _setCellValueStrategy.SetValue(selectedCell, value);
         }
 
