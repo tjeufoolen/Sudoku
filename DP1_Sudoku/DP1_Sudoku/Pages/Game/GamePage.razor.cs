@@ -16,18 +16,22 @@ namespace DP1_Sudoku.Pages.Game
 
         private IBoard? _board;
 
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
             // Check if parameters have been set
             if (Name == null || Extension == null)
             {
                 NavManager?.NavigateTo("/gameNotFound");
+                await base.OnParametersSetAsync();
                 return;
             }
 
             // Check if dependency injection found all needed objects
             if (PuzzleObjectFactory == null)
+            {
+                await base.OnParametersSetAsync();
                 return;
+            }
 
             // Fetch puzzle from parameters
             PuzzleObject? _puzzle = await PuzzleObjectFactory.LoadPuzzle(Name, Extension);
@@ -36,11 +40,15 @@ namespace DP1_Sudoku.Pages.Game
             if (_puzzle == null)
             {
                 NavManager?.NavigateTo("/gameNotFound");
+                await base.OnParametersSetAsync();
                 return;
             }
 
             // Init puzzle
             await InitPuzzle(_puzzle);
+
+            // Call base
+            await base.OnParametersSetAsync();
         }
 
         private async Task InitPuzzle(PuzzleObject puzzleObject)

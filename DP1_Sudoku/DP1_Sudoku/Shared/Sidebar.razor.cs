@@ -35,7 +35,6 @@ namespace DP1_Sudoku.Shared
             {
                 _puzzles = await PuzzleFactory.LoadAll();
             }
-
         }
 
         public void NavigateToGame(string name, string extension)
