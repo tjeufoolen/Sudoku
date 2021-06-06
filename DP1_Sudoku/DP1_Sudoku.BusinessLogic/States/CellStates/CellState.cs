@@ -31,6 +31,6 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
             return false;
         }
 
-        protected bool IsValidValue(int value) => value >= 1 && value <= 9;
+        protected bool IsValidValue(int value) => value >= 0 && value <= 9;
     }
 }

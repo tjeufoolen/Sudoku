@@ -20,6 +20,8 @@ namespace DP1_Sudoku.Pages.Game
         private bool _showAuxiliaryNumbers = false;
         private bool _colorInvalidNumbers = false;
 
+        private ICellValueStrategy _valueStrategy = new CellValueStrategy();
+
         protected override async Task OnParametersSetAsync()
         {
             // Check if parameters have been set
@@ -67,31 +69,10 @@ namespace DP1_Sudoku.Pages.Game
 
         private void ToggleColorInvalidNumbers() => _colorInvalidNumbers = !_colorInvalidNumbers;
 
-        #region Set Selected Cell Value
-        public enum EditMode { Auxiliary, Final }
-        private ICellValueStrategy _setCellValueStrategy = new CellValueStrategy();
-        private EditMode _currentEditMode = EditMode.Final;
-        private int _numberInput;
-
         private void SetCellValue(int value)
         {
             Cell? selectedCell = _puzzle?.SelectedCellComponent?.Cell;
-            if (selectedCell != null) _setCellValueStrategy.SetValue(selectedCell, value);
+            if (selectedCell != null) _valueStrategy?.SetValue(selectedCell, value);
         }
-
-        private void SwitchEditMode()
-        {
-            if (_currentEditMode == EditMode.Final)
-            {
-                _currentEditMode = EditMode.Auxiliary;
-                _setCellValueStrategy = new AuxiliaryCellValueStrategy();
-            }
-            else
-            {
-                _currentEditMode = EditMode.Final;
-                _setCellValueStrategy = new CellValueStrategy();
-            }
-        }
-        #endregion Set Selected Cell Value
     }
 }

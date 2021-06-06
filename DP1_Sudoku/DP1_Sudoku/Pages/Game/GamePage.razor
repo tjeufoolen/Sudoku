@@ -15,34 +15,7 @@
             </div>
             <div class="col-12 col-xl-6 mt-3 mt-xl-0">
 
-                <div class="thin-border mb-3 p-3">
-                    <h3>Selected Cell</h3>
-                    <form onsubmit="return false">
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="cell-value" min="1" max="9" @bind-value="_numberInput" />
-                            <label for="cell-value">Please specify a number between 0 and 10</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100" @onclick="() => SetCellValue(_numberInput)">Submit</button>
-                    </form>
-
-                    <hr />
-
-                    <h4 class="mb-0">Editor mode</h4>
-                    <span class="fst-italic small d-block mb-3">Specify which type of number you would like to modify.</span>
-
-                    <div class="form-check">
-                        <input class="form-check-input" name="edit-mode" type="radio" id="auxiliary-numbers-edit-mode" @onchange="SwitchEditMode">
-                        <label class="form-check-label" for="auxiliary-numbers-edit-mode">
-                            Auxiliary numbers
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" name="edit-mode" type="radio" id="final-numbers-edit-mode" @onchange="SwitchEditMode" checked>
-                        <label class="form-check-label" for="final-numbers-edit-mode">
-                            Final numbers
-                        </label>
-                    </div>
-                </div>
+                <PuzzleCellInputComponent @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)"></PuzzleCellInputComponent>
 
                 <div class="thin-border mb-3 p-3">
                     <h4>Display</h4>
