@@ -27,7 +27,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
                 group.Children.AddRange(rowCells);
 
-                Board.Groups.Add(group);
+                Board.HorizontalGroups.Add(group);
             }
         }
 
@@ -40,7 +40,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
                 group.Children.AddRange(columnCells);
 
-                Board.Groups.Add(group);
+                Board.VerticalGroups.Add(group);
             }
         }
 
@@ -72,11 +72,11 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                     {
                         for (int verticalIdx = lowestVerticalIndex; verticalIdx < highestVerticalIndex; verticalIdx++)
                         {
-                            group.Children.Add(Board.Cells[horizontalIdx, verticalIdx]);
+                            group.Children.Add(Board.Cells[verticalIdx, horizontalIdx]);
                         }
                     }
 
-                    Board.Groups.Add(group);
+                    Board.SubGroups.Add(group);
                 }
             }
         }

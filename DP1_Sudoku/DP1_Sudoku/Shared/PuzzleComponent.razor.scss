@@ -4,10 +4,11 @@
 
     .puzzle {
         display: flex;
+        flex-direction: column;
         border: 2px solid black;
 
         .puzzle-row {
-            flex-direction: column;
+            flex-direction: row;
             display: flex;
         }
     }

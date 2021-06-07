@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DP1_Sudoku.BusinessLogic.Builders
+﻿namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public class SixBySixBoardBuilder : NormalBoardBuilder
     {
