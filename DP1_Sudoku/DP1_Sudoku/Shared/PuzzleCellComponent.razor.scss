@@ -8,6 +8,22 @@
     border-color: black;
     font-weight: bold;
 
+    &.border-top {
+        border-top: 2px solid black !important;
+    }
+
+    &.border-right {
+        border-right: 2px solid black !important;
+    }
+
+    &.border-bottom {
+        border-bottom: 2px solid black !important;
+    }
+
+    &.border-left {
+        border-left: 2px solid black !important;
+    }
+
     &.selectable {
         font-weight: normal;
     }

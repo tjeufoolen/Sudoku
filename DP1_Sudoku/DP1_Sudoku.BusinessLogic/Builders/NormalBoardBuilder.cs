@@ -72,7 +72,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                     {
                         for (int verticalIdx = lowestVerticalIndex; verticalIdx < highestVerticalIndex; verticalIdx++)
                         {
-                            group.Children.Add(Board.Cells[horizontalIdx, verticalIdx]);
+                            group.Children.Add(Board.Cells[verticalIdx, horizontalIdx]);
                         }
                     }
 
