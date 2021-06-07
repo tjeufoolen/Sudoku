@@ -9,7 +9,9 @@ namespace DP1_Sudoku.BusinessLogic
         public ISolveStrategy? SolveStrategy { private get; set; }
 
         public Cell[,]? Cells { get; set; }
-        public IList<GroupComposite> Groups { get; set; } = new List<GroupComposite>();
+        public IList<GroupComposite> SubGroups { get; set; } = new List<GroupComposite>();
+        public IList<GroupComposite> HorizontalGroups { get; set; } = new List<GroupComposite>();
+        public IList<GroupComposite> VerticalGroups { get; set; } = new List<GroupComposite>();
 
         public void Solve()
         {

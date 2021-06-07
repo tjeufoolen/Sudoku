@@ -6,6 +6,11 @@
     flex-direction: row;
     position: relative;
     border-color: black;
+    font-weight: bold;
+
+    &.selectable {
+        font-weight: normal;
+    }
 
     &:hover {
         cursor: not-allowed;
