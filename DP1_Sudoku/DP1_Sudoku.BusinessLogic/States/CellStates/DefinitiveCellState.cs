@@ -3,6 +3,7 @@
     public class DefinitiveCellState : CellState
     {
         public override bool IsSelectable { get; protected set; } = false;
+        public override bool IsDrawable { get; protected set; } = true;
 
         public DefinitiveCellState(Cell cell) : base(cell)
         {

@@ -34,6 +34,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 for (int charIdx = 0; charIdx < maxRowLength; charIdx++)
                 {
                     Cell current = cellRows[rowIdx, charIdx];
+                    if (current == null) break;
 
                     // Check for cell above current cell
                     if (rowIdx - 1 >= 0)
