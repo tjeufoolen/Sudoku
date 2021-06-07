@@ -4,10 +4,10 @@
     {
         public SixBySixBoardBuilder()
         {
-            RowLength = 6;
-            ColumnLength = 6;
-            SubgroupHeight = 2;
-            SubgroupWidth = 3;
+            _rowLength = 6;
+            _columnLength = 6;
+            _subgroupHeight = 2;
+            _subgroupWidth = 3;
         }
     }
 }

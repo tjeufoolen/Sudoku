@@ -5,7 +5,17 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public class SamuraiBoardBuilder : BaseBoardBuilder
     {
-        public override void BuildGroups(IList<string> lines)
+        protected override void BuildColumnGroups()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void BuildRowGroups()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void BuildSubgroups()
         {
             throw new NotImplementedException();
         }

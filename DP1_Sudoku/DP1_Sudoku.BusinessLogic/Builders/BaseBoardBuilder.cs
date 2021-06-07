@@ -1,5 +1,7 @@
-﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+﻿using DP1_Sudoku.BusinessLogic.Extensions;
+using DP1_Sudoku.BusinessLogic.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DP1_Sudoku.BusinessLogic.Builders
 {
@@ -7,20 +9,18 @@ namespace DP1_Sudoku.BusinessLogic.Builders
     {
         public IBoard Board { get; protected set; } = new Board();
 
-        public void Reset()
+        public virtual void Reset()
         {
             Board = new Board();
         }
 
-        public void BuildCells(IList<string> lines)
+        public virtual void BuildCells(IList<string> lines)
         {
             var cells = CreateCells(lines);
             SetCellNeighbours(cells);
 
             Board.Cells = cells;
         }
-
-        public abstract void BuildGroups(IList<string> lines);
 
         protected abstract Cell[,] CreateCells(IList<string> lines);
 
@@ -53,5 +53,55 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 }
             }
         }
+
+        public void BuildGroups(IList<string> _)
+        {
+            BuildSubgroups();
+            BuildRowGroups();
+            BuildColumnGroups();
+        }
+
+        protected virtual void BuildRowGroups()
+        {
+            for (int row = 0; row < Board.Cells?.GetLength(0); row++)
+            {
+                var group = new GroupComposite();
+                var rowCells = GetRow(Board.Cells, row);
+
+                group.Children.AddRange(rowCells);
+
+                Board.HorizontalGroups.Add(group);
+            }
+        }
+
+        protected virtual void BuildColumnGroups()
+        {
+            for (int column = 0; column < Board.Cells?.GetLength(1); column++)
+            {
+                var group = new GroupComposite();
+                var columnCells = GetColumn(Board.Cells, column);
+
+                group.Children.AddRange(columnCells);
+
+                Board.VerticalGroups.Add(group);
+            }
+        }
+        protected abstract void BuildSubgroups();
+
+        #region Helpers
+        protected Cell[] GetRow(Cell[,] matrix, int rowNumber)
+        {
+            return Enumerable.Range(0, matrix.GetLength(1))
+                    .Select(x => matrix[rowNumber, x])
+                    .ToArray();
+        }
+
+        protected Cell[] GetColumn(Cell[,] matrix, int columnNumber)
+        {
+            return Enumerable.Range(0, matrix.GetLength(0))
+                    .Select(x => matrix[x, columnNumber])
+                    .ToArray();
+        }
+        #endregion Helpers
     }
 }
