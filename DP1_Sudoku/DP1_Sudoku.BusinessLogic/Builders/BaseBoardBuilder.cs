@@ -55,7 +55,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             }
         }
 
-        public void BuildGroups(IList<string> _)
+        public virtual void BuildGroups(IList<string> _)
         {
             BuildSubgroups();
             BuildRowGroups();

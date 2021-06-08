@@ -15,5 +15,10 @@ namespace DP1_Sudoku.BusinessLogic.Extensions
                 list.Add(item);
             }
         }
+
+        public static bool IsNullOrEmpty<T>(this IList<T> list)
+        {
+            return list == null || list.Count == 0;
+        }
     }
 }

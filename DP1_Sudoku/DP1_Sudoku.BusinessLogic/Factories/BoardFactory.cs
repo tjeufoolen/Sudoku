@@ -35,19 +35,19 @@ namespace DP1_Sudoku.BusinessLogic.Factories
 
         private readonly Dictionary<string, Type> _builders = new();
 
-        public void AddBoardType(string extension, Type builder)
+        public bool AddBoardType(string extension, Type builder)
         {
             if (!typeof(IBoardBuilder).IsAssignableFrom(builder)) throw new ArgumentException($"{nameof(builder)} is not of type {typeof(IBoardBuilder)}");
 
+            if (_builders.ContainsValue(builder)) return false;
+
             _builders[extension] = builder;
+            return true;
         }
 
-        public void RemoveBoardType(string extension)
+        public bool RemoveBoardType(string extension)
         {
-            if (_builders.ContainsKey(extension))
-            {
-                _builders.Remove(extension);
-            }
+            return _builders.Remove(extension);
         }
 
         public IBoard? CreateBoard(string extension, IList<string> lines)
@@ -62,5 +62,7 @@ namespace DP1_Sudoku.BusinessLogic.Factories
 
             return builder.Board;
         }
+
+        public void RemoveAll() => this._builders.Clear();
     }
 }

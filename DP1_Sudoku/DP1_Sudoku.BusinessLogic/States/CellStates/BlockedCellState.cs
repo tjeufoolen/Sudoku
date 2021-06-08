@@ -5,6 +5,7 @@
         public override bool IsSelectable { get; protected set; } = false;
         public override bool IsDrawable { get; protected set; } = false;
         public override bool IsValid { get; protected set; } = true;
+        
         public BlockedCellState(Cell cell) : base(cell)
         {
         }
@@ -13,9 +14,6 @@
 
         public override bool ToggleHelpNumber(int _) => false;
 
-        public override bool Validate()
-        {
-            return true;
-        }
+        public override bool Validate() => true;
     }
 }
