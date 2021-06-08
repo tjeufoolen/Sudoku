@@ -1,0 +1,82 @@
+﻿using DP1_Sudoku.BusinessLogic;
+using DP1_Sudoku.BusinessLogic.States.CellStates;
+using NUnit.Framework;
+
+namespace DP1_Sudoku.Tests.States
+{
+    public class BlockedCellStateTests
+    {
+        private Cell _cell;
+        private BlockedCellState _state;
+
+
+        [SetUp]
+        public void Setup()
+        {
+            _cell = new(0);
+            _state = new(_cell);
+        }
+
+        [Test]
+        public void Get_IsSelectable_ShouldBeFalse()
+        {
+            // Act
+            bool actual = _state.IsSelectable;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+
+        [Test]
+        public void Get_IsDrawable_ShouldBeFalse()
+        {
+            // Act
+            bool actual = _state.IsDrawable;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+
+        [Test]
+        public void Get_IsValid_ShouldBeTrue()
+        {
+            // Act
+            bool actual = _state.IsValid;
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+
+        [Test]
+        public void Get_Validate_ShouldBeTrue()
+        {
+            // Act
+            bool actual = _state.Validate();
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+
+        [Test]
+        public void Set_CellValue_ShouldNotBePossible()
+        {
+            // Act
+            bool actual = _state.SetValue(5);
+
+            // Assert
+            Assert.IsFalse(actual);
+            Assert.IsNull(_cell.CurrentValue);
+        }
+
+        [Test]
+        public void Set_HelpNumbers_ShouldNotBePossible()
+        {
+            // Act
+            bool actual = _state.ToggleHelpNumber(5);
+
+            // Assert
+            Assert.IsFalse(actual);
+            Assert.IsEmpty(_cell.HelpNumbers);
+        }
+    }
+}

@@ -5,10 +5,9 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
 {
     public interface IPuzzleObjectFactory
     {
-        void AddLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy);
-        Task<List<PuzzleObject>> Load(IPuzzleLoadingStrategy loadingStrategy);
-        Task<List<PuzzleObject>> LoadAll();
+        bool AddLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy);
+        bool RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy);
         Task<PuzzleObject?> LoadPuzzle(string name, string extension);
-        void RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy);
+        Task<List<PuzzleObject>> LoadAll();
     }
 }
