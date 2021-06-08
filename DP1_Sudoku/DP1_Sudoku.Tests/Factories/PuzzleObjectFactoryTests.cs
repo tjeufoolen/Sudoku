@@ -1,11 +1,11 @@
 ﻿using DP1_Sudoku.BusinessLogic;
 using DP1_Sudoku.BusinessLogic.Interfaces;
-using DP1_Sudoku.Tests.Mock;
+using DP1_Sudoku.Tests.Mocks;
 using Moq;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace DP1_Sudoku.Tests
+namespace DP1_Sudoku.Tests.Factories
 {
     public class PuzzleObjectFactoryTests
     {

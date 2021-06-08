@@ -3,7 +3,7 @@ using DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace DP1_Sudoku.Tests
+namespace DP1_Sudoku.Tests.Strategies
 {
     public class LocalPuzzleLoadingStrategyTests
     {

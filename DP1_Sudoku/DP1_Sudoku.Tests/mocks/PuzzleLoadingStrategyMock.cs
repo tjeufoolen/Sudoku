@@ -4,7 +4,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DP1_Sudoku.Tests.Mock
+namespace DP1_Sudoku.Tests.Mocks
 {
     public class PuzzleLoadingStrategyMock
     {
@@ -24,11 +24,10 @@ namespace DP1_Sudoku.Tests.Mock
 
         private void SetupGetPuzzle()
         {
-            PuzzleObject obj = new EmbeddedPuzzleObject($"{_namespace}.puzzle.4x4");
-
+            // All files that have the name 'puzzle' and end with the specified extensions below will be returned.
             _mock
-                .Setup(s => s.GetPuzzle("puzzle", "4x4"))
-                .Returns(Task.FromResult(obj));
+                .Setup(s => s.GetPuzzle("puzzle", It.IsIn("4x4", "6x6", "9x9", "jigsaw", "samurai")))
+                .Returns((string name, string extension) => Task.FromResult((PuzzleObject)new EmbeddedPuzzleObject($"{_namespace}.puzzle.{extension}")));
         }
 
         private void SetupGetPuzzles()
