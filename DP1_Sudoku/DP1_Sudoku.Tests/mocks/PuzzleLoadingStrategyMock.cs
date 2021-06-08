@@ -9,7 +9,7 @@ namespace DP1_Sudoku.Tests.Mocks
     public class PuzzleLoadingStrategyMock
     {
         private readonly string _namespace = "DP1_Sudoku.BusinessLogic.Resources.Puzzles";
-        private Mock<IPuzzleLoadingStrategy> _mock = new();
+        public Mock<IPuzzleLoadingStrategy> Mock { get; set; } = new();
 
         public PuzzleLoadingStrategyMock()
         {
@@ -25,14 +25,14 @@ namespace DP1_Sudoku.Tests.Mocks
         private void SetupGetPuzzle()
         {
             // All files that have the name 'puzzle' and end with the specified extensions below will be returned.
-            _mock
+            Mock
                 .Setup(s => s.GetPuzzle("puzzle", It.IsIn("4x4", "6x6", "9x9", "jigsaw", "samurai")))
                 .Returns((string name, string extension) => Task.FromResult((PuzzleObject)new EmbeddedPuzzleObject($"{_namespace}.puzzle.{extension}")));
         }
 
         private void SetupGetPuzzles()
         {
-            _mock
+            Mock
                 .Setup(s => s.GetPuzzles())
                 .Returns(Task.FromResult(new List<PuzzleObject>() {
                     new EmbeddedPuzzleObject($"{_namespace}.puzzle.4x4"),
@@ -43,6 +43,6 @@ namespace DP1_Sudoku.Tests.Mocks
                 }));
         }
 
-        public Mock<IPuzzleLoadingStrategy> GetMock() => _mock;
+        public Mock<IPuzzleLoadingStrategy> GetMock() => Mock;
     }
 }

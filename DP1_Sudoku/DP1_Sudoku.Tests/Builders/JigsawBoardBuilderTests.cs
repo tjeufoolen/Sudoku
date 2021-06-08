@@ -2,15 +2,15 @@
 
 namespace DP1_Sudoku.Tests.Builders
 {
-    public class NineByNineBoardBuilderTests : BoardBuilderTests
+    public class JigsawBoardBuilderTests : BoardBuilderTests
     {
-        public NineByNineBoardBuilderTests() : base(
+        public JigsawBoardBuilderTests() : base(
             rows: 9,
             cols: 9,
             subgroups: 9,
             verticalGroups: 9,
             horizontalGroups: 9,
-            extension: "9x9"
+            extension: "jigsaw"
         )
         { }
 
@@ -18,7 +18,7 @@ namespace DP1_Sudoku.Tests.Builders
         {
             base.Init();
 
-            _builder = new NineByNineBoardBuilder();
+            _builder = new JigsawBoardBuilder();
         }
     }
 }

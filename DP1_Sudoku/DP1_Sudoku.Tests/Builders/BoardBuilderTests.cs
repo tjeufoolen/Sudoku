@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP1_Sudoku.Tests.Builders
 {
-    public abstract class NormalBoardBuilderTests
+    public abstract class BoardBuilderTests
     {
         protected IBoardBuilder _builder;
         protected Mock<IPuzzleLoadingStrategy> _strategy;
@@ -18,7 +18,7 @@ namespace DP1_Sudoku.Tests.Builders
         protected int _horizontalGroups;
         protected string _extension;
 
-        public NormalBoardBuilderTests(int rows, int cols, int subgroups, int verticalGroups, int horizontalGroups, string extension)
+        public BoardBuilderTests(int rows, int cols, int subgroups, int verticalGroups, int horizontalGroups, string extension)
         {
             this._rows = rows;
             this._cols = cols;
@@ -49,7 +49,7 @@ namespace DP1_Sudoku.Tests.Builders
             _builder.BuildCells(lines);
 
             // Assert
-            Assert.AreEqual(_builder.Board.Cells.Length, expected);
+            Assert.AreEqual(expected, _builder.Board.Cells.Length);
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace DP1_Sudoku.Tests.Builders
             _builder.BuildGroups(lines);
 
             // Assert
-            Assert.AreEqual(_builder.Board.SubGroups.Count, expected);
+            Assert.AreEqual(expected, _builder.Board.SubGroups.Count);
         }
 
         [Test]
@@ -81,7 +81,7 @@ namespace DP1_Sudoku.Tests.Builders
             _builder.BuildGroups(lines);
 
             // Assert
-            Assert.AreEqual(_builder.Board.HorizontalGroups.Count, expected);
+            Assert.AreEqual(expected, _builder.Board.HorizontalGroups.Count);
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace DP1_Sudoku.Tests.Builders
             _builder.BuildGroups(lines);
 
             // Assert
-            Assert.AreEqual(_builder.Board.VerticalGroups.Count, expected);
+            Assert.AreEqual(expected, _builder.Board.VerticalGroups.Count);
         }
 
         [Test]
@@ -113,10 +113,10 @@ namespace DP1_Sudoku.Tests.Builders
             _builder.Reset();
 
             // Assert
-            Assert.AreEqual(_builder.Board.Cells, null);
-            Assert.AreEqual(_builder.Board.SubGroups.Count, 0);
-            Assert.AreEqual(_builder.Board.HorizontalGroups.Count, 0);
-            Assert.AreEqual(_builder.Board.VerticalGroups.Count, 0);
+            Assert.IsNull(_builder.Board.Cells);
+            Assert.IsEmpty(_builder.Board.SubGroups);
+            Assert.IsEmpty(_builder.Board.HorizontalGroups);
+            Assert.IsEmpty(_builder.Board.VerticalGroups);
         }
     }
 }

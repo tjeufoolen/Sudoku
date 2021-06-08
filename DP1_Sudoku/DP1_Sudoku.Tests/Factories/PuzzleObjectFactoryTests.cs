@@ -30,7 +30,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = _factory.AddLoadingStrategy(strategy);
 
             // Assert
-            Assert.AreEqual(result, true);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = _factory.AddLoadingStrategy(strategy);
 
             // Assert
-            Assert.AreEqual(result, false);
+            Assert.IsFalse(result);
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = _factory.RemoveLoadingStrategy(strategy);
 
             // Assert
-            Assert.AreEqual(result, false);
+            Assert.IsFalse(result);
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = _factory.RemoveLoadingStrategy(strategy);
 
             // Assert
-            Assert.AreEqual(result, true);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -86,8 +86,8 @@ namespace DP1_Sudoku.Tests.Factories
             var result = await _factory.LoadPuzzle(name, extension);
 
             // Assert
-            Assert.AreEqual(result.Name, name);
-            Assert.AreEqual(result.FileExtension, extension);
+            Assert.AreEqual(name, result.Name);
+            Assert.AreEqual(extension, result.FileExtension);
         }
 
         [Test]
@@ -102,7 +102,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = await _factory.LoadPuzzle(name, extension);
 
             // Assert
-            Assert.AreEqual(result, null);
+            Assert.IsNull(result);
         }
 
         [Test]
@@ -112,7 +112,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = await _factory.LoadAll();
 
             // Assert
-            Assert.AreEqual(result.Count, 0);
+            Assert.IsEmpty(result);
         }
 
         [Test]
@@ -126,7 +126,7 @@ namespace DP1_Sudoku.Tests.Factories
             var result = await _factory.LoadAll();
 
             // Assert
-            Assert.AreEqual(result.Count, expected);
+            Assert.AreEqual(expected, result.Count);
         }
     }
 }

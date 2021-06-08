@@ -41,7 +41,7 @@ namespace DP1_Sudoku.Tests.Strategies
             var actual = await _strategy.GetPuzzle(name, extension);
 
             // Assert
-            Assert.AreEqual(actual, null);
+            Assert.IsNull(actual);
         }
 
         [Test]

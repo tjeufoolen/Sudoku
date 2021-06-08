@@ -2,7 +2,7 @@
 
 namespace DP1_Sudoku.Tests.Builders
 {
-    public class SixBySixBoardBuilderTests : NormalBoardBuilderTests
+    public class SixBySixBoardBuilderTests : BoardBuilderTests
     {
         public SixBySixBoardBuilderTests() : base(
             rows: 6,

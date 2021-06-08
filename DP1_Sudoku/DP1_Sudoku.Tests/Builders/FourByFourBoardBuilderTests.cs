@@ -2,7 +2,7 @@
 
 namespace DP1_Sudoku.Tests.Builders
 {
-    public class FourByFourBoardBuilderTests : NormalBoardBuilderTests
+    public class FourByFourBoardBuilderTests : BoardBuilderTests
     {
         public FourByFourBoardBuilderTests() : base(
             rows: 4,
