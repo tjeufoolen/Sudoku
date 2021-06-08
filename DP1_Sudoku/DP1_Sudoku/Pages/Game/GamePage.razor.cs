@@ -21,6 +21,8 @@ namespace DP1_Sudoku.Pages.Game
 
         private ICellValueStrategy _valueStrategy = new CellValueStrategy();
 
+        private bool _boardCompleted = false;
+
         protected override async Task OnParametersSetAsync()
         {
             // Check if parameters have been set
@@ -52,6 +54,8 @@ namespace DP1_Sudoku.Pages.Game
             // Init puzzle
             await InitPuzzle(_puzzle);
 
+            _boardCompleted = false;
+
             // Call base
             await base.OnParametersSetAsync();
         }
@@ -77,7 +81,17 @@ namespace DP1_Sudoku.Pages.Game
         private void SetCellValue(int value)
         {
             Cell? selectedCell = _puzzle?.SelectedCellComponent?.Cell;
-            if (selectedCell != null) _valueStrategy?.SetValue(selectedCell, value);
+            if (selectedCell != null)
+            {
+                _valueStrategy?.SetValue(selectedCell, value);
+                _board?.VerifyBoard();
+            }
+        }
+
+        private void CheckBoard()
+        {
+            if (_board == null) return;
+            _boardCompleted = _board.Validate();
         }
     }
 

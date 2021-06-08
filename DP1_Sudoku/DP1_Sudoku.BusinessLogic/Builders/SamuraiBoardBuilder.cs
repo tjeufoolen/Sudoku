@@ -5,7 +5,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public class SamuraiBoardBuilder : NormalBoardBuilder
     {
-        private int _spaceBetweenSubSudokus = 3;
+        private readonly int _spaceBetweenSubSudokus = 3;
 
         private Cell[,]? _sudoku = null;
         private Cell[,]? _topLeftSubSudoku = null;
@@ -104,7 +104,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 {
                     if (_sudoku[rowIdx, colIdx] == null)
                     {
-                        Cell cell = new Cell(0);
+                        Cell cell = new(0);
                         cell.SetState(new BlockedCellState(cell));
                         _sudoku[rowIdx, colIdx] = cell;
                     }

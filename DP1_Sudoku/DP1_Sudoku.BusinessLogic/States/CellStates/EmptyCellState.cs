@@ -4,6 +4,7 @@
     {
         public override bool IsSelectable { get; protected set; } = true;
         public override bool IsDrawable { get; protected set; } = true;
+        public override bool IsValid { get; protected set; } = true;
 
         public EmptyCellState(Cell cell) : base(cell)
         {
@@ -17,6 +18,11 @@
                 Cell.SetState(new FilledCellState(Cell));
                 return true;
             }
+            return false;
+        }
+
+        public override bool Validate()
+        {
             return false;
         }
     }

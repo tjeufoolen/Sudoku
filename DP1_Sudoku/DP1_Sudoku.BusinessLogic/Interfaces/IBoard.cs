@@ -9,5 +9,6 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
         IList<GroupComposite> HorizontalGroups { get; set; }
         IList<GroupComposite> VerticalGroups { get; set; }
         public bool ValidateGroups();
+        void VerifyBoard();
     }
 }

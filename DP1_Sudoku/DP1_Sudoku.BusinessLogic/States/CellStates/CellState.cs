@@ -1,22 +1,21 @@
-﻿using System;
-
-namespace DP1_Sudoku.BusinessLogic.States.CellStates
+﻿namespace DP1_Sudoku.BusinessLogic.States.CellStates
 {
     public abstract class CellState
     {
         protected Cell Cell { get; set; }
         public virtual bool IsSelectable { get; protected set; }
         public virtual bool IsDrawable { get; protected set; }
+        public virtual bool IsValid { get; protected set; }
 
         public CellState(Cell cell)
         {
             Cell = cell;
         }
 
-        public virtual bool SetValue(int value)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract bool SetValue(int value);
+
+        public abstract bool Validate();
+
 
         public virtual bool ToggleHelpNumber(int value)
         {
@@ -32,6 +31,6 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
             return false;
         }
 
-        protected bool IsValidValue(int value) => value >= 0 && value <= 9;
+        protected static bool IsValidValue(int value) => value >= 0 && value <= 9;
     }
 }
