@@ -8,7 +8,7 @@ namespace DP1_Sudoku.BusinessLogic
 {
     public class Board : IBoard
     {
-        public ISolveStrategy? SolveStrategy { private get; set; }
+        public ISolveStrategy? SolveStrategy { get; set; }
 
         public Cell[,]? Cells { get; set; }
         public IList<GroupComposite> SubGroups { get; set; } = new List<GroupComposite>();
@@ -19,7 +19,8 @@ namespace DP1_Sudoku.BusinessLogic
 
         public void Solve()
         {
-            SolveStrategy?.SolveBoard(this);
+            bool? temp = SolveStrategy?.SolveBoard(this);
+            Console.WriteLine($"SOLVE RESULT: {temp}");
         }
 
         public void Accept(IVisitor visitor)
@@ -30,6 +31,20 @@ namespace DP1_Sudoku.BusinessLogic
         public bool Validate()
         {
             return ValidateGroups();
+        }
+
+        /// <summary>
+        /// Checks if there are any conflicting cells on the board, ignores empty cells
+        /// </summary>
+        /// <returns></returns>
+        public bool IsBoardCorrect()
+        {
+            VerifyBoard();
+            if (Cells == null) return true;
+
+            bool boardIsValid = Cells.Cast<Cell>().All(x => x.IsValid);
+
+            return boardIsValid;
         }
 
         /// <summary>

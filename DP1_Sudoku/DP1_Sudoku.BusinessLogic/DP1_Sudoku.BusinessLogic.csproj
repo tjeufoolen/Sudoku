@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Puzzles\DEBUG.9x9" />
     <None Remove="Resources\Puzzles\puzzle.4x4" />
     <None Remove="Resources\Puzzles\puzzle.6x6" />
     <None Remove="Resources\Puzzles\puzzle.9x9" />
@@ -24,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Puzzles\DEBUG.9x9">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Puzzles\puzzle.4x4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
