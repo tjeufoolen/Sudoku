@@ -8,6 +8,7 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
         IList<GroupComposite> SubGroups { get; set; }
         IList<GroupComposite> HorizontalGroups { get; set; }
         IList<GroupComposite> VerticalGroups { get; set; }
+        public int MaxValidCellValue { get; }
         public bool ValidateGroups();
     }
 }

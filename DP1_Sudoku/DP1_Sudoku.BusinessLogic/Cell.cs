@@ -33,9 +33,12 @@ namespace DP1_Sudoku.BusinessLogic
 
         public bool IsDrawable { get => _state.IsDrawable; }
 
-        public Cell(int value)
+        public int MaxValidValue { get; private set; }
+
+        public Cell(int value, int maxValidValue = 9)
         {
             CurrentValue = value;
+            MaxValidValue = maxValidValue;
 
             _state = GetStateByValue(value);
         }
