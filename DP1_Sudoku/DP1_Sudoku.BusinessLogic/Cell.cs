@@ -63,5 +63,11 @@ namespace DP1_Sudoku.BusinessLogic
         {
             throw new NotImplementedException();
         }
+
+        public bool IsEqualTo(IGridComponent component)
+        {
+            if (component == null || component is not Cell otherAsCell) return false;
+            return otherAsCell.CurrentValue == this.CurrentValue;
+        }
     }
 }

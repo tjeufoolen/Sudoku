@@ -18,5 +18,12 @@ namespace DP1_Sudoku.BusinessLogic
         {
             throw new NotImplementedException();
         }
+
+        public bool IsEqualTo(IGridComponent component)
+        {
+            if (component == null || component is not GroupComposite otherAsGroup) return false;
+            return otherAsGroup == this;
+        }
+
     }
 }

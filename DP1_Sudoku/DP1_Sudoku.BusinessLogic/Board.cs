@@ -32,5 +32,11 @@ namespace DP1_Sudoku.BusinessLogic
         {
             throw new NotImplementedException();
         }
+
+        public bool IsEqualTo(IGridComponent component)
+        {
+            if (component == null || component is not Board otherAsBoard) return false;
+            return otherAsBoard == this;
+        }
     }
 }
