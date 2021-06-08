@@ -25,12 +25,15 @@ namespace DP1_Sudoku.Shared
         private bool ShowAuxiliaryNumbers()
         {
             if (Cell?.CurrentValue != null) return false;
-            return DisplaySettings != null ? DisplaySettings.ShowAuxiliaryNumbers : true;
+            return DisplaySettings == null || DisplaySettings.ShowAuxiliaryNumbers;
         }
 
-        private bool ColorInvalidNumbers()
+        private bool DisplayInvalidColor()
         {
-            return DisplaySettings != null ? DisplaySettings.ColorInvalidNumbers : true;
+            if (Cell == null) return false;
+            if (DisplaySettings == null) return false;
+            if (DisplaySettings.ColorInvalidNumbers == false) return false;
+            return !Cell.IsValid;
         }
 
         private string BorderClassList()

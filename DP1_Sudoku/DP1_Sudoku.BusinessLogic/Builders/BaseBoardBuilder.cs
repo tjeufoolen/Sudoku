@@ -76,6 +76,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 var rowCells = GetRow(cells, row);
 
                 group.Children.AddRange(rowCells);
+                rowCells.ForEach(cell => cell.ValidationGroups.Add(group));
 
                 Board.HorizontalGroups.Add(group);
             }
@@ -94,6 +95,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 var columnCells = GetColumn(cells, column);
 
                 group.Children.AddRange(columnCells);
+                columnCells.ForEach(cell => cell.ValidationGroups.Add(group));
 
                 Board.VerticalGroups.Add(group);
             }
@@ -101,14 +103,14 @@ namespace DP1_Sudoku.BusinessLogic.Builders
         protected abstract void BuildSubgroups();
 
         #region Helpers
-        protected Cell[] GetRow(Cell[,] matrix, int rowNumber)
+        protected static Cell[] GetRow(Cell[,] matrix, int rowNumber)
         {
             return Enumerable.Range(0, matrix.GetLength(1))
                     .Select(x => matrix[rowNumber, x])
                     .ToArray();
         }
 
-        protected Cell[] GetColumn(Cell[,] matrix, int columnNumber)
+        protected static Cell[] GetColumn(Cell[,] matrix, int columnNumber)
         {
             return Enumerable.Range(0, matrix.GetLength(0))
                     .Select(x => matrix[x, columnNumber])

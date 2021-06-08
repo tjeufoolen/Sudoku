@@ -4,7 +4,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public class JigsawBoardBuilder : BaseBoardBuilder
     {
-        private SortedList<int, GroupComposite> _subGroupLinks = new();
+        private readonly SortedList<int, GroupComposite> _subGroupLinks = new();
 
         protected int _rowLength = 9;
         protected int _columnLength = 9;
@@ -45,7 +45,9 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                             _subGroupLinks.Add(fieldSubgroupIdx, new GroupComposite());
                         }
 
-                        _subGroupLinks[fieldSubgroupIdx].Children.Add(cell);
+                        var subgroup = _subGroupLinks[fieldSubgroupIdx];
+                        subgroup.Children.Add(cell);
+                        cell.ValidationGroups.Add(subgroup);
                     }
                 }
 

@@ -11,6 +11,7 @@ namespace DP1_Sudoku.BusinessLogic
         //TODO: uncomment if still needed. if not, remove at the end.
         //public CellVisibilityState CellVisibilityState { private get; set; }
 
+        public List<GroupComposite> ValidationGroups { get; private set; } = new(3);
         public Cell? Left { get; set; }
         public Cell? Right { get; set; }
         public Cell? Top { get; set; }
@@ -32,6 +33,7 @@ namespace DP1_Sudoku.BusinessLogic
         public bool IsSelectable { get => _state.IsSelectable; }
 
         public bool IsDrawable { get => _state.IsDrawable; }
+        public bool IsValid { get => _state.IsValid; }
 
         public int MaxValidValue { get; private set; }
 
@@ -64,7 +66,13 @@ namespace DP1_Sudoku.BusinessLogic
 
         public bool Validate()
         {
-            throw new NotImplementedException();
+            return _state.Validate();
+        }
+
+        public bool IsEqualTo(IGridComponent component)
+        {
+            if (component == null || component is not Cell otherAsCell) return false;
+            return otherAsCell.CurrentValue == this.CurrentValue;
         }
     }
 }
