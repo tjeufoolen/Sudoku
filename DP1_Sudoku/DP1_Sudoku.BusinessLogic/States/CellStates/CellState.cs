@@ -31,6 +31,6 @@
             return false;
         }
 
-        protected static bool IsValidValue(int value) => value >= 0 && value <= 9;
+        protected bool IsValidValue(int value) => value >= 0 && value <= Cell.MaxValidValue;
     }
 }

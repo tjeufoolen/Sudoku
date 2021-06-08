@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-12 col-xl-6 mt-3 mt-xl-0">
 
-                    <PuzzleCellInputComponent @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)"></PuzzleCellInputComponent>
+                <PuzzleCellInputComponent @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)" MaxValidCellValue="_board.MaxValidCellValue"></PuzzleCellInputComponent>
 
                     <div class="thin-border mb-3 p-3">
                         <h4>Display</h4>

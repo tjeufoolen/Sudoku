@@ -10,6 +10,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
         protected int _columnLength;
         protected int _subgroupHeight;
         protected int _subgroupWidth;
+        protected int _maxValidCellValue = 9;
 
         protected override void BuildSubgroups()
         {
@@ -66,7 +67,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 {
                     // Reference: https://stackoverflow.com/questions/45030/how-to-parse-a-string-into-a-nullable-int
                     int result = int.TryParse(rows[rowIdx][charIdx].ToString(), out var value) ? value : 0;
-                    cellRows[rowIdx, charIdx] = new Cell(result);
+                    cellRows[rowIdx, charIdx] = new Cell(result, _maxValidCellValue);
                 }
             }
 

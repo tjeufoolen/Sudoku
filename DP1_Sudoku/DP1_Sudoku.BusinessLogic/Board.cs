@@ -15,6 +15,8 @@ namespace DP1_Sudoku.BusinessLogic
         public IList<GroupComposite> HorizontalGroups { get; set; } = new List<GroupComposite>();
         public IList<GroupComposite> VerticalGroups { get; set; } = new List<GroupComposite>();
 
+        public int MaxValidCellValue { get => (Cells != null) ? Cells.Cast<Cell>().Max(c => c.MaxValidValue) : 0; }
+
         public void Solve()
         {
             SolveStrategy?.SolveBoard(this);
