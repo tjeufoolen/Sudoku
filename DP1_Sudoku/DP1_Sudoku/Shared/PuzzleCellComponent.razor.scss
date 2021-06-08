@@ -48,6 +48,10 @@
         }
     }
 
+    &.invalid {
+        background-color: lightcoral;
+    }
+
     &.active {
         border: 3px solid green;
     }

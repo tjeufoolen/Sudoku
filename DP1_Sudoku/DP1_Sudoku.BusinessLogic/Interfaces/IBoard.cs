@@ -10,5 +10,6 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
         IList<GroupComposite> VerticalGroups { get; set; }
         public int MaxValidCellValue { get; }
         public bool ValidateGroups();
+        void VerifyBoard();
     }
 }

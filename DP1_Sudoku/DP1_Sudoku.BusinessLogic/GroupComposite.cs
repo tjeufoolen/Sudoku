@@ -1,4 +1,5 @@
-﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+﻿using DP1_Sudoku.BusinessLogic.Extensions;
+using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -16,7 +17,21 @@ namespace DP1_Sudoku.BusinessLogic
 
         public bool Validate()
         {
-            throw new NotImplementedException();
+            bool anyInvalid = false;
+
+            Children.ForEach(child =>
+            {
+                if (!child.Validate()) anyInvalid = true;
+            });
+
+            return !anyInvalid;
         }
+
+        public bool IsEqualTo(IGridComponent component)
+        {
+            if (component == null || component is not GroupComposite otherAsGroup) return false;
+            return otherAsGroup == this;
+        }
+
     }
 }

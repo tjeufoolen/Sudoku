@@ -45,7 +45,9 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                     {
                         for (int verticalIdx = lowestVerticalIndex; verticalIdx < highestVerticalIndex; verticalIdx++)
                         {
-                            group.Children.Add(Board.Cells[verticalIdx + rowOffset, horizontalIdx + colOffset]);
+                            Cell cell = Board.Cells[verticalIdx + rowOffset, horizontalIdx + colOffset];
+                            group.Children.Add(cell);
+                            cell.ValidationGroups.Add(group);
                         }
                     }
 

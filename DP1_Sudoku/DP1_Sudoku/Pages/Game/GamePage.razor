@@ -7,45 +7,56 @@
         <h2 class="mb-0 text-secondary small">@Extension</h2>
         <h1 class="mt-0 mb-3">@Name</h1>
 
-        <div class="row">
-            <div class="col-12 col-xl-6">
-                <div class="d-flex">
-                    <CascadingValue Value="_puzzleDisplaySettings">
-                        <PuzzleComponent @ref="_puzzle" Board="@_board"></PuzzleComponent>
-                    </CascadingValue>
+        @if (!_boardCompleted)
+        {
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <div class="d-flex">
+                        <CascadingValue Value="_puzzleDisplaySettings">
+                            <PuzzleComponent @ref="_puzzle" Board="@_board"></PuzzleComponent>
+                        </CascadingValue>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-xl-6 mt-3 mt-xl-0">
+                <div class="col-12 col-xl-6 mt-3 mt-xl-0">
 
                 <PuzzleCellInputComponent @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)" MaxValidCellValue="_board.MaxValidCellValue"></PuzzleCellInputComponent>
 
-                <div class="thin-border mb-3 p-3">
-                    <h4>Display</h4>
+                    <div class="thin-border mb-3 p-3">
+                        <h4>Display</h4>
 
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="auxiliary-numbers-display-option" @onchange="ToggleShowAuxiliaryNumbers" />
-                        <label class="form-check-label" for="auxiliary-numbers-display-option">
-                            Auxiliary numbers
-                        </label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="auxiliary-numbers-display-option" @onchange="ToggleShowAuxiliaryNumbers" />
+                            <label class="form-check-label" for="auxiliary-numbers-display-option">
+                                Auxiliary numbers
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="invalid-number-color-display-option" @onchange="ToggleColorInvalidNumbers" />
+                            <label class="form-check-label" for="invalid-number-color-display-option">
+                                Invalid number color
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="invalid-number-color-display-option" @onchange="ToggleColorInvalidNumbers" />
-                        <label class="form-check-label" for="invalid-number-color-display-option">
-                            Invalid number color
-                        </label>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-6">
-                        <button class="btn btn-secondary w-100 mb-3">Automatically solve</button>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-primary w-100">Check</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-secondary w-100 mb-3">Automatically solve</button>
+                        </div>
+                        <div class="col-6">
+                            <button @onclick="CheckBoard" class="btn btn-primary w-100">Check</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Congratulations, you solved the puzzle!</h2>
+                </div>
+            </div>
+        }
     }
     else
     {
