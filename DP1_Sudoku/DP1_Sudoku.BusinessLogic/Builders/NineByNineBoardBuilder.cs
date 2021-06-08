@@ -4,10 +4,10 @@
     {
         public NineByNineBoardBuilder()
         {
-            RowLength = 9;
-            ColumnLength = 9;
-            SubgroupHeight = 3;
-            SubgroupWidth = 3;
+            _rowLength = 9;
+            _columnLength = 9;
+            _subgroupHeight = 3;
+            _subgroupWidth = 3;
         }
     }
 }

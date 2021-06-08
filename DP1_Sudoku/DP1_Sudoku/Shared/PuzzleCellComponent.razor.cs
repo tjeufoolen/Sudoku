@@ -14,6 +14,7 @@ namespace DP1_Sudoku.Shared
         [CascadingParameter] public PuzzleDisplaySettings? DisplaySettings { get; set; }
 
         public bool IsSelected => Parent?.SelectedCellComponent == this;
+        public bool IsBlocked => !Cell?.IsDrawable ?? false;
 
         public void Select()
         {

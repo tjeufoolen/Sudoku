@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DP1_Sudoku.BusinessLogic\DP1_Sudoku.BusinessLogic.csproj" />
   </ItemGroup>
   

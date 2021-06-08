@@ -6,50 +6,22 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public abstract class NormalBoardBuilder : BaseBoardBuilder
     {
-        protected int RowLength { get; set; }
-        protected int ColumnLength { get; set; }
-        protected int SubgroupHeight { get; set; }
-        protected int SubgroupWidth { get; set; }
+        protected int _rowLength;
+        protected int _columnLength;
+        protected int _subgroupHeight;
+        protected int _subgroupWidth;
 
-        public override void BuildGroups(IList<string> _)
+        protected override void BuildSubgroups()
         {
-            BuildRowGroups();
-            BuildColumnGroups();
-            BuildSubgroups();
+            BuildSubgroups(0, 0);
         }
 
-        protected void BuildRowGroups()
-        {
-            for (int row = 0; row < Board.Cells?.GetLength(0); row++)
-            {
-                var group = new GroupComposite();
-                var rowCells = GetRow(Board.Cells, row);
-
-                group.Children.AddRange(rowCells);
-
-                Board.HorizontalGroups.Add(group);
-            }
-        }
-
-        protected void BuildColumnGroups()
-        {
-            for (int column = 0; column < Board.Cells?.GetLength(1); column++)
-            {
-                var group = new GroupComposite();
-                var columnCells = GetColumn(Board.Cells, column);
-
-                group.Children.AddRange(columnCells);
-
-                Board.VerticalGroups.Add(group);
-            }
-        }
-
-        protected void BuildSubgroups()
+        protected virtual void BuildSubgroups(int rowOffset, int colOffset)
         {
             if (Board.Cells == null) return;
 
-            int horizontalSubGroupCount = RowLength / SubgroupWidth;
-            int verticalSubGroupCount = ColumnLength / SubgroupHeight;
+            int horizontalSubGroupCount = _rowLength / _subgroupWidth;
+            int verticalSubGroupCount = _columnLength / _subgroupHeight;
 
             // Determine the amount of horizontal groups
             for (int horizontalGroup = 0; horizontalGroup < horizontalSubGroupCount; horizontalGroup++)
@@ -60,19 +32,19 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                     var group = new GroupComposite();
 
                     // Convert current horizontal group to minimum and maximum coordinates
-                    int lowestHorizontalIndex = horizontalGroup * SubgroupWidth;
-                    int highestHorizontalIndex = lowestHorizontalIndex + SubgroupWidth;
+                    int lowestHorizontalIndex = horizontalGroup * _subgroupWidth;
+                    int highestHorizontalIndex = lowestHorizontalIndex + _subgroupWidth;
 
                     // Convert current vertical group to minimum and maximum coordinates
-                    int lowestVerticalIndex = verticalGroup * SubgroupHeight;
-                    int highestVerticalIndex = lowestVerticalIndex + SubgroupHeight;
+                    int lowestVerticalIndex = verticalGroup * _subgroupHeight;
+                    int highestVerticalIndex = lowestVerticalIndex + _subgroupHeight;
 
                     // Loop over all the cells in the map and add them to the group
                     for (int horizontalIdx = lowestHorizontalIndex; horizontalIdx < highestHorizontalIndex; horizontalIdx++)
                     {
                         for (int verticalIdx = lowestVerticalIndex; verticalIdx < highestVerticalIndex; verticalIdx++)
                         {
-                            group.Children.Add(Board.Cells[verticalIdx, horizontalIdx]);
+                            group.Children.Add(Board.Cells[verticalIdx + rowOffset, horizontalIdx + colOffset]);
                         }
                     }
 
@@ -83,8 +55,8 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
         protected override Cell[,] CreateCells(IList<string> lines)
         {
-            Cell[,] cellRows = new Cell[RowLength, RowLength];
-            string[]? rows = lines[0].SplitInParts(RowLength).ToArray();
+            Cell[,] cellRows = new Cell[_columnLength, _rowLength];
+            string[]? rows = lines[0].SplitInParts(_rowLength).ToArray();
 
             for (int rowIdx = 0; rowIdx < rows?.Length; rowIdx++)
             {
@@ -98,21 +70,5 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
             return cellRows;
         }
-
-        #region Helpers
-        protected static Cell[] GetRow(Cell[,] matrix, int rowNumber)
-        {
-            return Enumerable.Range(0, matrix.GetLength(1))
-                    .Select(x => matrix[rowNumber, x])
-                    .ToArray();
-        }
-
-        protected static Cell[] GetColumn(Cell[,] matrix, int columnNumber)
-        {
-            return Enumerable.Range(0, matrix.GetLength(0))
-                    .Select(x => matrix[x, columnNumber])
-                    .ToArray();
-        }
-        #endregion Helpers
     }
 }

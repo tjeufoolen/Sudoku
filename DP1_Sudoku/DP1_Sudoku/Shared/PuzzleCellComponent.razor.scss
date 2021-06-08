@@ -28,6 +28,10 @@
         font-weight: normal;
     }
 
+    &.blocked {
+        background-color: grey;
+    }
+
     &:hover {
         cursor: not-allowed;
 

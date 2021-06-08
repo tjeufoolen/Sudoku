@@ -6,6 +6,7 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
     {
         protected Cell Cell { get; set; }
         public virtual bool IsSelectable { get; protected set; }
+        public virtual bool IsDrawable { get; protected set; }
 
         public CellState(Cell cell)
         {

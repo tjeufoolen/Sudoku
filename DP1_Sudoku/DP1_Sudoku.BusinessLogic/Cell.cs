@@ -31,6 +31,8 @@ namespace DP1_Sudoku.BusinessLogic
 
         public bool IsSelectable { get => _state.IsSelectable; }
 
+        public bool IsDrawable { get => _state.IsDrawable; }
+
         public Cell(int value)
         {
             CurrentValue = value;
@@ -46,10 +48,7 @@ namespace DP1_Sudoku.BusinessLogic
             return new DefinitiveCellState(this);
         }
 
-        public void SetState(CellState state)
-        {
-            this._state = state;
-        }
+        public void SetState(CellState state) => this._state = state;
 
         public bool SetValue(int value) => _state.SetValue(value);
 

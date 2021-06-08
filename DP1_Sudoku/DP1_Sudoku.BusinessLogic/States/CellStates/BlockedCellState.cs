@@ -3,6 +3,7 @@
     public class BlockedCellState : CellState
     {
         public override bool IsSelectable { get; protected set; } = false;
+        public override bool IsDrawable { get; protected set; } = false;
 
         public BlockedCellState(Cell cell) : base(cell)
         {

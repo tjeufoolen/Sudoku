@@ -3,6 +3,7 @@
     public class FilledCellState : CellState
     {
         public override bool IsSelectable { get; protected set; } = true;
+        public override bool IsDrawable { get; protected set; } = true;
 
         public FilledCellState(Cell cell) : base(cell)
         {
