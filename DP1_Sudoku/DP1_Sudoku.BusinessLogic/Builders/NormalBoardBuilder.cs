@@ -13,6 +13,11 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
         protected override void BuildSubgroups()
         {
+            BuildSubgroups(0, 0);
+        }
+
+        protected virtual void BuildSubgroups(int rowOffset, int colOffset)
+        {
             if (Board.Cells == null) return;
 
             int horizontalSubGroupCount = _rowLength / _subgroupWidth;
@@ -39,7 +44,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                     {
                         for (int verticalIdx = lowestVerticalIndex; verticalIdx < highestVerticalIndex; verticalIdx++)
                         {
-                            group.Children.Add(Board.Cells[verticalIdx, horizontalIdx]);
+                            group.Children.Add(Board.Cells[verticalIdx + rowOffset, horizontalIdx + colOffset]);
                         }
                     }
 

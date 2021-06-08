@@ -1,5 +1,4 @@
-﻿using DP1_Sudoku.BusinessLogic.Extensions;
-using DP1_Sudoku.BusinessLogic.States.CellStates;
+﻿using DP1_Sudoku.BusinessLogic.States.CellStates;
 using System.Collections.Generic;
 
 namespace DP1_Sudoku.BusinessLogic.Builders
@@ -37,66 +36,23 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
         protected override void BuildColumnGroups()
         {
-            if (_sudoku == null || _topLeftSubSudoku == null || _topRightSubSudoku == null ||
-                _bottomLeftSubSudoku == null || _bottomRightSubSudoku == null || _centerSubSudoku == null)
-                return;
-
-            List<Cell[,]> sudokus = new()
+            foreach (Cell[,] subSudoku in GetSubSudokus())
             {
-                _topLeftSubSudoku,
-                _topRightSubSudoku,
-                _bottomLeftSubSudoku,
-                _bottomRightSubSudoku,
-                _centerSubSudoku,
-            };
-
-            foreach (Cell[,] subSudoku in sudokus)
-            {
-                for (int colIdx = 0; colIdx < subSudoku.GetLength(1); colIdx++)
-                {
-                    var group = new GroupComposite();
-                    var rowCells = GetColumn(subSudoku, colIdx);
-
-                    group.Children.AddRange(rowCells);
-
-                    Board.VerticalGroups.Add(group);
-                }
+                base.BuildColumnGroups(subSudoku);
             }
         }
 
         protected override void BuildRowGroups()
         {
-            if (_sudoku == null || _topLeftSubSudoku == null || _topRightSubSudoku == null ||
-                _bottomLeftSubSudoku == null || _bottomRightSubSudoku == null || _centerSubSudoku == null)
-                return;
-
-            List<Cell[,]> sudokus = new()
+            foreach (Cell[,] subSudoku in GetSubSudokus())
             {
-                _topLeftSubSudoku,
-                _topRightSubSudoku,
-                _bottomLeftSubSudoku,
-                _bottomRightSubSudoku,
-                _centerSubSudoku,
-            };
-
-            foreach (Cell[,] subSudoku in sudokus)
-            {
-                for (int rowIdx = 0; rowIdx < subSudoku.GetLength(0); rowIdx++)
-                {
-                    var group = new GroupComposite();
-                    var rowCells = GetRow(subSudoku, rowIdx);
-
-                    group.Children.AddRange(rowCells);
-
-                    Board.HorizontalGroups.Add(group);
-                }
+                base.BuildRowGroups(subSudoku);
             }
         }
 
         protected override void BuildSubgroups()
         {
-            if (_topLeftSubSudoku == null || _topRightSubSudoku == null || _bottomLeftSubSudoku == null ||
-                _bottomRightSubSudoku == null || _centerSubSudoku == null || Board == null || Board.Cells == null)
+            if (!AreSubSudokusSet() || Board == null || Board.Cells == null)
                 return;
 
             List<OffsetData> offsets = new()
@@ -110,37 +66,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
             foreach (var sudokuOffset in offsets)
             {
-                int horizontalSubGroupCount = _rowLength / _subgroupWidth;
-                int verticalSubGroupCount = _columnLength / _subgroupHeight;
-
-                // Determine the amount of horizontal groups
-                for (int horizontalGroup = 0; horizontalGroup < horizontalSubGroupCount; horizontalGroup++)
-                {
-                    // Determine the amount of vertical groups
-                    for (int verticalGroup = 0; verticalGroup < verticalSubGroupCount; verticalGroup++)
-                    {
-                        var group = new GroupComposite();
-
-                        // Convert current horizontal group to minimum and maximum coordinates
-                        int lowestHorizontalIndex = horizontalGroup * _subgroupWidth;
-                        int highestHorizontalIndex = lowestHorizontalIndex + _subgroupWidth;
-
-                        // Convert current vertical group to minimum and maximum coordinates
-                        int lowestVerticalIndex = verticalGroup * _subgroupHeight;
-                        int highestVerticalIndex = lowestVerticalIndex + _subgroupHeight;
-
-                        // Loop over all the cells in the map and add them to the group
-                        for (int horizontalIdx = lowestHorizontalIndex; horizontalIdx < highestHorizontalIndex; horizontalIdx++)
-                        {
-                            for (int verticalIdx = lowestVerticalIndex; verticalIdx < highestVerticalIndex; verticalIdx++)
-                            {
-                                group.Children.Add(Board.Cells[verticalIdx + sudokuOffset.RowOffset, horizontalIdx + sudokuOffset.ColumnOffset]);
-                            }
-                        }
-
-                        Board.SubGroups.Add(group);
-                    }
-                }
+                base.BuildSubgroups(sudokuOffset.RowOffset, sudokuOffset.ColumnOffset);
             }
         }
 
@@ -186,6 +112,54 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             }
         }
 
+        private void SetCenterSudoku()
+        {
+            if (!AreSubSudokusSet()) return;
+
+            // Reuse corners
+            List<OffsetData> offsets = new()
+            {
+                new(_topLeftSubSudoku!, 0, 0),
+                new(_topRightSubSudoku!, 0, 6),
+                new(_bottomLeftSubSudoku!, 6, 0),
+                new(_bottomRightSubSudoku!, 6, 6)
+            };
+
+            foreach (var cornerData in offsets)
+            {
+                for (int rowIdx = cornerData.RowOffset; rowIdx < _subgroupHeight + cornerData.RowOffset; rowIdx++)
+                {
+                    for (int colIdx = cornerData.ColumnOffset; colIdx < _subgroupWidth + cornerData.ColumnOffset; colIdx++)
+                    {
+                        _centerSubSudoku![rowIdx, colIdx] = cornerData.Sudoku[rowIdx, colIdx];
+                    }
+                }
+            }
+
+            SetSubSudoku(GetCenterSudokuOffset()!);
+        }
+
+        private List<Cell[,]> GetSubSudokus()
+        {
+            if (_sudoku == null || !AreSubSudokusSet())
+                return new();
+
+            return new List<Cell[,]>()
+            {
+                _topLeftSubSudoku!,
+                _topRightSubSudoku!,
+                _bottomLeftSubSudoku!,
+                _bottomRightSubSudoku!,
+                _centerSubSudoku!,
+            };
+        }
+
+        private bool AreSubSudokusSet()
+        {
+            return _topLeftSubSudoku != null && _topRightSubSudoku != null &&
+                 _bottomLeftSubSudoku != null && _bottomRightSubSudoku != null && _centerSubSudoku != null;
+        }
+
         private void SetSubSudoku(OffsetData offsetData) => SetSubSudoku(offsetData.Sudoku, offsetData.RowOffset, offsetData.ColumnOffset);
 
         private void SetSubSudoku(Cell[,]? subSudoku, int rowOffset, int colOffset)
@@ -202,38 +176,12 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             }
         }
 
+        #region Helpers
         private OffsetData? GetTopLeftSudokuOffset() => _topLeftSubSudoku != null ? new(_topLeftSubSudoku, 0, 0) : null;
         private OffsetData? GetTopRightSudokuOffset() => _topRightSubSudoku != null ? new(_topRightSubSudoku, 0, _rowLength + _spaceBetweenSubSudokus) : null;
         private OffsetData? GetBottomLeftSudokuOffset() => _bottomLeftSubSudoku != null ? new(_bottomLeftSubSudoku, _columnLength + _spaceBetweenSubSudokus, 0) : null;
         private OffsetData? GetBottomRightSudokuOffset() => _bottomRightSubSudoku != null ? new(_bottomRightSubSudoku, _columnLength + _spaceBetweenSubSudokus, _rowLength + _spaceBetweenSubSudokus) : null;
         private OffsetData? GetCenterSudokuOffset() => _centerSubSudoku != null ? new(_centerSubSudoku, _subgroupWidth * 2, _subgroupHeight * 2) : null;
-
-        private void SetCenterSudoku()
-        {
-            if (_topLeftSubSudoku == null || _topRightSubSudoku == null || _bottomLeftSubSudoku == null || _bottomRightSubSudoku == null || _centerSubSudoku == null) return;
-
-            // Reuse corners
-            List<OffsetData> offsets = new()
-            {
-                new(_topLeftSubSudoku, 0, 0),
-                new(_topRightSubSudoku, 0, 6),
-                new(_bottomLeftSubSudoku, 6, 0),
-                new(_bottomRightSubSudoku, 6, 6)
-            };
-
-            foreach (var cornerData in offsets)
-            {
-                for (int rowIdx = cornerData.RowOffset; rowIdx < _subgroupHeight + cornerData.RowOffset; rowIdx++)
-                {
-                    for (int colIdx = cornerData.ColumnOffset; colIdx < _subgroupWidth + cornerData.ColumnOffset; colIdx++)
-                    {
-                        _centerSubSudoku[rowIdx, colIdx] = cornerData.Sudoku[rowIdx, colIdx];
-                    }
-                }
-            }
-
-            SetSubSudoku(GetCenterSudokuOffset()!);
-        }
 
         private class OffsetData
         {
@@ -248,5 +196,6 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 this.ColumnOffset = colOffset;
             }
         };
+        #endregion Helpers
     }
 }

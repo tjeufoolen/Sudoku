@@ -64,23 +64,34 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
         protected virtual void BuildRowGroups()
         {
-            for (int row = 0; row < Board.Cells?.GetLength(0); row++)
+            if (Board == null || Board.Cells == null) return;
+            BuildRowGroups(Board.Cells);
+        }
+
+        protected virtual void BuildRowGroups(Cell[,] cells)
+        {
+            for (int row = 0; row < cells.GetLength(0); row++)
             {
                 var group = new GroupComposite();
-                var rowCells = GetRow(Board.Cells, row);
+                var rowCells = GetRow(cells, row);
 
                 group.Children.AddRange(rowCells);
 
                 Board.HorizontalGroups.Add(group);
             }
         }
-
         protected virtual void BuildColumnGroups()
         {
-            for (int column = 0; column < Board.Cells?.GetLength(1); column++)
+            if (Board == null || Board.Cells == null) return;
+            BuildColumnGroups(Board.Cells);
+        }
+
+        protected virtual void BuildColumnGroups(Cell[,] cells)
+        {
+            for (int column = 0; column < cells.GetLength(1); column++)
             {
                 var group = new GroupComposite();
-                var columnCells = GetColumn(Board.Cells, column);
+                var columnCells = GetColumn(cells, column);
 
                 group.Children.AddRange(columnCells);
 
