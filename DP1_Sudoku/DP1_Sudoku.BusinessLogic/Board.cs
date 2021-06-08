@@ -3,6 +3,7 @@ using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic
 {
@@ -19,8 +20,10 @@ namespace DP1_Sudoku.BusinessLogic
 
         public void Solve()
         {
-            bool? temp = SolveStrategy?.SolveBoard(this);
-            Console.WriteLine($"SOLVE RESULT: {temp}");
+            if (SolveStrategy != null)
+            {
+                SolveStrategy.SolveBoard(this);
+            }
         }
 
         public void Accept(IVisitor visitor)
@@ -42,7 +45,14 @@ namespace DP1_Sudoku.BusinessLogic
             VerifyBoard();
             if (Cells == null) return true;
 
-            bool boardIsValid = Cells.Cast<Cell>().All(x => x.IsValid);
+            bool boardIsValid = true;
+            for (int row = 0; row < Cells.GetLength(0); row++)
+            {
+                for (int column = 0; column < Cells.GetLength(1); column++)
+                {
+                    if (!(Cells[row, column].IsValid)) boardIsValid = false;
+                }
+            }
 
             return boardIsValid;
         }
