@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DP1_Sudoku.Tests.States
 {
-    public class FilledCellStateTests
+    public class InvalidCellStateTests
     {
         private Cell _cell;
-        private FilledCellState _state;
+        private InvalidCellState _state;
 
 
         [SetUp]
@@ -38,13 +38,13 @@ namespace DP1_Sudoku.Tests.States
         }
 
         [Test]
-        public void Get_IsValid_ShouldBeTrue()
+        public void Get_IsValid_ShouldBeFalse()
         {
             // Act
             bool actual = _state.IsValid;
 
             // Assert
-            Assert.IsTrue(actual);
+            Assert.IsFalse(actual);
         }
 
         [Test]

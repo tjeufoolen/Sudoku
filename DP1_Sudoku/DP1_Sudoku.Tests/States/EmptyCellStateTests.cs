@@ -38,6 +38,26 @@ namespace DP1_Sudoku.Tests.States
         }
 
         [Test]
+        public void Get_IsValid_ShouldBeTrue()
+        {
+            // Act
+            bool actual = _state.IsValid;
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+
+        [Test]
+        public void Get_Validate_ShouldBeFalse()
+        {
+            // Act
+            bool actual = _state.Validate();
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+
+        [Test]
         public void Set_InvalidCellValue_ShouldNotBePossible()
         {
             // Act
