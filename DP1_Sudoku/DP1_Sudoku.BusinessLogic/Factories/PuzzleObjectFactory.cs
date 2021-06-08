@@ -14,34 +14,19 @@ namespace DP1_Sudoku.BusinessLogic
                 _loadingStrategies.AddRange(loadingStrategies);
         }
 
-        public async Task<List<PuzzleObject>> LoadAll()
-        {
-            List<PuzzleObject> puzzles = new();
-
-            foreach (var strategy in _loadingStrategies)
-            {
-                puzzles.AddRange(await strategy.GetPuzzles());
-            }
-
-            return puzzles;
-        }
-
-        public async Task<List<PuzzleObject>> Load(IPuzzleLoadingStrategy loadingStrategy)
-        {
-            return await loadingStrategy.GetPuzzles();
-        }
-
-        public void AddLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy)
+        public bool AddLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy)
         {
             if (!_loadingStrategies.Contains(loadingStrategy))
             {
                 _loadingStrategies.Add(loadingStrategy);
+                return true;
             }
+            return false;
         }
 
-        public void RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy)
+        public bool RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy)
         {
-            _loadingStrategies.Remove(loadingStrategy);
+            return _loadingStrategies.Remove(loadingStrategy);
         }
 
         public async Task<PuzzleObject?> LoadPuzzle(string name, string extension)
@@ -55,6 +40,18 @@ namespace DP1_Sudoku.BusinessLogic
             }
 
             return puzzle;
+        }
+
+        public async Task<List<PuzzleObject>> LoadAll()
+        {
+            List<PuzzleObject> puzzles = new();
+
+            foreach (var strategy in _loadingStrategies)
+            {
+                puzzles.AddRange(await strategy.GetPuzzles());
+            }
+
+            return puzzles;
         }
     }
 }
