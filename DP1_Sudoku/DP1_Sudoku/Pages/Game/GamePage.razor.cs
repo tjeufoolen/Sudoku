@@ -2,6 +2,7 @@ using DP1_Sudoku.BusinessLogic;
 using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies;
+using DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies;
 using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
@@ -66,6 +67,9 @@ namespace DP1_Sudoku.Pages.Game
             string[] lines = await puzzleObject.GetPuzzleString();
 
             _board = BoardFactory.GetInstance().CreateBoard(extension, lines);
+
+            if (_board != null)
+                _board.SolveStrategy = new BackTrackSolveStrategy();
         }
 
         private void ToggleShowAuxiliaryNumbers()
@@ -92,6 +96,12 @@ namespace DP1_Sudoku.Pages.Game
         {
             if (_board == null) return;
             _boardCompleted = _board.Validate();
+        }
+
+        private void AutoSolve()
+        {
+            if (_board == null) return;
+            _board.Solve();
         }
     }
 

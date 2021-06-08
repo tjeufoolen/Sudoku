@@ -3,12 +3,13 @@ using DP1_Sudoku.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic
 {
     public class Board : IBoard
     {
-        public ISolveStrategy? SolveStrategy { private get; set; }
+        public ISolveStrategy? SolveStrategy { get; set; }
 
         public Cell[,]? Cells { get; set; }
         public IList<GroupComposite> SubGroups { get; set; } = new List<GroupComposite>();
@@ -19,7 +20,10 @@ namespace DP1_Sudoku.BusinessLogic
 
         public void Solve()
         {
-            SolveStrategy?.SolveBoard(this);
+            if (SolveStrategy != null)
+            {
+                SolveStrategy.SolveBoard(this);
+            }
         }
 
         public void Accept(IVisitor visitor)
@@ -30,6 +34,27 @@ namespace DP1_Sudoku.BusinessLogic
         public bool Validate()
         {
             return ValidateGroups();
+        }
+
+        /// <summary>
+        /// Checks if there are any conflicting cells on the board, ignores empty cells
+        /// </summary>
+        /// <returns></returns>
+        public bool IsBoardCorrect()
+        {
+            VerifyBoard();
+            if (Cells == null) return true;
+
+            bool boardIsValid = true;
+            for (int row = 0; row < Cells.GetLength(0); row++)
+            {
+                for (int column = 0; column < Cells.GetLength(1); column++)
+                {
+                    if (!(Cells[row, column].IsValid)) boardIsValid = false;
+                }
+            }
+
+            return boardIsValid;
         }
 
         /// <summary>

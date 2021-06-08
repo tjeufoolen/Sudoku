@@ -48,7 +48,7 @@ namespace DP1_Sudoku.Tests.Strategies
         public async Task Get_Puzzles_ShouldEqualAmountOfPuzzleObjects()
         {
             // Arrange
-            int amount = 15;
+            int amount = 16;
 
             // Act
             var actual = await _strategy.GetPuzzles();
