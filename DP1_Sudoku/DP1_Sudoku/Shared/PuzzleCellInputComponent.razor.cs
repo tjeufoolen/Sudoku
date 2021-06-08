@@ -6,6 +6,7 @@ namespace DP1_Sudoku.Shared
 {
     public partial class PuzzleCellInputComponent
     {
+        [Parameter] public int? MaxValidCellValue { get; set; }
         [Parameter] public ICellValueStrategy? ValueStrategy { get; set; }
         [Parameter] public EventCallback<ICellValueStrategy?> ValueStrategyChanged { get; set; }
         [Parameter] public EventCallback<int> ValueChanged { get; set; }

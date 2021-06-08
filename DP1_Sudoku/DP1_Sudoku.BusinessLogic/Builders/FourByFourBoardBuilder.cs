@@ -8,6 +8,7 @@
             _columnLength = 4;
             _subgroupHeight = 2;
             _subgroupWidth = 2;
+            _maxValidCellValue = 4;
         }
     }
 }
