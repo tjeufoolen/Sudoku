@@ -24,6 +24,7 @@ namespace DP1_Sudoku.Pages.Game
         private readonly PuzzleDisplaySettings _puzzleDisplaySettings = new();
 
         private ICellValueStrategy _valueStrategy = new CellValueStrategy();
+        private int? _currentInputValue;
 
         private bool _boardCompleted = false;
 
@@ -133,6 +134,8 @@ namespace DP1_Sudoku.Pages.Game
                 _isSolving = false;
             }
         }
+
+        private void SelectedCellChanged(int? input) => _currentInputValue = input;
     }
 
     public class PuzzleDisplaySettings
