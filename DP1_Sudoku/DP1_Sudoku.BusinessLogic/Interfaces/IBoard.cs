@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Interfaces
 {
@@ -13,6 +14,6 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
         bool IsBoardCorrect();
         public bool ValidateGroups();
         void VerifyBoard();
-        void Solve();
+        Task Solve(Task viewUpdate);
     }
 }

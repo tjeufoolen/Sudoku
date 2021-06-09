@@ -1,4 +1,5 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
 {
@@ -6,7 +7,7 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
     {
         //private static int tryCounter = 0;
         //private static int depthCounter = 0;
-        public bool SolveBoard(IBoard board)
+        public async Task<bool> SolveBoard(IBoard board, Task? viewUpdate)
         {
             if (board.Cells != null)
             {
@@ -21,7 +22,10 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
                             //Console.WriteLine($"Attempting setting value '{number} (#{tryCounter++} times) (callDepth: {depthCounter})");
                             firstAvailableCell.SetValue(number);
 
-                            if (SolveBoard(board)) return true;
+                            if (viewUpdate != null)
+                                await viewUpdate;
+
+                            if (await SolveBoard(board, viewUpdate)) return true;
                             else firstAvailableCell.SetValue(0);
                         }
                     }

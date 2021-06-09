@@ -1,5 +1,5 @@
 ﻿@page "/game/{extension}/{name}"
-
+@implements IDisposable
 
 <div class="container mw-100">
     @if (_board != null)
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-12 col-xl-6 mt-3 mt-xl-0">
 
-                <PuzzleCellInputComponent @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)" MaxValidCellValue="_board.MaxValidCellValue"></PuzzleCellInputComponent>
+                <PuzzleCellInputComponent IsDisabled="@_isSolving" @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)" MaxValidCellValue="_board.MaxValidCellValue"></PuzzleCellInputComponent>
 
                     <div class="thin-border mb-3 p-3">
                         <h4>Display</h4>
@@ -40,7 +40,18 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <button @onclick="AutoSolve" class="btn btn-secondary w-100 mb-3">Automatically solve</button>
+                            <button @onclick="AutoSolve" class="btn btn-secondary w-100 mb-3">
+                                @if (_isSolving)
+                                {
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    <span class="sr-only">Solving...</span>
+                                }
+                                else
+                                {
+                                    <span>Automatically solve</span>
+                                }
+                                    @*<span>Automatically solve</span>*@
+                            </button>
                         </div>
                         <div class="col-6">
                             <button @onclick="CheckBoard" class="btn btn-primary w-100">Check</button>
