@@ -11,13 +11,16 @@ namespace DP1_Sudoku.Shared
         [Parameter] public EventCallback<ICellValueStrategy?> ValueStrategyChanged { get; set; }
         [Parameter] public EventCallback<int> ValueChanged { get; set; }
         [Parameter] public bool? IsDisabled { get; set; }
+        [Parameter] public int? InputValue { get; set; }
+
         private ICellValueStrategy? _valueStrategy;
-        private int _value;
+        private int? _value;
         private EditMode _currentEditMode = EditMode.Final;
 
         protected override void OnParametersSet()
         {
             _valueStrategy = ValueStrategy;
+            _value = InputValue;
             base.OnParametersSet();
         }
 
@@ -43,7 +46,7 @@ namespace DP1_Sudoku.Shared
             _value = parsedValue;
         }
 
-        private void EnterValue() => ValueChanged.InvokeAsync(_value);
+        private void EnterValue() => ValueChanged.InvokeAsync(_value.GetValueOrDefault(0));
     }
 
 

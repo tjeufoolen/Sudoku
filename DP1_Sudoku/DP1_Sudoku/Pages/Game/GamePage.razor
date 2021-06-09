@@ -13,13 +13,13 @@
                 <div class="col-12 col-xl-6">
                     <div class="d-flex">
                         <CascadingValue Value="_puzzleDisplaySettings">
-                            <PuzzleComponent @ref="_puzzle" Board="@_board"></PuzzleComponent>
+                            <PuzzleComponent @ref="_puzzle" Board="@_board" CurrentlySelectedCellChanged="(e) => SelectedCellChanged(e.CurrentValue)"></PuzzleComponent>
                         </CascadingValue>
                     </div>
                 </div>
                 <div class="col-12 col-xl-6 mt-3 mt-xl-0">
 
-                    <PuzzleCellInputComponent IsDisabled="@_isSolving" @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)" MaxValidCellValue="_board.MaxValidCellValue"></PuzzleCellInputComponent>
+                    <PuzzleCellInputComponent InputValue="@_currentInputValue" IsDisabled="@_isSolving" @bind-ValueStrategy="_valueStrategy" ValueChanged="(e) => SetCellValue(e)" MaxValidCellValue="_board.MaxValidCellValue"></PuzzleCellInputComponent>
 
                     <div class="thin-border mb-3 p-3">
                         <h4>Display</h4>
@@ -39,11 +39,8 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-6">
                             <button @onclick="ClearBoard" class="btn btn-warning w-100">Clear</button>
-                        </div>
-                        <div class="col-3">
-                            <button @onclick="CheckBoard" class="btn btn-primary w-100">Check</button>
                         </div>
                         <div class="col-6">
                             <button @onclick="AutoSolve" class="btn btn-secondary w-100 mb-3">

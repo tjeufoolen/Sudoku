@@ -8,7 +8,7 @@
             }
             else
             {
-                <input type="number" class="form-control" id="cell-value" min="1" max="@MaxValidCellValue" @onchange="(e) => InputHasChanged((string?) e.Value)" />
+                <input type="number" class="form-control" id="cell-value" min="1" max="@MaxValidCellValue" value="@_value" @onchange="(e) => InputHasChanged((string?) e.Value)" />
             }
             <label for="cell-value">Please specify a number between 0 and @(MaxValidCellValue + 1)</label>
         </div>
