@@ -5,6 +5,8 @@ using DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies;
 using DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies;
 using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DP1_Sudoku.Pages.Game
@@ -18,11 +20,14 @@ namespace DP1_Sudoku.Pages.Game
 
         private IBoard? _board;
         private PuzzleComponent? _puzzle;
-        private PuzzleDisplaySettings _puzzleDisplaySettings = new();
+        private readonly PuzzleDisplaySettings _puzzleDisplaySettings = new();
 
         private ICellValueStrategy _valueStrategy = new CellValueStrategy();
 
         private bool _boardCompleted = false;
+
+        private bool _isSolving = false;
+        private Timer? _timer;
 
         protected override async Task OnParametersSetAsync()
         {
@@ -59,6 +64,12 @@ namespace DP1_Sudoku.Pages.Game
 
             // Call base
             await base.OnParametersSetAsync();
+        }
+
+        void IDisposable.Dispose()
+        {
+            _timer?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         private async Task InitPuzzle(PuzzleObject puzzleObject)
@@ -98,10 +109,19 @@ namespace DP1_Sudoku.Pages.Game
             _boardCompleted = _board.Validate();
         }
 
-        private void AutoSolve()
+        private async Task AutoSolve()
         {
             if (_board == null) return;
-            _board.Solve();
+            if (!_isSolving)
+            {
+                _isSolving = true;
+
+                _timer = new(_ => InvokeAsync(StateHasChanged), null, 500, 100);
+                await Task.Run(async () => await _board.Solve(InvokeAsync(StateHasChanged)));
+                await _timer.DisposeAsync();
+
+                _isSolving = false;
+            }
         }
     }
 

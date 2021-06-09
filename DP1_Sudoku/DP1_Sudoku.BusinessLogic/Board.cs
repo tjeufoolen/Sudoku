@@ -17,11 +17,11 @@ namespace DP1_Sudoku.BusinessLogic
 
         public int MaxValidCellValue { get => (Cells != null) ? Cells.Cast<Cell>().Max(c => c.MaxValidValue) : 0; }
 
-        public void Solve()
+        public async Task Solve(Task onCellValueUpdate)
         {
             if (SolveStrategy != null)
             {
-                SolveStrategy.SolveBoard(this);
+                await SolveStrategy.SolveBoard(this, onCellValueUpdate);
             }
         }
 
