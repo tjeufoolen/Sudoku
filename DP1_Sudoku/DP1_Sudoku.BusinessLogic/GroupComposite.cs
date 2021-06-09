@@ -32,5 +32,10 @@ namespace DP1_Sudoku.BusinessLogic
             if (component == null || component is not GroupComposite otherAsGroup) return false;
             return otherAsGroup == this;
         }
+
+        public bool Contains(IGridComponent component)
+        {
+            return Children.Contains(component);
+        }
     }
 }
