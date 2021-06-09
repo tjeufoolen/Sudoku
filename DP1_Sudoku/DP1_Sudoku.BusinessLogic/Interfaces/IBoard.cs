@@ -7,6 +7,7 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
     {
         Cell[,]? Cells { get; set; }
         int MaxValidCellValue { get; }
+        bool IsEveryCellFilled { get; }
 
         IList<IGridComponent> SubGroups { get; set; }
         IList<IGridComponent> HorizontalGroups { get; set; }

@@ -98,10 +98,12 @@ namespace DP1_Sudoku.Pages.Game
         private void SetCellValue(int value)
         {
             Cell? selectedCell = _puzzle?.SelectedCellComponent?.Cell;
-            if (selectedCell != null)
+            if (selectedCell != null && _board != null)
             {
                 _valueStrategy?.SetValue(selectedCell, value);
-                _board?.VerifyBoard();
+                _board.VerifyBoard();
+                _currentInputValue = selectedCell.CurrentValue;
+                if (_board.IsEveryCellFilled) CheckBoard();
             }
         }
 

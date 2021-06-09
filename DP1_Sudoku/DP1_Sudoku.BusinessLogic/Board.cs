@@ -10,6 +10,7 @@ namespace DP1_Sudoku.BusinessLogic
     {
         public Cell[,]? Cells { get; set; }
         public int MaxValidCellValue { get => (Cells != null) ? Cells.Cast<Cell>().Max(c => c.MaxValidValue) : 0; }
+        public bool IsEveryCellFilled { get => (Cells != null) ? Cells.Cast<Cell>().All(c => c.CurrentValue != null) : false; }
 
         public IList<IGridComponent> SubGroups { get; set; } = new List<IGridComponent>();
         public IList<IGridComponent> HorizontalGroups { get; set; } = new List<IGridComponent>();
