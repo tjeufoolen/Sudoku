@@ -6,14 +6,14 @@ using NUnit.Framework;
 
 namespace DP1_Sudoku.Tests.Strategies
 {
-    public class AuxiliaryCellValueStrategyTests
+    public class HelpCellValueStrategyTests
     {
         private ICellValueStrategy _strategy;
 
         [SetUp]
         public void Setup()
         {
-            _strategy = new AuxiliaryCellValueStrategy();
+            _strategy = new HelpCellValueStrategy();
         }
 
         [Test]

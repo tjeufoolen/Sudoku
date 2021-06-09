@@ -336,11 +336,11 @@
       <FileName>Extensions\IntExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies.AuxiliaryCellValueStrategy" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies.HelpCellValueStrategy" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="15.5" Y="15.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Strategies\CellValueStrategies\AuxiliaryCellValueStrategy.cs</FileName>
+      <FileName>Strategies\CellValueStrategies\HelpCellValueStrategy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>

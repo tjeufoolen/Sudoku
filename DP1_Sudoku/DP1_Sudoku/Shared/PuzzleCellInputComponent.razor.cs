@@ -25,8 +25,8 @@ namespace DP1_Sudoku.Shared
         {
             if (_currentEditMode == EditMode.Final)
             {
-                _currentEditMode = EditMode.Auxiliary;
-                _valueStrategy = new AuxiliaryCellValueStrategy();
+                _currentEditMode = EditMode.Help;
+                _valueStrategy = new HelpCellValueStrategy();
             }
             else
             {
@@ -49,7 +49,7 @@ namespace DP1_Sudoku.Shared
 
     public enum EditMode
     {
-        Auxiliary,
+        Help,
         Final
     }
 }
