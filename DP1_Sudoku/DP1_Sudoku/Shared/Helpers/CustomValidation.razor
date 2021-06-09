@@ -1,0 +1,12 @@
+﻿@typeparam TValue
+@implements IDisposable
+
+@if(EditContext != null)
+{
+    @foreach (var message in EditContext.GetValidationMessages(_fieldIdentifier))
+    {
+        <div class="@Class invalid-feedback d-block text-danger py-1">
+            @message
+        </div>
+    }
+}

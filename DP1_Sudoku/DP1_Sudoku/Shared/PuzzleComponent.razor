@@ -1,0 +1,19 @@
+﻿<CascadingValue Value="this">
+    @if (Board != null && Board.Cells != null)
+    {
+        <div class="puzzle-container">
+            <div class="puzzle">
+                @for (var rowIdx = 0; rowIdx < Board.Cells.GetLength(0); rowIdx++)
+                {
+
+                    <div class="puzzle-row">
+                        @for (var cellIdx = 0; cellIdx < Board.Cells.GetLength(1); cellIdx++)
+                        {
+                            <PuzzleCellComponent @bind-Cell="Board.Cells[rowIdx, cellIdx]" />
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</CascadingValue>

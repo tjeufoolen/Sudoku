@@ -1,0 +1,20 @@
+// Spacings
+$default-spacing: 20px;
+
+.spacing { padding: $default-spacing; }
+.spacing-top { padding-top: $default-spacing; }
+.spacing-right { padding-right: $default-spacing; }
+.spacing-bottom { padding-bottom: $default-spacing; }
+.spacing-left { padding-left: $default-spacing; }
+
+// Borders
+$default-border-radius: 10px;
+
+.border-radius {
+    border-radius: 10px;
+}
+
+// Max width
+.mw-100 {
+    max-width: 100% !important;
+}

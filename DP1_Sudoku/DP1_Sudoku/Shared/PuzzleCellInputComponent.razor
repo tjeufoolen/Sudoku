@@ -1,0 +1,35 @@
+﻿<div class="thin-border mb-3 p-3">
+    <h3>Selected Cell</h3>
+    <form onsubmit="return false">
+        <div class="form-floating mb-3">
+            @if (IsDisabled == true)
+            {
+                <input type="number" class="form-control" id="cell-value" disabled />
+            }
+            else
+            {
+                <input type="number" class="form-control" id="cell-value" min="1" max="@MaxValidCellValue" value="@_value" @onchange="(e) => InputHasChanged((string?) e.Value)" />
+            }
+            <label for="cell-value">Please specify a number between 0 and @(MaxValidCellValue + 1)</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 @(IsDisabled == true ? "disabled" : "")" @onclick="EnterValue">Submit</button>
+    </form>
+
+    <hr />
+
+    <h4 class="mb-0">Editor mode</h4>
+    <span class="fst-italic small d-block mb-3">Specify which type of number you would like to modify.</span>
+
+    <div class="form-check">
+        <input class="form-check-input" name="edit-mode" type="radio" id="help-numbers-edit-mode" @onchange="SwitchEditMode">
+        <label class="form-check-label" for="help-numbers-edit-mode">
+            Help numbers
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="edit-mode" type="radio" id="final-numbers-edit-mode" @onchange="SwitchEditMode" checked>
+        <label class="form-check-label" for="final-numbers-edit-mode">
+            Final numbers
+        </label>
+    </div>
+</div>

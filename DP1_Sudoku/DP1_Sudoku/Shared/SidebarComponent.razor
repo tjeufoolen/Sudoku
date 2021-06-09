@@ -1,0 +1,27 @@
+﻿<div class="sidebar @VisibilityClassList">
+    <div class="row games p-3">
+        <h2>Games</h2>
+        @if (_puzzles.Count != 0)
+        {
+            @foreach (var types in _puzzles.GroupBy(x => x.FileExtension))
+            {
+                <div class="game-type">
+                    <h3>@types.Key</h3>
+                    <ul>
+                        @foreach (var puzzle in types)
+                        {
+                            <li><a @onclick="(() => NavigateToGame(puzzle.Name, puzzle.FileExtension))">@puzzle.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+    </div>
+
+    <!-- data-bs-target is linked to AddGameModal identifier -->
+    <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addGameModal">
+        Add new game
+    </button>-->
+</div>
+
+<AddGameModalComponent></AddGameModalComponent>

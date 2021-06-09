@@ -1,0 +1,7 @@
+﻿@if (Cell != null)
+{
+    <div class="puzzle-cell @(DisplayInvalidColor() ? "invalid" : "") @(IsBlocked ? "blocked" : "") @(IsSelected ? "active" : "") @(Cell.IsSelectable ? "selectable" : "") @BorderClassList()" @onclick="Select">
+        <span class="help-numbers @(ShowHelpNumbers() ? "" : "d-none")">@String.Join("", Cell.HelpNumbers.OrderBy(x => x))</span>
+        <span class="final-number">@Cell.CurrentValue</span>
+    </div>
+}

@@ -1,15 +1,14 @@
-using DP1_Sudoku.Data;
+using DP1_Sudoku.BusinessLogic;
+using DP1_Sudoku.BusinessLogic.Builders;
+using DP1_Sudoku.BusinessLogic.Factories;
+using DP1_Sudoku.BusinessLogic.Interfaces;
+using DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DP1_Sudoku
 {
@@ -28,8 +27,11 @@ namespace DP1_Sudoku
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+
+            RegisterPuzzleFetchingStrategies(services);
+            RegisterBoardBuilders();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -55,6 +57,25 @@ namespace DP1_Sudoku
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+        }
+
+        private static void RegisterPuzzleFetchingStrategies(IServiceCollection services)
+        {
+            services.AddSingleton<IPuzzleObjectFactory>(serviceProvider => new PuzzleObjectFactory(
+                loadingStrategies: new List<IPuzzleLoadingStrategy>
+                {
+                    new LocalPuzzleStrategy()
+                }
+            ));
+        }
+
+        private static void RegisterBoardBuilders()
+        {
+            BoardFactory.GetInstance().AddBoardType("4x4", typeof(FourByFourBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("6x6", typeof(SixBySixBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("9x9", typeof(NineByNineBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("samurai", typeof(SamuraiBoardBuilder));
+            BoardFactory.GetInstance().AddBoardType("jigsaw", typeof(JigsawBoardBuilder));
         }
     }
 }

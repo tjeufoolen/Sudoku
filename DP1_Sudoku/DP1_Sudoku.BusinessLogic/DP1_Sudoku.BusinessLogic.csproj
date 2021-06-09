@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Puzzles\puzzle.4x4" />
+    <None Remove="Resources\Puzzles\puzzle.6x6" />
+    <None Remove="Resources\Puzzles\puzzle.9x9" />
+    <None Remove="Resources\Puzzles\puzzle.jigsaw" />
+    <None Remove="Resources\Puzzles\puzzle.samurai" />
+    <None Remove="Resources\Puzzles\puzzle2.4x4" />
+    <None Remove="Resources\Puzzles\puzzle2.9x9" />
+    <None Remove="Resources\Puzzles\puzzle2.jigsaw" />
+    <None Remove="Resources\Puzzles\puzzle2.samurai" />
+    <None Remove="Resources\Puzzles\puzzle3.4x4" />
+    <None Remove="Resources\Puzzles\puzzle3.9x9" />
+    <None Remove="Resources\Puzzles\puzzle3.jigsaw" />
+    <None Remove="Resources\Puzzles\puzzle3.samurai" />
+    <None Remove="Resources\Puzzles\QuickPuzzle.9x9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle.4x4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle.6x6">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle.9x9">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle.jigsaw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle.samurai">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle2.4x4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle2.9x9">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle2.jigsaw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle2.samurai">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle3.4x4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle3.9x9">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle3.jigsaw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\puzzle3.samurai">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Puzzles\QuickPuzzle.9x9">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

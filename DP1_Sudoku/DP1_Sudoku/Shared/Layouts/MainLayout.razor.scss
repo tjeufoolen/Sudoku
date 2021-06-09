@@ -1,0 +1,24 @@
+.navbar {
+    border: 2px solid black;
+    position: relative;
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .toggle-sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 0 30px;
+        border: none;
+        background: black;
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+main {
+    flex-grow: 1;
+}
