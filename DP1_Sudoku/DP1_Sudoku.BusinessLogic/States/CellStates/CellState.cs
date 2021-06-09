@@ -3,6 +3,7 @@
     public abstract class CellState
     {
         protected Cell Cell { get; set; }
+
         public virtual bool IsSelectable { get; protected set; }
         public virtual bool IsDrawable { get; protected set; }
         public virtual bool IsValid { get; protected set; }
@@ -13,9 +14,6 @@
         }
 
         public abstract bool SetValue(int value);
-
-        public abstract bool Validate();
-
 
         public virtual bool ToggleHelpNumber(int value)
         {
@@ -31,6 +29,10 @@
             return false;
         }
 
+        public abstract bool Validate();
+
+        #region Helpers
         protected bool IsValidValue(int value) => value >= 0 && value <= Cell.MaxValidValue;
+        #endregion Helpers
     }
 }

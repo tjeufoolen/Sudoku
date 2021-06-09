@@ -7,30 +7,28 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
     {
         public async Task<bool> SolveBoard(IBoard board, Task? onCellValueUpdate)
         {
-            if (board.Cells != null)
+            if (board.Cells == null) return false;
+
+            Cell? firstAvailableCell = GetAvailableCell(board.Cells);
+            if (firstAvailableCell != null)
             {
-                Cell? firstAvailableCell = GetAvailableCell(board.Cells);
-
-                if (firstAvailableCell != null)
+                for (int number = 1; number <= board.MaxValidCellValue; number++)
                 {
-                    for (int number = 1; number <= board.MaxValidCellValue; number++)
+                    if (board.IsBoardCorrect())
                     {
-                        if (board.IsBoardCorrect())
-                        {
-                            firstAvailableCell.SetValue(number);
-                            if (onCellValueUpdate != null) await onCellValueUpdate;
+                        firstAvailableCell.SetValue(number);
+                        if (onCellValueUpdate != null) await onCellValueUpdate;
 
-                            if (await SolveBoard(board, onCellValueUpdate)) return true;
-                            else firstAvailableCell.SetValue(0);
-                        }
+                        if (await SolveBoard(board, onCellValueUpdate)) return true;
+                        else firstAvailableCell.SetValue(0);
                     }
-                    return false;
                 }
-                return board.IsBoardCorrect();
+                return false;
             }
-            return true;
+            return board.IsBoardCorrect();
         }
 
+        #region Helpers
         private static Cell? GetAvailableCell(Cell[,] cells)
         {
             for (int row = 0; row < cells.GetLength(0); row++)
@@ -39,13 +37,11 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
                 {
                     Cell cell = cells[row, column];
 
-                    if (cell.IsSelectable && cell.CurrentValue == null)
-                    {
-                        return cell;
-                    }
+                    if (cell.IsSelectable && cell.CurrentValue == null) return cell;
                 }
             }
             return null;
         }
+        # endregion Helpers
     }
 }

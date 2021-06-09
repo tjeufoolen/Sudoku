@@ -7,7 +7,8 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
     {
         bool AddBoardType(string extension, Type builder);
         bool RemoveBoardType(string extension);
+        void ClearBoardTypes();
+
         IBoard? CreateBoard(string extension, IList<string> lines);
-        void RemoveAll();
     }
 }

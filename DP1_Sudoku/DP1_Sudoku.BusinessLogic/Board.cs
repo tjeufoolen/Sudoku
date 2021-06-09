@@ -1,6 +1,5 @@
 ﻿using DP1_Sudoku.BusinessLogic.Extensions;
 using DP1_Sudoku.BusinessLogic.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,32 +8,14 @@ namespace DP1_Sudoku.BusinessLogic
 {
     public class Board : IBoard
     {
-        public ISolveStrategy? SolveStrategy { get; set; }
-
         public Cell[,]? Cells { get; set; }
+        public int MaxValidCellValue { get => (Cells != null) ? Cells.Cast<Cell>().Max(c => c.MaxValidValue) : 0; }
+
         public IList<IGridComponent> SubGroups { get; set; } = new List<IGridComponent>();
         public IList<IGridComponent> HorizontalGroups { get; set; } = new List<IGridComponent>();
         public IList<IGridComponent> VerticalGroups { get; set; } = new List<IGridComponent>();
 
-        public int MaxValidCellValue { get => (Cells != null) ? Cells.Cast<Cell>().Max(c => c.MaxValidValue) : 0; }
-
-        public async Task Solve(Task onCellValueUpdate)
-        {
-            if (SolveStrategy != null)
-            {
-                await SolveStrategy.SolveBoard(this, onCellValueUpdate);
-            }
-        }
-
-        public void Accept(IVisitor visitor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Validate()
-        {
-            return ValidateGroups();
-        }
+        public ISolveStrategy? SolveStrategy { get; set; }
 
         /// <summary>
         /// Checks if there are any conflicting cells on the board, ignores empty cells
@@ -79,6 +60,16 @@ namespace DP1_Sudoku.BusinessLogic
                 VerticalGroups.All(verticalGroup => verticalGroup.Validate());
         }
 
+        public async Task Solve(Task onCellValueUpdate)
+        {
+            if (SolveStrategy != null) await SolveStrategy.SolveBoard(this, onCellValueUpdate);
+        }
+
+        #region GridComponent
+        public void Accept(IVisitor visitor) => visitor.Visit(this);
+
+        public bool Validate() => ValidateGroups();
+
         public bool IsEqualTo(IGridComponent component)
         {
             if (component == null || component is not Board otherAsBoard) return false;
@@ -92,5 +83,6 @@ namespace DP1_Sudoku.BusinessLogic
             if (VerticalGroups.Contains(component)) return true;
             return false;
         }
+        #endregion GridComponent
     }
 }

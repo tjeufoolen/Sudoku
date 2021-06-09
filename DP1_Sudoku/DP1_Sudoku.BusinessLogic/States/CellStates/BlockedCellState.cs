@@ -5,7 +5,7 @@
         public override bool IsSelectable { get; protected set; } = false;
         public override bool IsDrawable { get; protected set; } = false;
         public override bool IsValid { get; protected set; } = true;
-        
+
         public BlockedCellState(Cell cell) : base(cell)
         {
         }

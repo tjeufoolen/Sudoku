@@ -10,8 +10,7 @@ namespace DP1_Sudoku.BusinessLogic
         public PuzzleObjectFactory(IEnumerable<IPuzzleLoadingStrategy>? loadingStrategies = null)
         {
             _loadingStrategies = new List<IPuzzleLoadingStrategy>();
-            if (loadingStrategies != null)
-                _loadingStrategies.AddRange(loadingStrategies);
+            if (loadingStrategies != null) _loadingStrategies.AddRange(loadingStrategies);
         }
 
         public bool AddLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy)
@@ -24,10 +23,8 @@ namespace DP1_Sudoku.BusinessLogic
             return false;
         }
 
-        public bool RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy)
-        {
-            return _loadingStrategies.Remove(loadingStrategy);
-        }
+        public bool RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy) => _loadingStrategies.Remove(loadingStrategy);
+        public void ClearLoadingStrategies() => _loadingStrategies.Clear();
 
         public async Task<PuzzleObject?> LoadPuzzle(string name, string extension)
         {
@@ -42,7 +39,7 @@ namespace DP1_Sudoku.BusinessLogic
             return puzzle;
         }
 
-        public async Task<List<PuzzleObject>> LoadAll()
+        public async Task<List<PuzzleObject>> LoadPuzzles()
         {
             List<PuzzleObject> puzzles = new();
 

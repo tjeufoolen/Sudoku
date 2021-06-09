@@ -5,15 +5,19 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
 {
     public interface IBoard : IGridComponent
     {
-        public ISolveStrategy? SolveStrategy { get; set; }
         Cell[,]? Cells { get; set; }
+        int MaxValidCellValue { get; }
+
         IList<IGridComponent> SubGroups { get; set; }
         IList<IGridComponent> HorizontalGroups { get; set; }
         IList<IGridComponent> VerticalGroups { get; set; }
-        public int MaxValidCellValue { get; }
+
+        ISolveStrategy? SolveStrategy { get; set; }
+
         bool IsBoardCorrect();
-        public bool ValidateGroups();
         void VerifyBoard();
+        bool ValidateGroups();
+
         Task Solve(Task onCellValueUpdate);
     }
 }

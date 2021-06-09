@@ -13,6 +13,7 @@ namespace DP1_Sudoku.BusinessLogic
             if (string.IsNullOrWhiteSpace(fileLocation)) throw new ArgumentNullException($"{GetType().Name} requires a file location, but none was provided");
 
             SetIdentifiers(fileLocation);
+
             if (string.IsNullOrEmpty(Name)) throw new ArgumentNullException($"{typeof(PuzzleObject)} requires a {nameof(Name)}");
             if (string.IsNullOrEmpty(FileExtension)) throw new ArgumentNullException($"{typeof(PuzzleObject)} requires a {nameof(FileExtension)}");
             if (string.IsNullOrEmpty(FilePath)) throw new ArgumentNullException($"{typeof(PuzzleObject)} requires a {nameof(FilePath)}");

@@ -6,8 +6,8 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
     {
         IBoard Board { get; }
 
-        public abstract void Reset();
-        public abstract void BuildCells(IList<string> lines);
-        public abstract void BuildGroups(IList<string> lines);
+        abstract void Reset();
+        abstract void BuildCells(IList<string> lines);
+        abstract void BuildGroups(IList<string> lines);
     }
 }

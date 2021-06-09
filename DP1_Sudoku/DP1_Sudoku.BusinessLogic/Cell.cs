@@ -1,21 +1,18 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
 using DP1_Sudoku.BusinessLogic.States.CellStates;
-using System;
 using System.Collections.Generic;
 
 namespace DP1_Sudoku.BusinessLogic
 {
     public class Cell : IGridComponent
     {
-        private CellState _state;
-        //TODO: uncomment if still needed. if not, remove at the end.
-        //public CellVisibilityState CellVisibilityState { private get; set; }
-
-        public List<GroupComposite> ValidationGroups { get; private set; } = new(3);
+        #region Properties
         public Cell? Left { get; set; }
         public Cell? Right { get; set; }
         public Cell? Top { get; set; }
         public Cell? Bottom { get; set; }
+
+        public List<GroupComposite> ValidationGroups { get; private set; } = new(3);
 
         private int? _currentValue;
         public int? CurrentValue
@@ -30,12 +27,16 @@ namespace DP1_Sudoku.BusinessLogic
 
         public List<int> HelpNumbers { get; private set; } = new();
 
+        private CellState _state;
+
         public bool IsSelectable { get => _state.IsSelectable; }
 
         public bool IsDrawable { get => _state.IsDrawable; }
+
         public bool IsValid { get => _state.IsValid; }
 
         public int MaxValidValue { get; private set; }
+        #endregion Properties
 
         public Cell(int value, int maxValidValue = 9)
         {
@@ -59,15 +60,9 @@ namespace DP1_Sudoku.BusinessLogic
 
         public void ToggleHelpNumber(int value) => _state.ToggleHelpNumber(value);
 
-        public void Accept(IVisitor visitor)
-        {
-            throw new NotImplementedException();
-        }
+        public void Accept(IVisitor visitor) => visitor.Visit(this);
 
-        public bool Validate()
-        {
-            return _state.Validate();
-        }
+        public bool Validate() => _state.Validate();
 
         public bool IsEqualTo(IGridComponent component)
         {

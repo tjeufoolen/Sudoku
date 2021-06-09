@@ -33,7 +33,7 @@ namespace DP1_Sudoku.Shared
         {
             if (PuzzleFactory != null)
             {
-                _puzzles = await PuzzleFactory.LoadAll();
+                _puzzles = await PuzzleFactory.LoadPuzzles();
             }
         }
 
