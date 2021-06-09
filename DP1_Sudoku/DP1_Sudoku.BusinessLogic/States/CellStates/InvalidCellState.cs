@@ -5,6 +5,7 @@ namespace DP1_Sudoku.BusinessLogic.States.CellStates
     public class InvalidCellState : FilledCellState
     {
         public override bool IsValid { get; protected set; } = false;
+
         public InvalidCellState(Cell cell) : base(cell)
         {
         }

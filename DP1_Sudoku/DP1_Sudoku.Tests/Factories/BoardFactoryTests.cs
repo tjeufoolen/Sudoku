@@ -17,7 +17,7 @@ namespace DP1_Sudoku.Tests.Factories
         public void Setup()
         {
             _factory = BoardFactory.GetInstance();
-            _factory.RemoveAll();
+            _factory.ClearBoardTypes();
             _builder = new NormalBoardBuilderMock().Mock;
         }
 

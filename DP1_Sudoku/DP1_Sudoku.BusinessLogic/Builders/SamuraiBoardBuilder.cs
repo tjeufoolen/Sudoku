@@ -34,42 +34,6 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             _centerSubSudoku = null;
         }
 
-        protected override void BuildColumnGroups()
-        {
-            foreach (Cell[,] subSudoku in GetSubSudokus())
-            {
-                base.BuildColumnGroups(subSudoku);
-            }
-        }
-
-        protected override void BuildRowGroups()
-        {
-            foreach (Cell[,] subSudoku in GetSubSudokus())
-            {
-                base.BuildRowGroups(subSudoku);
-            }
-        }
-
-        protected override void BuildSubgroups()
-        {
-            if (!AreSubSudokusSet() || Board == null || Board.Cells == null)
-                return;
-
-            List<OffsetData> offsets = new()
-            {
-                GetTopLeftSudokuOffset()!,
-                GetTopRightSudokuOffset()!,
-                GetBottomLeftSudokuOffset()!,
-                GetBottomRightSudokuOffset()!,
-                GetCenterSudokuOffset()!
-            };
-
-            foreach (var sudokuOffset in offsets)
-            {
-                base.BuildSubgroups(sudokuOffset.RowOffset, sudokuOffset.ColumnOffset);
-            }
-        }
-
         protected override Cell[,] CreateCells(IList<string> lines)
         {
             _sudoku = new Cell[_columnLength * 2 + _spaceBetweenSubSudokus, _rowLength * 2 + _spaceBetweenSubSudokus];
@@ -93,6 +57,25 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
             return _sudoku;
         }
+
+        protected override void BuildSubgroups()
+        {
+            if (!AreSubSudokusSet() || Board == null || Board.Cells == null) return;
+
+            List<OffsetData> offsets = new()
+            {
+                GetTopLeftSudokuOffset()!,
+                GetTopRightSudokuOffset()!,
+                GetBottomLeftSudokuOffset()!,
+                GetBottomRightSudokuOffset()!,
+                GetCenterSudokuOffset()!
+            };
+
+            offsets.ForEach(offset => base.BuildSubgroups(offset.RowOffset, offset.ColumnOffset));
+        }
+
+        protected override void BuildRowGroups() => GetSubSudokus().ForEach(subSudoku => base.BuildRowGroups(subSudoku));
+        protected override void BuildColumnGroups() => GetSubSudokus().ForEach(subSudoku => base.BuildColumnGroups(subSudoku));
 
         private void SetSpaceBetweenSubSudoku()
         {
@@ -131,6 +114,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 {
                     for (int colIdx = cornerData.ColumnOffset; colIdx < _subgroupWidth + cornerData.ColumnOffset; colIdx++)
                     {
+                        // Flip position for centerSudoku
                         int sudokuRowIdx = rowIdx >= 6 ? rowIdx - 6 : rowIdx + 6;
                         int sudokuColIdx = colIdx >= 6 ? colIdx - 6 : colIdx + 6;
 
@@ -141,29 +125,6 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 
             SetSubSudoku(GetCenterSudokuOffset()!);
         }
-
-        private List<Cell[,]> GetSubSudokus()
-        {
-            if (_sudoku == null || !AreSubSudokusSet())
-                return new();
-
-            return new List<Cell[,]>()
-            {
-                _topLeftSubSudoku!,
-                _topRightSubSudoku!,
-                _bottomLeftSubSudoku!,
-                _bottomRightSubSudoku!,
-                _centerSubSudoku!,
-            };
-        }
-
-        private bool AreSubSudokusSet()
-        {
-            return _topLeftSubSudoku != null && _topRightSubSudoku != null &&
-                 _bottomLeftSubSudoku != null && _bottomRightSubSudoku != null && _centerSubSudoku != null;
-        }
-
-        private void SetSubSudoku(OffsetData offsetData) => SetSubSudoku(offsetData.Sudoku, offsetData.RowOffset, offsetData.ColumnOffset);
 
         private void SetSubSudoku(Cell[,]? subSudoku, int rowOffset, int colOffset)
         {
@@ -180,6 +141,27 @@ namespace DP1_Sudoku.BusinessLogic.Builders
         }
 
         #region Helpers
+        private List<Cell[,]> GetSubSudokus()
+        {
+            if (_sudoku == null || !AreSubSudokusSet()) return new();
+
+            return new()
+            {
+                _topLeftSubSudoku!,
+                _topRightSubSudoku!,
+                _bottomLeftSubSudoku!,
+                _bottomRightSubSudoku!,
+                _centerSubSudoku!,
+            };
+        }
+
+        private void SetSubSudoku(OffsetData offsetData) => SetSubSudoku(offsetData.Sudoku, offsetData.RowOffset, offsetData.ColumnOffset);
+
+        private bool AreSubSudokusSet()
+        {
+            return _topLeftSubSudoku != null && _topRightSubSudoku != null && _bottomLeftSubSudoku != null && _bottomRightSubSudoku != null && _centerSubSudoku != null;
+        }
+
         private OffsetData? GetTopLeftSudokuOffset() => _topLeftSubSudoku != null ? new(_topLeftSubSudoku, 0, 0) : null;
         private OffsetData? GetTopRightSudokuOffset() => _topRightSubSudoku != null ? new(_topRightSubSudoku, 0, _rowLength + _spaceBetweenSubSudokus) : null;
         private OffsetData? GetBottomLeftSudokuOffset() => _bottomLeftSubSudoku != null ? new(_bottomLeftSubSudoku, _columnLength + _spaceBetweenSubSudokus, 0) : null;

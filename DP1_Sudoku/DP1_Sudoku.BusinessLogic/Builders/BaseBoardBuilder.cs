@@ -62,6 +62,8 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             BuildColumnGroups();
         }
 
+        protected abstract void BuildSubgroups();
+
         protected virtual void BuildRowGroups()
         {
             if (Board == null || Board.Cells == null) return;
@@ -100,7 +102,6 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 Board.VerticalGroups.Add(group);
             }
         }
-        protected abstract void BuildSubgroups();
 
         #region Helpers
         protected static Cell[] GetRow(Cell[,] matrix, int rowNumber)

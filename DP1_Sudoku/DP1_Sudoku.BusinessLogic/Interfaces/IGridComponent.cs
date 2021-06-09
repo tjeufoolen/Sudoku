@@ -2,10 +2,9 @@
 {
     public interface IGridComponent
     {
-        public void Accept(IVisitor visitor);
-        public bool Validate();
-        public bool IsEqualTo(IGridComponent component);
-        public bool Contains(IGridComponent component);
-
+        void Accept(IVisitor visitor);
+        bool Validate();
+        bool IsEqualTo(IGridComponent component);
+        bool Contains(IGridComponent component);
     }
 }

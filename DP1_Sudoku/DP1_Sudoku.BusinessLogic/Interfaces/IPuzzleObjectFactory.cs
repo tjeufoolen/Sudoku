@@ -7,7 +7,9 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
     {
         bool AddLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy);
         bool RemoveLoadingStrategy(IPuzzleLoadingStrategy loadingStrategy);
+        void ClearLoadingStrategies();
+
         Task<PuzzleObject?> LoadPuzzle(string name, string extension);
-        Task<List<PuzzleObject>> LoadAll();
+        Task<List<PuzzleObject>> LoadPuzzles();
     }
 }

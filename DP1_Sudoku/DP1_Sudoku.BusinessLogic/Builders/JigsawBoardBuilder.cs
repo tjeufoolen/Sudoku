@@ -4,10 +4,10 @@ namespace DP1_Sudoku.BusinessLogic.Builders
 {
     public class JigsawBoardBuilder : BaseBoardBuilder
     {
-        private readonly SortedList<int, GroupComposite> _subGroupLinks = new();
-
         protected int _rowLength = 9;
         protected int _columnLength = 9;
+
+        private readonly SortedList<int, GroupComposite> _subGroupLinks = new();
 
         public override void Reset()
         {
@@ -71,6 +71,4 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             }
         }
     }
-
-
 }

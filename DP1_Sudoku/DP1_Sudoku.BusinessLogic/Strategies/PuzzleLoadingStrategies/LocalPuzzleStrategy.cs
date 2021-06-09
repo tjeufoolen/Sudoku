@@ -8,13 +8,6 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies
 {
     public class LocalPuzzleStrategy : IPuzzleLoadingStrategy
     {
-        public Task<List<PuzzleObject>> GetPuzzles()
-        {
-            List<string> fileOptions = LoadAvailableFiles();
-            List<PuzzleObject> puzzles = ConvertToPuzzleObject(fileOptions);
-            return Task.FromResult(puzzles);
-        }
-
         public Task<PuzzleObject?> GetPuzzle(string name, string extension)
         {
             var puzzles = LoadAvailableFiles();
@@ -26,6 +19,14 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies
             return Task.FromResult<PuzzleObject?>(new EmbeddedPuzzleObject(targetPuzzle));
         }
 
+        public Task<List<PuzzleObject>> GetPuzzles()
+        {
+            List<string> fileOptions = LoadAvailableFiles();
+            List<PuzzleObject> puzzles = ConvertToPuzzleObject(fileOptions);
+            return Task.FromResult(puzzles);
+        }
+
+        #region Helpers
         private static List<string> LoadAvailableFiles()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -41,6 +42,6 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.PuzzleLoadingStrategies
             puzzles.AddRange(fileOptions.Select(puzzle => new EmbeddedPuzzleObject(puzzle)));
             return puzzles;
         }
-
+        #endregion Helpers
     }
 }

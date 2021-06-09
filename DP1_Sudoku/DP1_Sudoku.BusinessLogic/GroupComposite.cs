@@ -1,6 +1,5 @@
 ﻿using DP1_Sudoku.BusinessLogic.Extensions;
 using DP1_Sudoku.BusinessLogic.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace DP1_Sudoku.BusinessLogic
@@ -10,10 +9,7 @@ namespace DP1_Sudoku.BusinessLogic
 
         public IList<IGridComponent> Children { get; set; } = new List<IGridComponent>();
 
-        public void Accept(IVisitor visitor)
-        {
-            throw new NotImplementedException();
-        }
+        public void Accept(IVisitor visitor) => visitor.Visit(this);
 
         public bool Validate()
         {
@@ -33,9 +29,6 @@ namespace DP1_Sudoku.BusinessLogic
             return otherAsGroup == this;
         }
 
-        public bool Contains(IGridComponent component)
-        {
-            return Children.Contains(component);
-        }
+        public bool Contains(IGridComponent component) => Children.Contains(component);
     }
 }

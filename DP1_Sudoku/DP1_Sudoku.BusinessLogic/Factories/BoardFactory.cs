@@ -45,10 +45,8 @@ namespace DP1_Sudoku.BusinessLogic.Factories
             return true;
         }
 
-        public bool RemoveBoardType(string extension)
-        {
-            return _builders.Remove(extension);
-        }
+        public bool RemoveBoardType(string extension) => _builders.Remove(extension);
+        public void ClearBoardTypes() => this._builders.Clear();
 
         public IBoard? CreateBoard(string extension, IList<string> lines)
         {
@@ -62,7 +60,5 @@ namespace DP1_Sudoku.BusinessLogic.Factories
 
             return builder.Board;
         }
-
-        public void RemoveAll() => this._builders.Clear();
     }
 }

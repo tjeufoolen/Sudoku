@@ -109,7 +109,7 @@ namespace DP1_Sudoku.Tests.Factories
         public async Task Get_PuzzlesWithoutStrategy_ShouldBeEmptyList()
         {
             // Act
-            var result = await _factory.LoadAll();
+            var result = await _factory.LoadPuzzles();
 
             // Assert
             Assert.IsEmpty(result);
@@ -123,7 +123,7 @@ namespace DP1_Sudoku.Tests.Factories
             _factory.AddLoadingStrategy(_strategy.Object);
 
             // Act
-            var result = await _factory.LoadAll();
+            var result = await _factory.LoadPuzzles();
 
             // Assert
             Assert.AreEqual(expected, result.Count);
