@@ -119,10 +119,10 @@ namespace DP1_Sudoku.BusinessLogic.Builders
             // Reuse corners
             List<OffsetData> offsets = new()
             {
-                new(_topLeftSubSudoku!, 0, 0),
-                new(_topRightSubSudoku!, 0, 6),
-                new(_bottomLeftSubSudoku!, 6, 0),
-                new(_bottomRightSubSudoku!, 6, 6)
+                new(_topLeftSubSudoku!, 6, 6),
+                new(_topRightSubSudoku!, 6, 0),
+                new(_bottomLeftSubSudoku!, 0, 6),
+                new(_bottomRightSubSudoku!, 0, 0)
             };
 
             foreach (var cornerData in offsets)
@@ -131,7 +131,10 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 {
                     for (int colIdx = cornerData.ColumnOffset; colIdx < _subgroupWidth + cornerData.ColumnOffset; colIdx++)
                     {
-                        _centerSubSudoku![rowIdx, colIdx] = cornerData.Sudoku[rowIdx, colIdx];
+                        int sudokuRowIdx = rowIdx >= 6 ? rowIdx - 6 : rowIdx + 6;
+                        int sudokuColIdx = colIdx >= 6 ? colIdx - 6 : colIdx + 6;
+
+                        _centerSubSudoku![sudokuRowIdx, sudokuColIdx] = cornerData.Sudoku[rowIdx, colIdx];
                     }
                 }
             }
