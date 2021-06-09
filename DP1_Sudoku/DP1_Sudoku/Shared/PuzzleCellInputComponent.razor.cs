@@ -10,7 +10,7 @@ namespace DP1_Sudoku.Shared
         [Parameter] public ICellValueStrategy? ValueStrategy { get; set; }
         [Parameter] public EventCallback<ICellValueStrategy?> ValueStrategyChanged { get; set; }
         [Parameter] public EventCallback<int> ValueChanged { get; set; }
-
+        [Parameter] public bool? IsDisabled { get; set; }
         private ICellValueStrategy? _valueStrategy;
         private int _value;
         private EditMode _currentEditMode = EditMode.Final;

@@ -1,12 +1,11 @@
 ﻿using DP1_Sudoku.BusinessLogic.Interfaces;
+using System.Threading.Tasks;
 
 namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
 {
     public class BackTrackSolveStrategy : ISolveStrategy
     {
-        //private static int tryCounter = 0;
-        //private static int depthCounter = 0;
-        public bool SolveBoard(IBoard board)
+        public async Task<bool> SolveBoard(IBoard board, Task? onCellValueUpdate)
         {
             if (board.Cells != null)
             {
@@ -18,16 +17,15 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
                     {
                         if (board.IsBoardCorrect())
                         {
-                            //Console.WriteLine($"Attempting setting value '{number} (#{tryCounter++} times) (callDepth: {depthCounter})");
                             firstAvailableCell.SetValue(number);
+                            if (onCellValueUpdate != null) await onCellValueUpdate;
 
-                            if (SolveBoard(board)) return true;
+                            if (await SolveBoard(board, onCellValueUpdate)) return true;
                             else firstAvailableCell.SetValue(0);
                         }
                     }
                     return false;
                 }
-
                 return board.IsBoardCorrect();
             }
             return true;
