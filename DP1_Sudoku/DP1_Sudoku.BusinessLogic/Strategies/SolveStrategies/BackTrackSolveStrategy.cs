@@ -27,6 +27,8 @@ namespace DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies
                     }
                     return false;
                 }
+
+                return board.IsBoardCorrect();
             }
             return true;
         }
