@@ -20,7 +20,7 @@ namespace DP1_Sudoku.BusinessLogic
 
             StreamReader reader = new(fileStream);
             string fileContent = await reader.ReadToEndAsync();
-            string[] lines = fileContent.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            string[] lines = fileContent.Split(new[] { Environment.NewLine, "\r\n", "\n" }, StringSplitOptions.None);
 
             return lines;
         }
