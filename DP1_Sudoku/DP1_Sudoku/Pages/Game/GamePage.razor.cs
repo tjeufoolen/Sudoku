@@ -84,9 +84,9 @@ namespace DP1_Sudoku.Pages.Game
                 _board.SolveStrategy = new BackTrackSolveStrategy();
         }
 
-        private void ToggleShowAuxiliaryNumbers()
+        private void ToggleShowHelpNumbers()
         {
-            _puzzleDisplaySettings.ShowAuxiliaryNumbers = !_puzzleDisplaySettings.ShowAuxiliaryNumbers;
+            _puzzleDisplaySettings.ShowHelpNumbers = !_puzzleDisplaySettings.ShowHelpNumbers;
         }
 
         private void ToggleColorInvalidNumbers()
@@ -137,7 +137,7 @@ namespace DP1_Sudoku.Pages.Game
 
     public class PuzzleDisplaySettings
     {
-        public bool ShowAuxiliaryNumbers { get; set; } = false;
+        public bool ShowHelpNumbers { get; set; } = false;
         public bool ColorInvalidNumbers { get; set; } = true;
     }
 }

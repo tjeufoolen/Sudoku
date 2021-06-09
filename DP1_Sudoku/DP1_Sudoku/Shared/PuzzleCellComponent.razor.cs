@@ -22,10 +22,10 @@ namespace DP1_Sudoku.Shared
                 Parent.SelectedCellComponent = this;
         }
 
-        private bool ShowAuxiliaryNumbers()
+        private bool ShowHelpNumbers()
         {
             if (Cell?.CurrentValue != null) return false;
-            return DisplaySettings == null || DisplaySettings.ShowAuxiliaryNumbers;
+            return DisplaySettings == null || DisplaySettings.ShowHelpNumbers;
         }
 
         private bool DisplayInvalidColor()
