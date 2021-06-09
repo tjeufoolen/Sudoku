@@ -42,14 +42,15 @@ namespace DP1_Sudoku.Shared
 
             if (Cell != null)
             {
-                var subgroup = Parent?.Board?.SubGroups.FirstOrDefault(s => s.Children.Contains(Cell));
+                var subgroup = Parent?.Board?.SubGroups.FirstOrDefault(s => s.Contains(Cell));
+
                 if (subgroup != null)
                 {
                     string[] properties = new string[] { "Top", "Right", "Bottom", "Left" };
                     foreach (var property in properties)
                     {
-                        var propertyValue = Cell.GetType().GetProperty(property)?.GetValue(Cell, null) ?? null;
-                        if (propertyValue == null || !subgroup.Children.Contains(propertyValue)) classes.Add($"border-{property.ToLower()}");
+                        Cell? propertyValue = Cell.GetType().GetProperty(property)?.GetValue(Cell, null) as Cell;
+                        if (propertyValue == null || !subgroup.Contains(propertyValue)) classes.Add($"border-{property.ToLower()}");
                     }
                 }
             }

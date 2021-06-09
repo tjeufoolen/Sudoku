@@ -7,9 +7,9 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
     {
         public ISolveStrategy? SolveStrategy { get; set; }
         Cell[,]? Cells { get; set; }
-        IList<GroupComposite> SubGroups { get; set; }
-        IList<GroupComposite> HorizontalGroups { get; set; }
-        IList<GroupComposite> VerticalGroups { get; set; }
+        IList<IGridComponent> SubGroups { get; set; }
+        IList<IGridComponent> HorizontalGroups { get; set; }
+        IList<IGridComponent> VerticalGroups { get; set; }
         public int MaxValidCellValue { get; }
         bool IsBoardCorrect();
         public bool ValidateGroups();

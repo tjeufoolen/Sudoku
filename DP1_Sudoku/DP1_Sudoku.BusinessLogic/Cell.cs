@@ -74,5 +74,7 @@ namespace DP1_Sudoku.BusinessLogic
             if (component == null || component is not Cell otherAsCell) return false;
             return otherAsCell.CurrentValue == this.CurrentValue;
         }
+
+        public bool Contains(IGridComponent component) => false;
     }
 }

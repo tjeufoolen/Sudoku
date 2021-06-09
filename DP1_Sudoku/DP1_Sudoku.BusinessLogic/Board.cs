@@ -12,9 +12,9 @@ namespace DP1_Sudoku.BusinessLogic
         public ISolveStrategy? SolveStrategy { get; set; }
 
         public Cell[,]? Cells { get; set; }
-        public IList<GroupComposite> SubGroups { get; set; } = new List<GroupComposite>();
-        public IList<GroupComposite> HorizontalGroups { get; set; } = new List<GroupComposite>();
-        public IList<GroupComposite> VerticalGroups { get; set; } = new List<GroupComposite>();
+        public IList<IGridComponent> SubGroups { get; set; } = new List<IGridComponent>();
+        public IList<IGridComponent> HorizontalGroups { get; set; } = new List<IGridComponent>();
+        public IList<IGridComponent> VerticalGroups { get; set; } = new List<IGridComponent>();
 
         public int MaxValidCellValue { get => (Cells != null) ? Cells.Cast<Cell>().Max(c => c.MaxValidValue) : 0; }
 
@@ -83,6 +83,14 @@ namespace DP1_Sudoku.BusinessLogic
         {
             if (component == null || component is not Board otherAsBoard) return false;
             return otherAsBoard == this;
+        }
+
+        public bool Contains(IGridComponent component)
+        {
+            if (SubGroups.Contains(component)) return true;
+            if (HorizontalGroups.Contains(component)) return true;
+            if (VerticalGroups.Contains(component)) return true;
+            return false;
         }
     }
 }
