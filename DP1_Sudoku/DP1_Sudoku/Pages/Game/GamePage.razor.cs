@@ -20,7 +20,7 @@ namespace DP1_Sudoku.Pages.Game
 
         private IBoard? _board;
         private PuzzleComponent? _puzzle;
-        private PuzzleDisplaySettings _puzzleDisplaySettings = new();
+        private readonly PuzzleDisplaySettings _puzzleDisplaySettings = new();
 
         private ICellValueStrategy _valueStrategy = new CellValueStrategy();
 

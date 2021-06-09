@@ -14,6 +14,6 @@ namespace DP1_Sudoku.BusinessLogic.Interfaces
         bool IsBoardCorrect();
         public bool ValidateGroups();
         void VerifyBoard();
-        Task Solve(Task viewUpdate);
+        Task Solve(Task onCellValueUpdate);
     }
 }
