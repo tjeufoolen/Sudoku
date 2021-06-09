@@ -1,9 +1,5 @@
-﻿using DP1_Sudoku.BusinessLogic.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DP1_Sudoku.BusinessLogic.Extensions;
+using DP1_Sudoku.BusinessLogic.Interfaces;
 
 namespace DP1_Sudoku.BusinessLogic.Visitors
 {
@@ -11,17 +7,26 @@ namespace DP1_Sudoku.BusinessLogic.Visitors
     {
         public void Visit(Board board)
         {
-            throw new NotImplementedException();
+            if (board.Cells != null)
+            {
+                for (int rowIdx = 0; rowIdx < board.Cells.GetLength(0); rowIdx++)
+                {
+                    for (int colIdx = 0; colIdx < board.Cells.GetLength(1); colIdx++)
+                    {
+                        board.Cells[rowIdx, colIdx].Accept(this);
+                    }
+                }
+            }
         }
 
         public void Visit(GroupComposite group)
         {
-            throw new NotImplementedException();
+            group.Children.ForEach(c => c.Accept(this));
         }
 
         public void Visit(Cell cell)
         {
-            throw new NotImplementedException();
+            cell.SetValue(0);
         }
     }
 }

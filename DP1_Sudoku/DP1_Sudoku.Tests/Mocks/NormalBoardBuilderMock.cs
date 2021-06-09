@@ -72,55 +72,55 @@ namespace DP1_Sudoku.Tests.Mocks
         }
 
         #region Helpers
-        private List<GroupComposite> CreateHorizonalGroups()
+        private List<IGridComponent> CreateHorizonalGroups()
         {
-            return new List<GroupComposite>() {
-                new() { Children = new List<IGridComponent>() {
+            return new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 0], Board.Cells[0, 1], Board.Cells[0, 2], Board.Cells[0, 3]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[1, 0], Board.Cells[1, 1], Board.Cells[1, 2], Board.Cells[1, 3]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[2, 0], Board.Cells[2, 1], Board.Cells[2, 2], Board.Cells[2, 3]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[3, 0], Board.Cells[3, 1], Board.Cells[3, 2], Board.Cells[3, 3]
                 } },
             };
         }
 
-        private List<GroupComposite> CreateVerticalGroups()
+        private List<IGridComponent> CreateVerticalGroups()
         {
-            return new List<GroupComposite>() {
-                new() { Children = new List<IGridComponent>() {
+            return new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 0], Board.Cells[1, 0], Board.Cells[2, 0], Board.Cells[3, 0]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 1], Board.Cells[1, 1], Board.Cells[2, 1], Board.Cells[3, 1]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 2], Board.Cells[1, 2], Board.Cells[2, 2], Board.Cells[3, 2]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 3], Board.Cells[1, 3], Board.Cells[2, 3], Board.Cells[3, 3]
                 } },
             };
         }
 
-        private List<GroupComposite> CreateSubGroups()
+        private List<IGridComponent> CreateSubGroups()
         {
-            return new List<GroupComposite>() {
-                new() { Children = new List<IGridComponent>() {
+            return new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 0], Board.Cells[0, 1], Board.Cells[1, 0], Board.Cells[1, 1]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[0, 2], Board.Cells[0, 3], Board.Cells[1, 2], Board.Cells[1, 3]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[2, 0], Board.Cells[2, 1], Board.Cells[3, 0], Board.Cells[3, 1]
                 } },
-                new() { Children = new List<IGridComponent>() {
+                new GroupComposite() { Children = new List<IGridComponent>() {
                     Board.Cells[2, 2], Board.Cells[2, 3], Board.Cells[3, 2], Board.Cells[3, 3]
                 } },
             };

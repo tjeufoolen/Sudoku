@@ -3,6 +3,7 @@ using DP1_Sudoku.BusinessLogic.Factories;
 using DP1_Sudoku.BusinessLogic.Interfaces;
 using DP1_Sudoku.BusinessLogic.Strategies.CellValueStrategies;
 using DP1_Sudoku.BusinessLogic.Strategies.SolveStrategies;
+using DP1_Sudoku.BusinessLogic.Visitors;
 using DP1_Sudoku.Shared;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -103,6 +104,12 @@ namespace DP1_Sudoku.Pages.Game
             }
         }
 
+        private void ClearBoard()
+        {
+            if (_board == null) return;
+            _board.Accept(new ClearVisitor());
+        }
+
         private void CheckBoard()
         {
             if (_board == null) return;
@@ -112,6 +119,9 @@ namespace DP1_Sudoku.Pages.Game
         private async Task AutoSolve()
         {
             if (_board == null) return;
+
+            ClearBoard();
+
             if (!_isSolving)
             {
                 _isSolving = true;
@@ -128,6 +138,6 @@ namespace DP1_Sudoku.Pages.Game
     public class PuzzleDisplaySettings
     {
         public bool ShowAuxiliaryNumbers { get; set; } = false;
-        public bool ColorInvalidNumbers { get; set; } = false;
+        public bool ColorInvalidNumbers { get; set; } = true;
     }
 }
