@@ -1,6 +1,10 @@
 # DP1 Sudoku
 Project build for the Design Patterns 1 module using a variety of design patterns consisting of abstract factories, builders, strategies, visitors, states and more.
 
+## Prerequisites
+- Visual studio 2019 or higher
+- ASP.NET and web development
+
 ## Getting Started
 1. Clone this project.
 2. Open the solution using visual studio.
