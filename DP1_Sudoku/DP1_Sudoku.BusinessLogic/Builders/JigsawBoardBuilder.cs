@@ -35,7 +35,7 @@ namespace DP1_Sudoku.BusinessLogic.Builders
                 if (int.TryParse(fieldParts[0], out int fieldValue))
                 {
                     Cell cell = new(fieldValue);
-                    cellRows[columnIdx, rowIdx] = cell;
+                    cellRows[rowIdx, columnIdx] = cell;
 
                     // Link the cell to a group composite so that we can easily set subgroups later
                     if (int.TryParse(fieldParts[1], out int fieldSubgroupIdx))
