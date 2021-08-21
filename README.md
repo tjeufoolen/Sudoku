@@ -1,4 +1,4 @@
-# BLAZOR_SudokuWebsite
+# BLAZOR_Sudoku
 Fun little website to play different types of Sudoku games. Written in C# using Blazor and a variety of design patterns consisting of abstract factories, builders, strategies, visitors, states and more.
 
 ## Prerequisites
